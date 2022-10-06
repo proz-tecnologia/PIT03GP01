@@ -1,6 +1,22 @@
-# srminhaeiro
+# Sr.minhaeiro
 
-A new Flutter project.
+ A new Flutter project based on the code proz academy proposal for a final project, by group 1 class T3.
+
+# floating thoughts
+
+- Focus on achieving financial dreams
+
+- Focus on spending control 
+
+- Help with personal or family savings
+
+- stimulus to save, achieve your dream (friends or global ranking, based on the amount to save and deadline)
+
+- Variable goals according to unforeseen events
+
+- subscription service (Free account and premium account)
+
+- Savings charts for dreams and charts for fixed and variable income costs
 
 ## Getting Started
 
