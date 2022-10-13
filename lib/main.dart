@@ -1,22 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:srminhaeiro/pages/general_pages/Appbar.dart';
+import 'package:srminhaeiro/widgets/themeChange.dart';
 
-import 'home_page/home_page.dart';
+import 'pages/general_pages/generalPagesBody.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+    return AnimatedBuilder(
+        animation: Appcontroller.instance,
+        builder: (context, child) {
+          return MaterialApp(
+            title: 'Flutter Demo',
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+                brightness: Appcontroller.instance.theme
+                    ? Brightness.dark
+                    : Brightness.light),
+            home: const MyHomePage(),
+          );
+        });
   }
 }
