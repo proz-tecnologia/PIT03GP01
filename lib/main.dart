@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:srminhaeiro/pages/general_pages/Appbar.dart';
-import 'package:srminhaeiro/widgets/themeChange.dart';
+import 'package:srminhaeiro/Util/darkMode.dart';
 
-import 'pages/general_pages/generalPagesBody.dart';
+import 'package:srminhaeiro/pages/homePage/appBarConfig/appBar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,13 +16,16 @@ class MyApp extends StatelessWidget {
         animation: Appcontroller.instance,
         builder: (context, child) {
           return MaterialApp(
-            title: 'Flutter Demo',
+            title: 'SR. M I N H A E I R O',
             debugShowCheckedModeBanner: false,
-            theme: ThemeData(
+            /* theme: ThemeData(
                 brightness: Appcontroller.instance.theme
                     ? Brightness.dark
-                    : Brightness.light),
-            home: const MyHomePage(),
+                    : Brightness.light), */
+            initialRoute: "/",
+            routes: {
+              "/": (context) => const InicialPage(),
+            },
           );
         });
   }
