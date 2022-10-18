@@ -26,26 +26,26 @@ class HomePageBody extends StatelessWidget {
                     height: 1,
                     width: 350,
                   ),
-                  Row(
-                    children: [
-                      SizedBox(
-                        width: 100,
-                        height: 50,
-                        child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0, top: 8),
-                            child: GeneralTexts.extrato),
-                      ),
-                      const SizedBox(
-                        width: 170,
-                      ),
-                      SizedBox(
-                        width: 80,
-                        height: 50,
-                        child: Padding(
-                            padding: const EdgeInsets.only(right: 12, top: 8),
-                            child: GeneralTexts.verTudo),
-                      ),
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.only(left: 12, top: 8),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                          width: 100,
+                          height: 50,
+                          child: GeneralTexts.extrato,
+                        ),
+                        const SizedBox(
+                          width: 170,
+                        ),
+                        SizedBox(
+                          width: 80,
+                          height: 50,
+                          child: GeneralTexts.verTudo,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

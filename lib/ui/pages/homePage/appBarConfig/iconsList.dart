@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:srminhaeiro/pages/homePage/appBarConfig/iconsListsConfig.dart';
+import 'package:srminhaeiro/ui/pages/homePage/appBarConfig/iconsListsConfig.dart';
 import 'package:srminhaeiro/widgets/TextsAndStrings.dart';
 
 class ButtonList extends StatelessWidget {
@@ -14,9 +14,9 @@ class ButtonList extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         height: 120,
         child: Padding(
-          padding: const EdgeInsets.only(left: 40.0),
-          child: ListView(
-            scrollDirection: Axis.horizontal,
+          padding: const EdgeInsets.only(left: 24.0, right: 24.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               FormatIconText(
                   icon: Icons.wallet_rounded,

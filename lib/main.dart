@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:srminhaeiro/Util/darkMode.dart';
+import 'package:srminhaeiro/Util/routes.dart';
 
-import 'package:srminhaeiro/pages/homePage/appBarConfig/appBar.dart';
+import 'package:srminhaeiro/ui/pages/homePage/appBarConfig/initialPageBar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,10 +23,8 @@ class MyApp extends StatelessWidget {
                 brightness: Appcontroller.instance.theme
                     ? Brightness.dark
                     : Brightness.light), */
-            initialRoute: "/",
-            routes: {
-              "/": (context) => const InicialPage(),
-            },
+            initialRoute: InicialPage.route,
+            routes: getRoutes(),
           );
         });
   }
