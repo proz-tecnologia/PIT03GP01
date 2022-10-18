@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:srminhaeiro/pages/homePage/appBarConfig/balanceValue.dart';
-import 'package:srminhaeiro/pages/homePage/appBarConfig/iconsList.dart';
-import 'package:srminhaeiro/pages/homePage/floatingMenu.dart';
-import 'package:srminhaeiro/pages/homePage/homePageBody.dart';
+import 'package:srminhaeiro/ui/pages/homePage/appBarConfig/balanceValue.dart';
+import 'package:srminhaeiro/ui/pages/homePage/appBarConfig/iconsList.dart';
+import 'package:srminhaeiro/ui/pages/menuPage/floatingMenu.dart';
+import 'package:srminhaeiro/ui/pages/homePage/homePageBody.dart';
 import 'package:srminhaeiro/widgets/TextsAndStrings.dart';
 import 'package:srminhaeiro/Util/spaceBetween.dart';
 
 class InicialPage extends StatelessWidget {
+  static String route = "inicial";
+
   const InicialPage({super.key});
 
   @override
@@ -16,8 +18,9 @@ class InicialPage extends StatelessWidget {
       floatingActionButton: buildMenuButton(),
       body: CustomScrollView(
         slivers: [
+          const SpaceInBetween8px(),
           SliverAppBar(
-              leadingWidth: 80,
+              leadingWidth: 100,
               title: GeneralTexts.Home_page_title,
               floating: true,
               backgroundColor: const Color(0xffd0c44e),
@@ -36,7 +39,7 @@ class InicialPage extends StatelessWidget {
               actionsIconTheme:
                   const IconThemeData(color: Colors.white, opacity: 40)),
           const BalanceValue(),
-          const SpaceInBetween(),
+          const SpaceInBetween40px(),
           const ButtonList(),
           const HomePageBody(),
         ],

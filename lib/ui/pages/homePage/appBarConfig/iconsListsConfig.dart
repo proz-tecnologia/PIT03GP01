@@ -33,7 +33,7 @@ class FormatIconText extends StatelessWidget {
                       color: Colors.grey.withOpacity(0.5))
                 ],
               ),
-              child: Icon(icon),
+              child: Icon(icon, size: 30),
             ),
           ],
         ),
