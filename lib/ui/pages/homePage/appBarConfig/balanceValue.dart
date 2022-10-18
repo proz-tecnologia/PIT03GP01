@@ -7,10 +7,8 @@ class BalanceValue extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-      child: Expanded(
-        child: SizedBox(
-          child: Center(child: GeneralTexts.money),
-        ),
+      child: SizedBox(
+        child: Center(child: GeneralTexts.money),
       ),
     );
   }

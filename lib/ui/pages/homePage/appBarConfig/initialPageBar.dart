@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:srminhaeiro/ui/pages/homePage/appBarConfig/appBarPage.dart';
 import 'package:srminhaeiro/ui/pages/homePage/appBarConfig/balanceValue.dart';
 import 'package:srminhaeiro/ui/pages/homePage/appBarConfig/iconsList.dart';
 import 'package:srminhaeiro/ui/pages/menuPage/floatingMenu.dart';
@@ -14,34 +15,16 @@ class InicialPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffd0c44e),
-      floatingActionButton: buildMenuButton(),
-      body: CustomScrollView(
+      backgroundColor: Colors.black,
+      floatingActionButton: buildMenuButton(context),
+      body: const CustomScrollView(
         slivers: [
-          const SpaceInBetween8px(),
-          SliverAppBar(
-              leadingWidth: 100,
-              title: GeneralTexts.Home_page_title,
-              floating: true,
-              backgroundColor: const Color(0xffd0c44e),
-              leading: const Icon(
-                Icons.account_circle,
-                color: Colors.white,
-                size: 50,
-              ),
-              expandedHeight: 100,
-              flexibleSpace: const FlexibleSpaceBar(),
-              actions: [
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.visibility_outlined))
-              ],
-              actionsIconTheme:
-                  const IconThemeData(color: Colors.white, opacity: 40)),
-          const BalanceValue(),
-          const SpaceInBetween40px(),
-          const ButtonList(),
-          const HomePageBody(),
+          SpaceInBetween8px(),
+          AppBarSliver(),
+          BalanceValue(),
+          SpaceInBetween40px(),
+          ButtonList(),
+          HomePageBody(),
         ],
       ),
     );

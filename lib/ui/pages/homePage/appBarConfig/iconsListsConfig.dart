@@ -30,10 +30,10 @@ class FormatIconText extends StatelessWidget {
                       spreadRadius: 5,
                       blurRadius: 7,
                       offset: const Offset(0, 3),
-                      color: Colors.grey.withOpacity(0.5))
+                      color: Colors.grey.withOpacity(0.1))
                 ],
               ),
-              child: Icon(icon, size: 30),
+              child: IconButton(onPressed: () {}, icon: Icon(icon, size: 34)),
             ),
           ],
         ),
@@ -47,6 +47,7 @@ class FormatIconText extends StatelessWidget {
               text,
               textAlign: TextAlign.center,
               style: const TextStyle(
+                fontSize: 14,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
