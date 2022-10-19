@@ -12,7 +12,7 @@ class AppBarSliver extends StatelessWidget {
         elevation: 20,
         leadingWidth: 80,
         title: GeneralTexts.Home_page_title,
-        backgroundColor: Colors.black,
+        backgroundColor: Color.fromARGB(255, 27, 27, 28),
         leading: const Icon(
           Icons.account_circle,
           color: Colors.white,

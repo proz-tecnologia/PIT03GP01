@@ -3,6 +3,8 @@ import 'package:srminhaeiro/Util/darkMode.dart';
 import 'package:srminhaeiro/Util/routes.dart';
 
 import 'package:srminhaeiro/ui/pages/homePage/appBarConfig/initialPageBar.dart';
+import 'package:srminhaeiro/ui/pages/menuPage/pages/ajuda.dart';
+import 'package:srminhaeiro/ui/pages/menuPage/pages/salarioExtraPage.dart';
 
 void main() {
   runApp(const MyApp());

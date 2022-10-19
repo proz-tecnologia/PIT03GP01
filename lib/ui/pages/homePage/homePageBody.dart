@@ -22,7 +22,7 @@ class HomePageBody extends StatelessWidget {
               child: Column(
                 children: [
                   Container(
-                    color: Color.fromARGB(255, 15, 14, 1),
+                    color: Color.fromARGB(255, 31, 60, 121),
                     height: 1,
                     width: 350,
                   ),

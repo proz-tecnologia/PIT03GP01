@@ -15,7 +15,7 @@ class InicialPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color.fromARGB(255, 27, 27, 28),
       floatingActionButton: buildMenuButton(context),
       body: const CustomScrollView(
         slivers: [

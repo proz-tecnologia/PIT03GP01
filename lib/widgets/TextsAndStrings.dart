@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class GeneralTexts {
   //APP BAR REGION  BEGINS
   static Widget Home_page_title = const Text(
-    "Olá,\nProz/ SOFTEX",
+    "Olá,\nGrupo 1 / Proz",
     style: TextStyle(
       color: Colors.white,
       fontWeight: FontWeight.bold,
