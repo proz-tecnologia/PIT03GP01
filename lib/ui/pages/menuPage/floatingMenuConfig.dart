@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
+import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 
 class FormatButtomMenu extends StatelessWidget {
   final String text;
@@ -31,10 +32,10 @@ class FormatButtomMenu extends StatelessWidget {
               color: Color(0xff120c0c),
               boxShadow: [
                 BoxShadow(
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: const Offset(0, 3),
-                    color: Colors.grey.withOpacity(0.5))
+                    inset: true,
+                    blurRadius: 4,
+                    offset: Offset(5, 5),
+                    color: Color(0xfffff9f9).withOpacity(0.75))
               ],
             ),
             child: ClipRRect(
