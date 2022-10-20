@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:srminhaeiro/ui/pages/homePage/appBarConfig/appBarPage.dart';
-import 'package:srminhaeiro/ui/pages/homePage/appBarConfig/balanceValue.dart';
-import 'package:srminhaeiro/ui/pages/homePage/appBarConfig/iconsList.dart';
+import 'package:srminhaeiro/ui/pages/homePage/widgets/balanceValue.dart';
+import 'package:srminhaeiro/ui/pages/homePage/widgets/iconsList.dart';
 import 'package:srminhaeiro/ui/pages/menuPage/floatingMenu.dart';
-import 'package:srminhaeiro/ui/pages/homePage/homePageBody.dart';
+import 'package:srminhaeiro/ui/pages/homePage/transactionsBody.dart';
 import 'package:srminhaeiro/widgets/TextsAndStrings.dart';
 import 'package:srminhaeiro/Util/spaceBetween.dart';
 
-class InicialPage extends StatelessWidget {
+class HomePage extends StatelessWidget {
   static String route = "inicial";
 
-  const InicialPage({super.key});
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class InicialPage extends StatelessWidget {
           BalanceValue(),
           SpaceInBetween40px(),
           ButtonList(),
-          HomePageBody(),
+          TransactionBody(),
         ],
       ),
     );

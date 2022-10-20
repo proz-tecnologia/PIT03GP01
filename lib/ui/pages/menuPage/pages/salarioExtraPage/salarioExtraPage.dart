@@ -8,7 +8,11 @@ class salarioExtraPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lime,
+      backgroundColor: Color.fromARGB(255, 119, 119, 126),
+      floatingActionButton: FloatingActionButton.extended(
+          backgroundColor: Color.fromARGB(255, 27, 27, 28),
+          onPressed: () => Navigator.pop(context),
+          label: const Text("voltar")),
       body: Container(),
     );
   }

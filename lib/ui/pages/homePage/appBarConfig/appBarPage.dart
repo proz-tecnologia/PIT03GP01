@@ -15,7 +15,7 @@ class AppBarSliver extends StatelessWidget {
         backgroundColor: Color.fromARGB(255, 27, 27, 28),
         leading: const Icon(
           Icons.account_circle,
-          color: Colors.white,
+          color: Color.fromARGB(255, 214, 214, 230),
           size: 60,
         ),
         expandedHeight: 100,
@@ -25,6 +25,6 @@ class AppBarSliver extends StatelessWidget {
               onPressed: () {}, icon: const Icon(Icons.visibility_outlined))
         ],
         actionsIconTheme:
-            const IconThemeData(color: Colors.white, opacity: 40));
+            IconThemeData(color: Colors.grey.shade300, opacity: 40));
   }
 }

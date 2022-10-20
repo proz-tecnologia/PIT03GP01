@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:srminhaeiro/widgets/TextsAndStrings.dart';
 
-class HomePageBody extends StatelessWidget {
-  const HomePageBody({
+class TransactionBody extends StatelessWidget {
+  const TransactionBody({
     Key? key,
   }) : super(key: key);
 

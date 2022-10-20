@@ -1,11 +1,11 @@
-import 'package:srminhaeiro/ui/pages/homePage/appBarConfig/initialPageBar.dart';
-import 'package:srminhaeiro/ui/pages/menuPage/pages/ajuda.dart';
-import 'package:srminhaeiro/ui/pages/menuPage/pages/cartaoPage.dart';
-import 'package:srminhaeiro/ui/pages/menuPage/pages/salarioExtraPage.dart';
+import 'package:srminhaeiro/ui/pages/homePage/appBarConfig/homePage.dart';
+import 'package:srminhaeiro/ui/pages/menuPage/pages/AjudaPage/ajudaPage.dart';
+import 'package:srminhaeiro/ui/pages/menuPage/pages/cartaoPage/cartaoPage.dart';
+import 'package:srminhaeiro/ui/pages/menuPage/pages/salarioExtraPage/salarioExtraPage.dart';
 
 getRoutes() {
   return {
-    InicialPage.route: (context) => const InicialPage(),
+    HomePage.route: (context) => const HomePage(),
     AjudaPage.route: (context) => const AjudaPage(),
     cartaoPage.route: (context) => const cartaoPage(),
     salarioExtraPage.route: (context) => const salarioExtraPage(),

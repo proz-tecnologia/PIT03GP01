@@ -35,22 +35,22 @@ class FormatButtomMenu extends StatelessWidget {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: SizedBox(
-                height: 70,
-                width: 360,
-                child: OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                      foregroundColor: Color.fromARGB(255, 27, 27, 28),
-                      side: BorderSide(width: 3, color: Colors.white)),
-                  onPressed: () => onpressed,
-                  child: Center(
-                    child: Text(
-                      text,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
+              child: Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  onTap: onpressed,
+                  child: SizedBox(
+                    height: 70,
+                    width: 360,
+                    child: Center(
+                      child: Text(
+                        text,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
                       ),
                     ),
                   ),
