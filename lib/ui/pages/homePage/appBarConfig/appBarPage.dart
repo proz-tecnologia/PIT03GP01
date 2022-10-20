@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:srminhaeiro/widgets/TextsAndStrings.dart';
+import 'package:srminhaeiro/texts/TextsAndStrings.dart';
 
 class AppBarSliver extends StatelessWidget {
   const AppBarSliver({
