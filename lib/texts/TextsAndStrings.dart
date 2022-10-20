@@ -5,20 +5,20 @@ import 'package:flutter/material.dart';
 class GeneralTexts {
   //APP BAR REGION  BEGINS
   static Widget Home_page_title = const Text(
-    "Olá,\nProz/ SOFTEX",
+    "Olá,\nGrupo 1 / Proz",
     style: TextStyle(
-      color: Colors.white,
+      color: Color.fromARGB(255, 214, 214, 230),
       fontWeight: FontWeight.bold,
     ),
   );
 
-  static Widget money = const Text(
+  static Widget money = Text(
     "R\$ 2.281,74",
     style: TextStyle(
-        color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold),
+        color: Colors.grey.shade300, fontSize: 40, fontWeight: FontWeight.bold),
   );
-  static String home_page_mais = "Mais\nOpções";
-  static String home_page_deposito_icon = "home";
+  static String home_page_mais = "Saídas";
+  static String home_page_deposito_icon = "Entradas";
   static String home_page_sonhos_icon = "Sonhos";
   static String home_page_controle_icon = "Controle\nFinanceiro";
   // APP BAR REGION ENDS

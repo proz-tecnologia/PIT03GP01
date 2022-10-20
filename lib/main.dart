@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:srminhaeiro/Util/darkMode.dart';
 import 'package:srminhaeiro/Util/routes.dart';
 
-import 'package:srminhaeiro/ui/pages/homePage/appBarConfig/initialPageBar.dart';
+import 'package:srminhaeiro/ui/pages/homePage/appBarConfig/homePage.dart';
+import 'package:srminhaeiro/ui/pages/menuPage/pages/AjudaPage/ajudaPage.dart';
+import 'package:srminhaeiro/ui/pages/menuPage/pages/salarioExtraPage/salarioExtraPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
                 brightness: Appcontroller.instance.theme
                     ? Brightness.dark
                     : Brightness.light), */
-            initialRoute: InicialPage.route,
+            initialRoute: HomePage.route,
             routes: getRoutes(),
           );
         });

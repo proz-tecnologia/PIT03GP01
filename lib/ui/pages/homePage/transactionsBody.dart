@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:srminhaeiro/widgets/TextsAndStrings.dart';
 
-class HomePageBody extends StatelessWidget {
-  const HomePageBody({
+class TransactionBody extends StatelessWidget {
+  const TransactionBody({
     Key? key,
   }) : super(key: key);
 
@@ -22,19 +22,22 @@ class HomePageBody extends StatelessWidget {
               child: Column(
                 children: [
                   Container(
-                    color: Color(0xffd0c44e),
+                    color: Color.fromARGB(255, 31, 60, 121),
                     height: 1,
                     width: 350,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 12, top: 8),
+                    padding: const EdgeInsets.only(top: 8),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        SizedBox(
-                          width: 100,
-                          height: 50,
-                          child: GeneralTexts.extrato,
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: SizedBox(
+                            width: 100,
+                            height: 50,
+                            child: GeneralTexts.extrato,
+                          ),
                         ),
                         const SizedBox(
                           width: 170,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:srminhaeiro/ui/pages/homePage/appBarConfig/iconsListsConfig.dart';
+import 'package:srminhaeiro/ui/pages/homePage/widgets/iconsListsConfig.dart';
 import 'package:srminhaeiro/widgets/TextsAndStrings.dart';
 
 class ButtonList extends StatelessWidget {
@@ -19,15 +19,16 @@ class ButtonList extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               FormatIconText(
-                  icon: Icons.wallet_rounded,
-                  text: GeneralTexts.home_page_deposito_icon),
+                icon: Icons.east,
+                text: GeneralTexts.home_page_deposito_icon,
+              ),
               FormatIconText(
                   icon: Icons.cloud, text: GeneralTexts.home_page_sonhos_icon),
               FormatIconText(
                   icon: Icons.leaderboard_outlined,
                   text: GeneralTexts.home_page_controle_icon),
               FormatIconText(
-                  icon: Icons.more_vert, text: GeneralTexts.home_page_mais),
+                  icon: Icons.west, text: GeneralTexts.home_page_mais),
             ],
           ),
         ),
