@@ -4,7 +4,7 @@ import 'package:srminhaeiro/ui/pages/homePage/widgets/balanceValue.dart';
 import 'package:srminhaeiro/ui/pages/homePage/widgets/iconsList.dart';
 import 'package:srminhaeiro/ui/pages/menuPage/floatingMenu.dart';
 import 'package:srminhaeiro/ui/pages/homePage/transactionsBody.dart';
-import 'package:srminhaeiro/widgets/TextsAndStrings.dart';
+import 'package:srminhaeiro/texts/TextsAndStrings.dart';
 import 'package:srminhaeiro/Util/spaceBetween.dart';
 
 class HomePage extends StatelessWidget {
