@@ -21,7 +21,7 @@ class FormatButtomMenu extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 16.0),
           child: Container(
             margin: const EdgeInsets.all(2),
-            height: 70,
+            height: 80,
             width: 360,
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.only(
@@ -29,13 +29,13 @@ class FormatButtomMenu extends StatelessWidget {
                 bottomLeft: Radius.circular(20),
                 bottomRight: Radius.circular(20),
               ),
-              color: Color(0xff120c0c),
+              color: Color(0xff120c0c).withOpacity(0.9),
               boxShadow: [
                 BoxShadow(
                     inset: true,
                     blurRadius: 4,
                     offset: Offset(5, 5),
-                    color: Color(0xfffff9f9).withOpacity(0.75))
+                    color: Color(0xfffff9f9).withOpacity(0.5))
               ],
             ),
             child: ClipRRect(

@@ -24,17 +24,17 @@ class FormatIconText extends StatelessWidget {
               height: 60,
               width: 80,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(20),
                     bottomLeft: Radius.circular(20),
                     bottomRight: Radius.circular(20)),
-                color: Color(0xff120c0c),
+                color: Color(0xff120c0c).withOpacity(0.9),
                 boxShadow: [
                   BoxShadow(
                       inset: true,
                       blurRadius: 4,
                       offset: Offset(5, 5),
-                      color: Color(0xfffff9f9).withOpacity(0.75))
+                      color: Color(0xfffff9f9).withOpacity(0.5))
                 ],
               ),
               child: IconButton(

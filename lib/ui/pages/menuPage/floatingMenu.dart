@@ -39,7 +39,7 @@ Widget buildMenuButton(BuildContext context) => FloatingActionButton.extended(
                   borderRadius:
                       const BorderRadius.only(topLeft: Radius.circular(60)),
                   child: Container(
-                    height: 500,
+                    height: 400,
                     color: Color(0xfffbf1f1),
                     child: Center(
                       child: Column(
