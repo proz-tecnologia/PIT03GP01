@@ -23,7 +23,10 @@ class FormatIconText extends StatelessWidget {
               height: 70,
               width: 70,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    bottomLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(20)),
                 color: Colors.grey.shade300,
                 boxShadow: [
                   BoxShadow(

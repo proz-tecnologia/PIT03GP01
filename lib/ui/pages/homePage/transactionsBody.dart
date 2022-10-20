@@ -12,8 +12,7 @@ class TransactionBody extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(top: 20.0),
         child: ClipRRect(
-          borderRadius: const BorderRadius.only(
-              topRight: Radius.circular(60), topLeft: Radius.circular(60)),
+          borderRadius: const BorderRadius.only(topLeft: Radius.circular(60)),
           child: Container(
             height: 500,
             color: Color.fromARGB(221, 245, 245, 243),
@@ -50,6 +49,8 @@ class TransactionBody extends StatelessWidget {
                       ],
                     ),
                   ),
+
+                  //herbert implementations
                 ],
               ),
             ),
