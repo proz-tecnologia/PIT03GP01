@@ -31,18 +31,15 @@ class TransactionBody extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 16),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(left: 24.0),
+                          padding: const EdgeInsets.only(left: 16.0),
                           child: SizedBox(
                             width: 100,
                             height: 50,
                             child: GeneralTexts.extrato,
                           ),
-                        ),
-                        const SizedBox(
-                          width: 170,
                         ),
                         SizedBox(
                           width: 80,
