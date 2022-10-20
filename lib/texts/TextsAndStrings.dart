@@ -7,15 +7,15 @@ class GeneralTexts {
   static Widget Home_page_title = const Text(
     "Olá,\nGrupo 1 / Proz",
     style: TextStyle(
-      color: Color.fromARGB(255, 214, 214, 230),
+      color: Color.fromARGB(245, 0, 0, 0),
       fontWeight: FontWeight.bold,
     ),
   );
 
-  static Widget money = Text(
+  static Widget money = const Text(
     "R\$ 2.281,74",
     style: TextStyle(
-        color: Colors.grey.shade300, fontSize: 40, fontWeight: FontWeight.bold),
+        color: Color(0xff2f2a2a), fontSize: 40, fontWeight: FontWeight.bold),
   );
   static String home_page_mais = "Saídas";
   static String home_page_deposito_icon = "Entradas";
@@ -26,12 +26,16 @@ class GeneralTexts {
   //HOME PAGE REGION BEGINS
   static Widget verTudo = const Text("Ver tudo",
       style: TextStyle(
-          fontSize: 12, color: Color(0xff127919), fontWeight: FontWeight.bold));
+          fontSize: 12,
+          color: Color.fromARGB(255, 216, 101, 88),
+          fontWeight: FontWeight.bold));
 
   static Widget extrato = const Text(
     "EXTRATO",
     style: TextStyle(
-        fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
+        fontSize: 14,
+        color: Color.fromARGB(255, 253, 250, 250),
+        fontWeight: FontWeight.bold),
   );
   //HOME PAGE REGION ENDS
 

@@ -5,40 +5,42 @@ import 'package:srminhaeiro/ui/pages/menuPage/pages/cartaoPage/cartaoPage.dart';
 import 'package:srminhaeiro/ui/pages/menuPage/pages/salarioExtraPage/salarioExtraPage.dart';
 
 Widget buildMenuButton(BuildContext context) => FloatingActionButton.extended(
-      backgroundColor: Color.fromARGB(255, 27, 27, 28),
-      label: const Text("MENU"),
+      backgroundColor: Color.fromARGB(255, 253, 250, 250),
+      label: const Text(
+        "MENU",
+        style: TextStyle(color: Color(0xff120c0c), fontWeight: FontWeight.bold),
+      ),
       icon: const Icon(
         Icons.menu,
         size: 30,
+        color: Color.fromARGB(245, 21, 20, 20),
       ),
       onPressed: () {
         showModalBottomSheet<void>(
           shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              top: Radius.circular(60),
-            ),
+            borderRadius: const BorderRadius.only(topLeft: Radius.circular(60)),
           ),
           context: context,
           builder: (BuildContext context) {
             return ClipRRect(
-              borderRadius: const BorderRadius.only(
-                  topRight: Radius.circular(60), topLeft: Radius.circular(60)),
+              borderRadius:
+                  const BorderRadius.only(topLeft: Radius.circular(60)),
               child: Scaffold(
                 floatingActionButton: FloatingActionButton.extended(
-                  backgroundColor: Color.fromARGB(255, 27, 27, 28),
+                  backgroundColor: Color(0xff120c0c),
                   label: const Text(
                     "Voltar",
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                        color: Color(0xfffbf1f1), fontWeight: FontWeight.bold),
                   ),
                   onPressed: () => Navigator.pop(context),
                 ),
                 body: ClipRRect(
-                  borderRadius: const BorderRadius.only(
-                      topRight: Radius.circular(60),
-                      topLeft: Radius.circular(60)),
+                  borderRadius:
+                      const BorderRadius.only(topLeft: Radius.circular(60)),
                   child: Container(
-                    height: 500,
-                    color: Color.fromARGB(255, 194, 194, 200),
+                    height: 400,
+                    color: Color(0xfffbf1f1),
                     child: Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,

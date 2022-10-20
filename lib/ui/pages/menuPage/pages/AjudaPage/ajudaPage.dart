@@ -9,10 +9,14 @@ class AjudaPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color.fromARGB(255, 155, 155, 164),
+        backgroundColor: Color(0xfffbf1f1),
         floatingActionButton: FloatingActionButton.extended(
-          backgroundColor: const Color.fromARGB(255, 27, 27, 28),
-          label: const Text("Fale conosto"),
+          backgroundColor: const Color(0xfffbf1f1),
+          label: const Text(
+            "Fale conosto",
+            style: TextStyle(
+                color: Color(0xff120c0c), fontWeight: FontWeight.bold),
+          ),
           onPressed: () {},
         ),
         body: CustomScrollView(
@@ -25,7 +29,7 @@ class AjudaPage extends StatelessWidget {
               expandedHeight: 120,
               flexibleSpace: FlexibleSpaceBar(
                 background: Container(
-                  color: Color.fromARGB(255, 27, 27, 28),
+                  color: const Color(0xff120c0c),
                 ),
                 title: const Text(
                   "F A Q",

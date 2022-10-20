@@ -19,7 +19,7 @@ class FaqCardConfig extends StatelessWidget {
             height: 200,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Color.fromARGB(255, 61, 61, 63),
+              color: Color(0xff201919),
               boxShadow: [
                 BoxShadow(
                     spreadRadius: 7,
