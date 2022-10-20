@@ -17,6 +17,7 @@ Widget buildMenuButton(BuildContext context) => FloatingActionButton.extended(
       ),
       onPressed: () {
         showModalBottomSheet<void>(
+          backgroundColor: Color(0xfffbf1f1),
           shape: const RoundedRectangleBorder(
             borderRadius: const BorderRadius.only(topLeft: Radius.circular(60)),
           ),
@@ -39,7 +40,7 @@ Widget buildMenuButton(BuildContext context) => FloatingActionButton.extended(
                   borderRadius:
                       const BorderRadius.only(topLeft: Radius.circular(60)),
                   child: Container(
-                    height: 400,
+                    height: 500,
                     color: Color(0xfffbf1f1),
                     child: Center(
                       child: Column(

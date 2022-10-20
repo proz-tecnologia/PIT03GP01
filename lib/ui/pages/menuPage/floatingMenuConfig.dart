@@ -45,7 +45,7 @@ class FormatButtomMenu extends StatelessWidget {
                 child: InkWell(
                   onTap: onpressed,
                   child: SizedBox(
-                    height: 70,
+                    height: 80,
                     width: 360,
                     child: Center(
                       child: Text(
