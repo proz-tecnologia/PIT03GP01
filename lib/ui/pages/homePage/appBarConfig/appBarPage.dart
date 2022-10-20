@@ -12,10 +12,10 @@ class AppBarSliver extends StatelessWidget {
         elevation: 20,
         leadingWidth: 80,
         title: GeneralTexts.Home_page_title,
-        backgroundColor: Color.fromARGB(255, 27, 27, 28),
+        backgroundColor: Color.fromARGB(255, 253, 250, 250),
         leading: const Icon(
           Icons.account_circle,
-          color: Color.fromARGB(255, 214, 214, 230),
+          color: Color.fromARGB(245, 21, 20, 20),
           size: 60,
         ),
         expandedHeight: 100,
@@ -25,6 +25,6 @@ class AppBarSliver extends StatelessWidget {
               onPressed: () {}, icon: const Icon(Icons.visibility_outlined))
         ],
         actionsIconTheme:
-            IconThemeData(color: Colors.grey.shade300, opacity: 40));
+            IconThemeData(color: Color.fromARGB(245, 0, 0, 0), opacity: 40));
   }
 }

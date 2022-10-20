@@ -15,23 +15,26 @@ class TransactionBody extends StatelessWidget {
           borderRadius: const BorderRadius.only(topLeft: Radius.circular(60)),
           child: Container(
             height: 500,
-            color: Color.fromARGB(221, 245, 245, 243),
+            color: Color(0xff120c0c),
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
                 children: [
-                  Container(
-                    color: Color.fromARGB(255, 31, 60, 121),
-                    height: 1,
-                    width: 350,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 24.0),
+                    child: Container(
+                      color: Color.fromARGB(255, 253, 250, 250),
+                      height: 1,
+                      width: 350,
+                    ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 8),
+                    padding: const EdgeInsets.only(top: 16),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(left: 8.0),
+                          padding: const EdgeInsets.only(left: 24.0),
                           child: SizedBox(
                             width: 100,
                             height: 50,

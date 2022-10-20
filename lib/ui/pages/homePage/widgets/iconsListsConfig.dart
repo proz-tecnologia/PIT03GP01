@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
+import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 
 class FormatIconText extends StatelessWidget {
   final IconData icon;
@@ -14,29 +15,35 @@ class FormatIconText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Stack(
           children: [
             Container(
               margin: const EdgeInsets.all(4),
-              height: 70,
-              width: 70,
+              height: 60,
+              width: 80,
               decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
+                borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
                     bottomLeft: Radius.circular(20),
                     bottomRight: Radius.circular(20)),
-                color: Colors.grey.shade300,
+                color: Color(0xff120c0c),
                 boxShadow: [
                   BoxShadow(
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: const Offset(0, 3),
-                      color: Colors.grey.withOpacity(0.1))
+                      inset: true,
+                      blurRadius: 4,
+                      offset: Offset(5, 5),
+                      color: Color(0xfffff9f9).withOpacity(0.75))
                 ],
               ),
-              child: IconButton(onPressed: () {}, icon: Icon(icon, size: 34)),
+              child: IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    icon,
+                    size: 40,
+                    color: Color.fromARGB(255, 253, 250, 250),
+                  )),
             ),
           ],
         ),
@@ -51,7 +58,7 @@ class FormatIconText extends StatelessWidget {
               textAlign: TextAlign.center,
               style: const TextStyle(
                 fontSize: 14,
-                color: Colors.white,
+                color: Color.fromARGB(245, 21, 20, 20),
                 fontWeight: FontWeight.bold,
               ),
             ),

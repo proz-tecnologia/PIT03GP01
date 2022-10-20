@@ -23,8 +23,12 @@ class FormatButtomMenu extends StatelessWidget {
             height: 70,
             width: 360,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Color.fromARGB(255, 27, 27, 28),
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(20),
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
+              ),
+              color: Color(0xff120c0c),
               boxShadow: [
                 BoxShadow(
                     spreadRadius: 5,
