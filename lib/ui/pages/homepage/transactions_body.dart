@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:srminhaeiro/texts/TextsAndStrings.dart';
+import 'package:srminhaeiro/texts/texts_and_strings.dart';
 
 class TransactionBody extends StatelessWidget {
   const TransactionBody({

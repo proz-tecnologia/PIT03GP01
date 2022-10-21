@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:srminhaeiro/ui/pages/homePage/widgets/iconsListsConfig.dart';
-import 'package:srminhaeiro/texts/TextsAndStrings.dart';
+import 'package:srminhaeiro/ui/pages/homepage/widgets/icons_lists_config.dart';
+import 'package:srminhaeiro/texts/texts_and_strings.dart';
 
 class ButtonList extends StatelessWidget {
   const ButtonList({

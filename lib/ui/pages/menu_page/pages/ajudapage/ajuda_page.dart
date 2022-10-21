@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:srminhaeiro/ui/pages/menuPage/pages/AjudaPage/faqCardConfig.dart';
+import 'package:srminhaeiro/ui/pages/menu_page/pages/ajudapage/faq_card_config.dart';
 
 class AjudaPage extends StatelessWidget {
   static String route = "ajuda";
