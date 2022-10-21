@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:srminhaeiro/ui/pages/menuPage/floatingMenuConfig.dart';
-import 'package:srminhaeiro/ui/pages/menuPage/pages/AjudaPage/ajudaPage.dart';
-import 'package:srminhaeiro/ui/pages/menuPage/pages/cartaoPage/cartaoPage.dart';
-import 'package:srminhaeiro/ui/pages/menuPage/pages/salarioExtraPage/salarioExtraPage.dart';
+import 'package:srminhaeiro/ui/pages/menu_page/floating_menu_config.dart';
+import 'package:srminhaeiro/ui/pages/menu_page/pages/ajudapage/ajuda_page.dart';
+import 'package:srminhaeiro/ui/pages/menu_page/pages/cartaopage/cartao_page.dart';
+import 'package:srminhaeiro/ui/pages/menu_page/pages/salario_extra_page/salario_extra_page.dart';
 
 Widget buildMenuButton(BuildContext context) => FloatingActionButton.extended(
       backgroundColor: Color.fromARGB(255, 253, 250, 250),
