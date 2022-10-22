@@ -1,7 +1,7 @@
-import 'package:srminhaeiro/ui/pages/homePage/appBarConfig/homePage.dart';
-import 'package:srminhaeiro/ui/pages/menuPage/pages/AjudaPage/ajudaPage.dart';
-import 'package:srminhaeiro/ui/pages/menuPage/pages/cartaoPage/cartaoPage.dart';
-import 'package:srminhaeiro/ui/pages/menuPage/pages/salarioExtraPage/salarioExtraPage.dart';
+import 'package:srminhaeiro/ui/pages/homepage/homepage.dart';
+import 'package:srminhaeiro/ui/pages/menu_page/pages/ajudapage/ajuda_page.dart';
+import 'package:srminhaeiro/ui/pages/menu_page/pages/cartaopage/cartao_page.dart';
+import 'package:srminhaeiro/ui/pages/menu_page/pages/salario_extra_page/salario_extra_page.dart';
 
 getRoutes() {
   return {

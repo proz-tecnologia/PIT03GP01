@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:srminhaeiro/Util/darkMode.dart';
-import 'package:srminhaeiro/Util/routes.dart';
+import 'package:srminhaeiro/util/dark_mode.dart';
+import 'package:srminhaeiro/util/routes.dart';
 
-import 'package:srminhaeiro/ui/pages/homePage/appBarConfig/homePage.dart';
-import 'package:srminhaeiro/ui/pages/menuPage/pages/AjudaPage/ajudaPage.dart';
-import 'package:srminhaeiro/ui/pages/menuPage/pages/salarioExtraPage/salarioExtraPage.dart';
+import 'package:srminhaeiro/ui/pages/homepage/homepage.dart';
 
 void main() {
   runApp(const MyApp());
