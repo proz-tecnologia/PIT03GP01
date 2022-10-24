@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:srminhaeiro/ui/splash/pages/splash_page.dart';
 import 'package:srminhaeiro/util/dark_mode.dart';
 import 'package:srminhaeiro/util/routes.dart';
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
                 brightness: Appcontroller.instance.theme
                     ? Brightness.dark
                     : Brightness.light), */
-            initialRoute: HomePage.route,
+            initialRoute: SplashPage.route,
             routes: getRoutes(),
           );
         });
