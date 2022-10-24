@@ -24,7 +24,7 @@ class TransactionBody extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 24.0),
                     child: Container(
                       color: Color.fromARGB(255, 253, 250, 250),
-                      height: 1,
+                      height: 3,
                       width: 350,
                     ),
                   ),
