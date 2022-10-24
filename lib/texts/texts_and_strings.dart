@@ -24,10 +24,10 @@ class GeneralTexts {
   // APP BAR REGION ENDS
 
   //HOME PAGE REGION BEGINS
-  static Widget verTudo = const Text("Ver tudo",
+  static Widget verTudo = Text("Ver tudo",
       style: TextStyle(
           fontSize: 12,
-          color: Color.fromARGB(255, 216, 101, 88),
+          color: Colors.white.withOpacity(0.4),
           fontWeight: FontWeight.bold));
 
   static Widget extrato = const Text(
