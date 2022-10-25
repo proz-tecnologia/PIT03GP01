@@ -3,8 +3,13 @@ import 'package:srminhaeiro/texts/texts_and_strings.dart';
 import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile_page.dart';
 
 class AppBarSliver extends StatelessWidget {
+  final bool isVisible;
+  final VoidCallback? onTapVisibility;
+
   const AppBarSliver({
     Key? key,
+    required this.isVisible,
+    this.onTapVisibility,
   }) : super(key: key);
 
   @override
@@ -23,9 +28,13 @@ class AppBarSliver extends StatelessWidget {
         expandedHeight: 100,
         actions: [
           IconButton(
-              onPressed: () {}, icon: const Icon(Icons.visibility_outlined))
+            icon: Icon(isVisible
+                ? Icons.visibility_outlined
+                : Icons.visibility_off_outlined),
+            onPressed: onTapVisibility,
+          ),
         ],
-        actionsIconTheme: const IconThemeData(
-            color: Color.fromARGB(245, 0, 0, 0), opacity: 40));
+        actionsIconTheme:
+            const IconThemeData(color: Color.fromARGB(245, 0, 0, 0)));
   }
 }

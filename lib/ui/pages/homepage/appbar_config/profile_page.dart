@@ -11,9 +11,14 @@ class ProfilePage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         floatingActionButton: FloatingActionButton.extended(
-            backgroundColor: const Color(0xff120c0c),
-            onPressed: () => Navigator.pop(context),
-            label: const Text("voltar")),
+          backgroundColor: const Color(0xfffbf1f1),
+          label: const Text(
+            "Voltar",
+            style: TextStyle(
+                color: Color(0xff120c0c), fontWeight: FontWeight.bold),
+          ),
+          onPressed: () => Navigator.pop(context),
+        ),
         backgroundColor: const Color(0xfffbf1f1),
         body: CustomScrollView(
           slivers: [
