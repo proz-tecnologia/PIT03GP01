@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:srminhaeiro/texts/texts_and_strings.dart';
+
 import 'package:srminhaeiro/ui/pages/menu_page/floating_menu_config.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -24,10 +24,22 @@ class ProfilePage extends StatelessWidget {
           slivers: [
             const SliverToBoxAdapter(
               child: SizedBox(
-                height: 8,
+                height: 44,
+                child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    "Meu perfil",
+                    style: TextStyle(color: Color(0xff120c0c), fontSize: 24),
+                  ),
+                ),
               ),
             ),
             SliverAppBar(
+              title: const Text(
+                "Grupo 1 / PROZ",
+                style: TextStyle(color: Color(0xff120c0c), fontSize: 24),
+              ),
+              centerTitle: true,
               backgroundColor: const Color(0xfffbf1f1),
               leadingWidth: 80,
               leading: IconButton(
@@ -48,12 +60,12 @@ class ProfilePage extends StatelessWidget {
                             top: 32.0,
                             left: 32,
                           ),
-                          child: Container(
+                          child: SizedBox(
                             height: 200,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
+                                const Text(
                                   "Alterar Foto de Perfil",
                                   style: TextStyle(fontSize: 20),
                                 ),
@@ -61,11 +73,11 @@ class ProfilePage extends StatelessWidget {
                                   padding: const EdgeInsets.only(top: 16.0),
                                   child: TextButton(
                                       onPressed: () {},
-                                      child: Text("Usar câmera")),
+                                      child: const Text("Usar câmera")),
                                 ),
                                 TextButton(
                                     onPressed: () {},
-                                    child: Text("Selecionar na galeria")),
+                                    child: const Text("Selecionar na galeria")),
                                 TextButton(
                                     onPressed: () {},
                                     child: Text(
@@ -132,7 +144,7 @@ class ProfilePage extends StatelessWidget {
             ),
             SliverToBoxAdapter(
               child: FormatButtomMenu(
-                  color: Color.fromARGB(255, 176, 45, 45),
+                  color: const Color.fromARGB(255, 176, 45, 45),
                   text: const Text(
                     "Sair do App",
                     textAlign: TextAlign.center,
@@ -142,7 +154,7 @@ class ProfilePage extends StatelessWidget {
             ),
             SliverToBoxAdapter(
               child: Container(
-                height: 290,
+                height: 260,
                 color: const Color(0xff120c0c),
               ),
             )
