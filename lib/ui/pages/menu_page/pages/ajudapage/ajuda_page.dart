@@ -13,7 +13,7 @@ class AjudaPage extends StatelessWidget {
         floatingActionButton: FloatingActionButton.extended(
           backgroundColor: const Color(0xfffbf1f1),
           label: const Text(
-            "Fale conosto",
+            "Fale conosco",
             style: TextStyle(
                 color: Color(0xff120c0c), fontWeight: FontWeight.bold),
           ),

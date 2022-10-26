@@ -1,0 +1,252 @@
+import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
+import 'package:flutter/material.dart';
+import 'package:srminhaeiro/ui/pages/homepage/widgets/extrato_list.dart';
+import '../../../../../models/extrato.dart';
+import '../../../../../repositories/input_repository.dart';
+
+
+
+
+
+class ExtratoEntradas extends StatefulWidget {
+  static String route = "entradas";
+
+  const ExtratoEntradas({Key? key}) : super(key: key);
+
+  @override
+  State<ExtratoEntradas> createState() => _ExtratoEntradasState();
+}
+
+class _ExtratoEntradasState extends State<ExtratoEntradas> {
+
+  final InputRepository inputRepository = InputRepository();
+  final TextEditingController inputController = TextEditingController();
+  final TextEditingController descriptionController = TextEditingController();
+
+
+  List<Extrato> inputs = [];
+  Extrato? deleteInput;
+  int? deleteInputPosition;
+  String? errorInputText;
+
+  @override
+  void initState() {
+    super.initState();
+    inputRepository.getInputList().then((value) {
+      setState(() {
+        inputs = value;
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child:Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.symmetric(vertical: 32),
+                        margin: EdgeInsets.only(bottom: 8,),
+                        color: Color(0xff413d3d),
+                        child: const Text(
+                          'Depósitos',
+                          textAlign: TextAlign.end,
+                          style:TextStyle(
+                            fontSize: 32,
+                            color: Color(0xfffff9f9),
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 8,),
+                Row(
+                  children: [
+                    Expanded(
+                        child: TextFormField(
+                          controller: descriptionController,
+                          decoration: InputDecoration(
+                            labelText: 'Descrição',
+                            hintText: 'Viagem',
+                            labelStyle: const TextStyle(
+                              color: Color(0xff120c0c),
+                            ),
+                          ),
+                        ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 8,),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                        keyboardType: TextInputType.number,
+                        inputFormatters: [
+                          CurrencyTextInputFormatter(
+                              locale: "pt_BR", decimalDigits: 2, symbol: ''
+                          )
+                        ],
+                        controller: inputController,
+                        decoration: InputDecoration(
+                          labelText: 'Adicionar dinheiro',
+                          hintText: 'R\$ 1.500,00',
+                          errorText: errorInputText,
+                          labelStyle: const TextStyle(
+                            color: Color(0xff120c0c),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        String text = inputController.text;
+                        String text2 = descriptionController.text;
+                        if (text.isEmpty) {
+                          setState(() {
+                            errorInputText = 'Adicionar um valor';
+                          });
+                          return;
+                        }
+                        setState(() {
+                          Extrato newExtrato = Extrato(
+                            title: text,
+                            date: DateTime.now(),
+                            description: text2,
+                          );
+                          inputs.add(newExtrato);
+                        });
+                        errorInputText = null;
+                        inputController.clear();
+                        descriptionController.clear();
+                        inputRepository.saveInputList(inputs);
+                      },
+                      child: const Icon(
+                        Icons.east_sharp,
+                        size: 32,
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color.fromARGB(255, 33, 32, 32),
+                        padding: const EdgeInsets.all(16),
+                      ),
+                    ),
+                  ],
+                ),
+                Flexible(
+                  child: ListView(
+                    shrinkWrap: true,
+                    children: [
+                      for (Extrato input in inputs)
+                        ExtratoListItem(
+                          input: input,
+                          onDelete: onDelete,
+                        ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        'Seus depositos: ${inputs.length} ',
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    ElevatedButton(
+                      onPressed: showDeleteDialog,
+                      child: const Text('Limpar depositos'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xff413d3d),
+                        padding: EdgeInsets.all(14),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void onDelete(Extrato input) {
+    deleteInput = input;
+    deleteInputPosition = inputs.indexOf(input);
+    setState(() {
+      inputs.remove(input);
+    });
+    inputRepository.saveInputList(inputs);
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Deposito (${input.title}) foi removido! '),
+        backgroundColor: Colors.blueGrey,
+        action: SnackBarAction(
+          label: 'Desfazer',
+          textColor: const Color(0xff00d7f3),
+          onPressed: () {
+            setState(() {
+              inputs.insert(deleteInputPosition!, deleteInput!);
+            });
+            inputRepository.saveInputList(inputs);
+          },
+        ),
+        duration: const Duration(seconds: 5),
+      ),
+    );
+  }
+
+  void showDeleteDialog() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Limpar Tudo?'),
+        content: Text('Vai apagar todos os depositos?'),
+        actions: [
+          TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                'Cancelar',
+                style: TextStyle(color: Colors.redAccent),
+              )),
+          TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                deleteAllInputs();
+              },
+              child: Text('Limpar Tudo')),
+        ],
+      ),
+    );
+  }
+
+  void deleteAllInputs() {
+    setState(() {
+      inputs.clear();
+    });
+    inputRepository.saveInputList(inputs);
+  }
+}
+
+

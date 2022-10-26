@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:srminhaeiro/ui/pages/homepage/widgets/icons_lists_config.dart';
 import 'package:srminhaeiro/texts/texts_and_strings.dart';
+import '../controle_financeiro/controle_financeiro.dart';
+import '../entradas/extrato_entradas.dart';
+import '../saidas/saidas_extrato.dart';
+import '../sonhos/sonhos.dart';
 
 class ButtonList extends StatelessWidget {
   const ButtonList({
@@ -18,18 +22,38 @@ class ButtonList extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              FormatIconText(
-                icon: Icons.east,
-                text: GeneralTexts.home_page_deposito_icon,
+              InkWell(
+                onTap: ()=> Navigator.pushNamed(context,ExtratoEntradas.route),
+                child: Container(
+                  child: FormatIconText(
+                    icon: Icons.east,
+                    text: GeneralTexts.home_page_deposito_icon,
+                  ),
+                ),
               ),
-              FormatIconText(
-                  icon: Icons.cloud_outlined,
-                  text: GeneralTexts.home_page_sonhos_icon),
-              FormatIconText(
-                  icon: Icons.pie_chart_outline,
-                  text: GeneralTexts.home_page_controle_icon),
-              FormatIconText(
-                  icon: Icons.west, text: GeneralTexts.home_page_mais),
+              InkWell(
+                onTap: ()=> Navigator.pushNamed(context, Controle.route),
+                child: Container(
+                  child: FormatIconText(
+                      icon: Icons.cloud_outlined,
+                      text: GeneralTexts.home_page_sonhos_icon),
+                ),
+              ),
+              InkWell(
+                onTap: ()=> Navigator.pushNamed(context, Sonhos.route),
+                child: Container(
+                  child: FormatIconText(
+                      icon: Icons.pie_chart_outline,
+                      text: GeneralTexts.home_page_controle_icon),
+                ),
+              ),
+              InkWell(
+                onTap: ()=> Navigator.pushNamed(context, ExtratoSaidas.route),
+                child: Container(
+                  child: FormatIconText(
+                      icon: Icons.west, text: GeneralTexts.home_page_mais),
+                ),
+              ),
             ],
           ),
         ),
