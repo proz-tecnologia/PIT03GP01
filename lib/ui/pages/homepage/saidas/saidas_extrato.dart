@@ -5,10 +5,6 @@ import '../../../../../models/extrato.dart';
 import '../../../../../repositories/input_repository.dart';
 import '../../../../../repositories/output_repository.dart';
 
-
-
-
-
 class ExtratoSaidas extends StatefulWidget {
   static String route = "saidas";
 
@@ -19,11 +15,9 @@ class ExtratoSaidas extends StatefulWidget {
 }
 
 class _ExtratoSaidasState extends State<ExtratoSaidas> {
-
   final OutputRepository outputRepository = OutputRepository();
   final TextEditingController outputController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
-
 
   List<Extrato> outputs = [];
   Extrato? deleteOutput;
@@ -47,20 +41,22 @@ class _ExtratoSaidasState extends State<ExtratoSaidas> {
         body: Center(
           child: Padding(
             padding: const EdgeInsets.all(16),
-            child:Column(
+            child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Row(
                   children: [
                     Expanded(
                       child: Container(
-                        padding: EdgeInsets.symmetric(vertical: 32),
-                        margin: EdgeInsets.only(bottom: 8,),
-                        color: Color(0xff413d3d),
+                        padding: const EdgeInsets.symmetric(vertical: 32),
+                        margin: const EdgeInsets.only(
+                          bottom: 8,
+                        ),
+                        color: const Color(0xff413d3d),
                         child: const Text(
                           'Transferências',
                           textAlign: TextAlign.end,
-                          style:TextStyle(
+                          style: TextStyle(
                             fontSize: 32,
                             color: Color(0xfffff9f9),
                             fontWeight: FontWeight.w500,
@@ -70,16 +66,18 @@ class _ExtratoSaidasState extends State<ExtratoSaidas> {
                     ),
                   ],
                 ),
-                SizedBox(height: 8,),
+                const SizedBox(
+                  height: 8,
+                ),
                 Row(
                   children: [
                     Expanded(
                       child: TextFormField(
                         controller: descriptionController,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: 'Descrição',
                           hintText: 'Pagamento Luz',
-                          labelStyle: const TextStyle(
+                          labelStyle: TextStyle(
                             color: Color(0xff120c0c),
                           ),
                         ),
@@ -87,7 +85,9 @@ class _ExtratoSaidasState extends State<ExtratoSaidas> {
                     ),
                   ],
                 ),
-                SizedBox(height: 8,),
+                const SizedBox(
+                  height: 8,
+                ),
                 Row(
                   children: [
                     Expanded(
@@ -95,8 +95,7 @@ class _ExtratoSaidasState extends State<ExtratoSaidas> {
                         keyboardType: TextInputType.number,
                         inputFormatters: [
                           CurrencyTextInputFormatter(
-                              locale: "pt_BR", decimalDigits: 2, symbol: ''
-                          )
+                              locale: "pt_BR", decimalDigits: 2, symbol: '')
                         ],
                         controller: outputController,
                         decoration: InputDecoration(
@@ -140,7 +139,7 @@ class _ExtratoSaidasState extends State<ExtratoSaidas> {
                         size: 32,
                       ),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 33, 32, 32),
+                        backgroundColor: const Color.fromARGB(255, 33, 32, 32),
                         padding: const EdgeInsets.all(16),
                       ),
                     ),
@@ -158,7 +157,7 @@ class _ExtratoSaidasState extends State<ExtratoSaidas> {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Row(
@@ -175,8 +174,8 @@ class _ExtratoSaidasState extends State<ExtratoSaidas> {
                       onPressed: showDeleteDialog,
                       child: const Text('Limpar Transferências'),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xff413d3d),
-                        padding: EdgeInsets.all(14),
+                        backgroundColor: const Color(0xff413d3d),
+                        padding: const EdgeInsets.all(14),
                       ),
                     ),
                   ],
@@ -220,14 +219,14 @@ class _ExtratoSaidasState extends State<ExtratoSaidas> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Limpar Tudo?'),
-        content: Text('Vai apagar todas as Transferências?'),
+        title: const Text('Limpar Tudo?'),
+        content: const Text('Vai apagar todas as Transferências?'),
         actions: [
           TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text(
+              child: const Text(
                 'Cancelar',
                 style: TextStyle(color: Colors.redAccent),
               )),
@@ -236,7 +235,7 @@ class _ExtratoSaidasState extends State<ExtratoSaidas> {
                 Navigator.of(context).pop();
                 deleteAllOutputs();
               },
-              child: Text('Limpar Tudo')),
+              child: const Text('Limpar Tudo')),
         ],
       ),
     );

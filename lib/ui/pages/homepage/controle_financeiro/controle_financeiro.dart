@@ -13,7 +13,8 @@ class Controle extends StatefulWidget {
 class _ControleState extends State<Controle> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
+      backgroundColor: Colors.black38,
     );
   }
 }

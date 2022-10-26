@@ -4,13 +4,8 @@ import 'package:srminhaeiro/ui/pages/homepage/widgets/extrato_list.dart';
 import '../../../../../models/extrato.dart';
 import '../../../../../repositories/input_repository.dart';
 
-
-
-
-
 class ExtratoEntradas extends StatefulWidget {
   static String route = "entradas";
-
   const ExtratoEntradas({Key? key}) : super(key: key);
 
   @override
@@ -18,11 +13,9 @@ class ExtratoEntradas extends StatefulWidget {
 }
 
 class _ExtratoEntradasState extends State<ExtratoEntradas> {
-
   final InputRepository inputRepository = InputRepository();
   final TextEditingController inputController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
-
 
   List<Extrato> inputs = [];
   Extrato? deleteInput;
@@ -46,20 +39,22 @@ class _ExtratoEntradasState extends State<ExtratoEntradas> {
         body: Center(
           child: Padding(
             padding: const EdgeInsets.all(16),
-            child:Column(
+            child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Row(
                   children: [
                     Expanded(
                       child: Container(
-                        padding: EdgeInsets.symmetric(vertical: 32),
-                        margin: EdgeInsets.only(bottom: 8,),
-                        color: Color(0xff413d3d),
+                        padding: const EdgeInsets.symmetric(vertical: 32),
+                        margin: const EdgeInsets.only(
+                          bottom: 8,
+                        ),
+                        color: const Color(0xff413d3d),
                         child: const Text(
                           'Depósitos',
                           textAlign: TextAlign.end,
-                          style:TextStyle(
+                          style: TextStyle(
                             fontSize: 32,
                             color: Color(0xfffff9f9),
                             fontWeight: FontWeight.w500,
@@ -69,24 +64,28 @@ class _ExtratoEntradasState extends State<ExtratoEntradas> {
                     ),
                   ],
                 ),
-                SizedBox(height: 8,),
+                const SizedBox(
+                  height: 8,
+                ),
                 Row(
                   children: [
                     Expanded(
-                        child: TextFormField(
-                          controller: descriptionController,
-                          decoration: InputDecoration(
-                            labelText: 'Descrição',
-                            hintText: 'Viagem',
-                            labelStyle: const TextStyle(
-                              color: Color(0xff120c0c),
-                            ),
+                      child: TextFormField(
+                        controller: descriptionController,
+                        decoration: const InputDecoration(
+                          labelText: 'Descrição',
+                          hintText: 'Viagem',
+                          labelStyle: TextStyle(
+                            color: Color(0xff120c0c),
                           ),
                         ),
+                      ),
                     ),
                   ],
                 ),
-                SizedBox(height: 8,),
+                const SizedBox(
+                  height: 8,
+                ),
                 Row(
                   children: [
                     Expanded(
@@ -94,8 +93,7 @@ class _ExtratoEntradasState extends State<ExtratoEntradas> {
                         keyboardType: TextInputType.number,
                         inputFormatters: [
                           CurrencyTextInputFormatter(
-                              locale: "pt_BR", decimalDigits: 2, symbol: ''
-                          )
+                              locale: "pt_BR", decimalDigits: 2, symbol: '')
                         ],
                         controller: inputController,
                         decoration: InputDecoration(
@@ -139,7 +137,7 @@ class _ExtratoEntradasState extends State<ExtratoEntradas> {
                         size: 32,
                       ),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 33, 32, 32),
+                        backgroundColor: const Color.fromARGB(255, 33, 32, 32),
                         padding: const EdgeInsets.all(16),
                       ),
                     ),
@@ -157,7 +155,7 @@ class _ExtratoEntradasState extends State<ExtratoEntradas> {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Row(
@@ -174,8 +172,8 @@ class _ExtratoEntradasState extends State<ExtratoEntradas> {
                       onPressed: showDeleteDialog,
                       child: const Text('Limpar depositos'),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xff413d3d),
-                        padding: EdgeInsets.all(14),
+                        backgroundColor: const Color(0xff413d3d),
+                        padding: const EdgeInsets.all(14),
                       ),
                     ),
                   ],
@@ -219,14 +217,14 @@ class _ExtratoEntradasState extends State<ExtratoEntradas> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Limpar Tudo?'),
-        content: Text('Vai apagar todos os depositos?'),
+        title: const Text('Limpar Tudo?'),
+        content: const Text('Vai apagar todos os depositos?'),
         actions: [
           TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text(
+              child: const Text(
                 'Cancelar',
                 style: TextStyle(color: Colors.redAccent),
               )),
@@ -235,7 +233,7 @@ class _ExtratoEntradasState extends State<ExtratoEntradas> {
                 Navigator.of(context).pop();
                 deleteAllInputs();
               },
-              child: Text('Limpar Tudo')),
+              child: const Text('Limpar Tudo')),
         ],
       ),
     );
@@ -248,5 +246,3 @@ class _ExtratoEntradasState extends State<ExtratoEntradas> {
     inputRepository.saveInputList(inputs);
   }
 }
-
-
