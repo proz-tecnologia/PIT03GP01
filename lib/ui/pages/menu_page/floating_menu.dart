@@ -20,7 +20,7 @@ Widget buildMenuButton(BuildContext context) => FloatingActionButton.extended(
           isScrollControlled: true,
           backgroundColor: const Color(0xfffbf1f1),
           shape: const RoundedRectangleBorder(
-            borderRadius: const BorderRadius.only(topLeft: Radius.circular(60)),
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(60)),
           ),
           context: context,
           builder: (BuildContext context) {
@@ -62,7 +62,7 @@ Widget buildMenuButton(BuildContext context) => FloatingActionButton.extended(
                                     fontSize: 24),
                               ),
                               onpressed: () => Navigator.pushNamed(
-                                  context, cartaoPage.route),
+                                  context, CartaoPage.route),
                               color: const Color(0xfffbf1f1),
                             ),
                             FormatButtomMenu(
@@ -75,7 +75,7 @@ Widget buildMenuButton(BuildContext context) => FloatingActionButton.extended(
                                     fontSize: 24),
                               ),
                               onpressed: () => Navigator.pushNamed(
-                                  context, cartaoPage.route),
+                                  context, CartaoPage.route),
                               color: const Color.fromARGB(255, 198, 190, 190),
                             ),
                             FormatButtomMenu(
@@ -88,7 +88,7 @@ Widget buildMenuButton(BuildContext context) => FloatingActionButton.extended(
                                     fontSize: 24),
                               ),
                               onpressed: () => Navigator.pushNamed(
-                                  context, salarioExtraPage.route),
+                                  context, SalarioExtraPage.route),
                               color: const Color.fromARGB(255, 82, 79, 79),
                             ),
                             FormatButtomMenu(

@@ -3,8 +3,6 @@ import 'package:srminhaeiro/ui/splash/pages/splash_page.dart';
 import 'package:srminhaeiro/util/dark_mode.dart';
 import 'package:srminhaeiro/util/routes.dart';
 
-import 'package:srminhaeiro/ui/pages/homepage/homepage.dart';
-
 void main() {
   runApp(const MyApp());
 }

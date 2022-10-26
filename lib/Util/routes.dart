@@ -11,8 +11,8 @@ getRoutes() {
   return {
     HomePage.route: (context) => const HomePage(),
     AjudaPage.route: (context) => const AjudaPage(),
-    cartaoPage.route: (context) => const cartaoPage(),
-    salarioExtraPage.route: (context) => const salarioExtraPage(),
+    CartaoPage.route: (context) => const CartaoPage(),
+    SalarioExtraPage.route: (context) => const SalarioExtraPage(),
     SplashPage.route: (context) => const SplashPage(),
   };
 }

@@ -90,16 +90,14 @@ class ProfilePage extends StatelessWidget {
                         );
                       },
                     );
-                    expandedHeight:
-                    200;
-                    flexibleSpace:
+
                     const FlexibleSpaceBar(
                       title: Text(
                         "Meu perfil",
                         style: TextStyle(color: Color(0xff120c0c)),
                       ),
                     );
-                    title:
+
                     const Text(
                       "Grupo 1",
                       style: TextStyle(color: Color(0xff120c0c)),
