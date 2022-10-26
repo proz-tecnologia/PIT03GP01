@@ -19,26 +19,7 @@ class FaqCardConfig extends StatelessWidget {
             bottomRight: Radius.circular(20),
             topLeft: Radius.circular(20),
           ),
-          child: /* Container(
-           
-            height: 220,
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20),
-                topLeft: Radius.circular(20),
-              ),
-              color: const Color(0xff201919),
-              boxShadow: [
-                BoxShadow(
-                    spreadRadius: 7,
-                    blurRadius: 10,
-                    offset: const Offset(0, 8),
-                    color: Colors.black.withOpacity(0.1))
-              ],
-            ), 
-            child:*/
-              Column(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
@@ -76,7 +57,6 @@ class FaqCardConfig extends StatelessWidget {
               ),
             ],
           ),
-          // ),
         ),
       ),
     );
