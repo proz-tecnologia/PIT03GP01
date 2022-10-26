@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:srminhaeiro/texts/texts_and_strings.dart';
 
@@ -15,7 +17,7 @@ class TransactionBody extends StatelessWidget {
           borderRadius: const BorderRadius.only(topLeft: Radius.circular(60)),
           child: Container(
             height: 500,
-            color: Color(0xff120c0c),
+            color: const Color(0xff120c0c),
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
