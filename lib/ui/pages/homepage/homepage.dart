@@ -9,68 +9,41 @@ import '../../../models/extrato.dart';
 import '../../../repositories/input_repository.dart';
 import '../../../repositories/output_repository.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   static String route = "inicial";
 
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
-
-}
-
-class _HomePageState extends State<HomePage> {
-  final InputRepository inputRepository = InputRepository();
-  final OutputRepository outputRepository = OutputRepository();
-
-
-  List<Extrato> inputs = [];
-  Extrato? deleteInput;
-  int? deleteInputPosition;
-  String? errorInputText;
-
-  List<Extrato> outputs = [];
-  Extrato? deleteOutput;
-  int? deleteOutPosition;
-  String? errorOutputText;
-
-  @override
-  void initState(){
-    super.initState();
-    inputRepository.getInputList().then((value){
-      setState(() {
-        inputs = value;
-      });
-    });
-    outputRepository.getOutputList().then((value){
-      setState(() {
-        outputs = value;
-      });
-    });
-  }
-
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 253, 250, 250),
+      backgroundColor: const Color.fromARGB(255, 253, 250, 250),
       floatingActionButton: buildMenuButton(context),
-      body: const CustomScrollView(
+      body: CustomScrollView(
         slivers: [
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: SizedBox(
               height: 8,
             ),
           ),
-          AppBarSliver(),
-          BalanceValue(),
-          SliverToBoxAdapter(
+          AppBarSliver(
+            onTapVisibility: () {
+              setState(() {
+                visible = !visible;
+              });
+            },
+            isVisible: visible,
+          ),
+          BalanceValue(
+            isVisible: visible,
+          ),
+          const SliverToBoxAdapter(
             child: SizedBox(
               height: 40,
             ),
           ),
-          ButtonList(),
-          TransactionBody(),
+          const ButtonList(),
+          const TransactionBody(),
         ],
       ),
     );
