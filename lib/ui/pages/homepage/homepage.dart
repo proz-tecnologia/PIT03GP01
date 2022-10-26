@@ -9,11 +9,18 @@ import '../../../models/extrato.dart';
 import '../../../repositories/input_repository.dart';
 import '../../../repositories/output_repository.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   static String route = "inicial";
 
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+bool visible = false;
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

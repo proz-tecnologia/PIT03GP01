@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/layout_icon_buttons.dart';
 class Sonhos extends StatefulWidget {
   static String route = "sonhos";
 
@@ -13,7 +12,8 @@ class Sonhos extends StatefulWidget {
 class _SonhosState extends State<Sonhos> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
+      backgroundColor: Colors.purple[300],
     );
   }
 }
