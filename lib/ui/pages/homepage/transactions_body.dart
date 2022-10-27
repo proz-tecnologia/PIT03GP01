@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:srminhaeiro/texts/texts_and_strings.dart';
 
@@ -44,6 +46,7 @@ class TransactionBody extends StatelessWidget {
                       width: 80,
                       height: 50,
                       child: GeneralTexts.verTudo,
+
                     ),
                   ],
                 ),
@@ -129,8 +132,6 @@ class TransactionBody extends StatelessWidget {
                             color: Colors.green, fontWeight: FontWeight.bold),
                       ),
                     ),
-
-                    //========================================================
                   ],
                 ),
               ),

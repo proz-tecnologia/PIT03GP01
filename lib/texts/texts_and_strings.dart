@@ -12,11 +12,6 @@ class GeneralTexts {
     ),
   );
 
-  static Widget money = const Text(
-    "R\$ 2.281,74",
-    style: TextStyle(
-        color: Color(0xff2f2a2a), fontSize: 40, fontWeight: FontWeight.bold),
-  );
   static String home_page_mais = "Saídas";
   static String home_page_deposito_icon = "Entradas";
   static String home_page_sonhos_icon = "Sonhos";
@@ -24,10 +19,10 @@ class GeneralTexts {
   // APP BAR REGION ENDS
 
   //HOME PAGE REGION BEGINS
-  static Widget verTudo = const Text("Ver tudo",
+  static Widget verTudo = Text("Ver tudo",
       style: TextStyle(
           fontSize: 12,
-          color: Color.fromARGB(255, 216, 101, 88),
+          color: Colors.white.withOpacity(0.4),
           fontWeight: FontWeight.bold));
 
   static Widget extrato = const Text(
@@ -38,22 +33,5 @@ class GeneralTexts {
         fontWeight: FontWeight.bold),
   );
   //HOME PAGE REGION ENDS
-
-  //DRAWER REGION BEGINS
-  static Widget drawer_User_Name = const Text(
-    "MR. Dreamer!",
-    style: TextStyle(color: Colors.white, fontSize: 20),
-  );
-
-  static Widget drawer_Sign_In = const Text(
-    "SIGN IN",
-    style: TextStyle(color: Colors.white, fontSize: 16),
-  );
-  static Widget drawer_princpal = const Text("Home");
-  static Widget drawer_theme = const Text("Dark theme");
-  static Widget drawer_Invite = const Text("Invite a friend");
-  static Widget drawer_About_App = const Text("About the app");
-
-  //DRAWER REGION ENDS
 
 }
