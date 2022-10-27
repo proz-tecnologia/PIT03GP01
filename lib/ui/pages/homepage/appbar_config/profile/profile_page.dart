@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/dados_page.dart';
+import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/notificacoes.dart';
+import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/privacidade.dart';
 
 import 'package:srminhaeiro/ui/pages/menu_page/floating_menu_config.dart';
 
@@ -118,7 +121,9 @@ class ProfilePage extends StatelessWidget {
                     style: TextStyle(
                         color: Color.fromARGB(255, 12, 12, 12), fontSize: 24),
                   ),
-                  onpressed: () {}),
+                  onpressed: () {
+                    Navigator.pushNamed(context, Dados.route);
+                  }),
             ),
             SliverToBoxAdapter(
               child: FormatButtomMenu(
@@ -128,7 +133,9 @@ class ProfilePage extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: TextStyle(color: Color(0xfffbf1f1), fontSize: 24),
                   ),
-                  onpressed: () {}),
+                  onpressed: () {
+                    Navigator.pushNamed(context, Privacidade.route);
+                  }),
             ),
             SliverToBoxAdapter(
               child: FormatButtomMenu(
@@ -138,7 +145,9 @@ class ProfilePage extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: TextStyle(color: Color(0xfffbf1f1), fontSize: 24),
                   ),
-                  onpressed: () {}),
+                  onpressed: () {
+                    Navigator.pushNamed(context, Notificacoes.route);
+                  }),
             ),
             SliverToBoxAdapter(
               child: FormatButtomMenu(

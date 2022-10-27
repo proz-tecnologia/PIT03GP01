@@ -1,4 +1,8 @@
-import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile_page.dart';
+import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/dados_page.dart';
+import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/notificacoes.dart';
+import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/privacidade.dart';
+import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/profile_page.dart';
+
 import 'package:srminhaeiro/ui/pages/homepage/controle_financeiro/controle_financeiro.dart';
 import 'package:srminhaeiro/ui/pages/homepage/entradas/extrato_entradas.dart';
 import 'package:srminhaeiro/ui/pages/homepage/homepage.dart';
@@ -21,5 +25,8 @@ getRoutes() {
     ExtratoSaidas.route: (context) => const ExtratoSaidas(),
     Controle.route: (context) => const Controle(),
     Sonhos.route: (context) => const Sonhos(),
+    Notificacoes.route: (context) => const Notificacoes(),
+    Dados.route: (context) => const Dados(),
+    Privacidade.route: (context) => Privacidade(),
   };
 }
