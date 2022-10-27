@@ -14,39 +14,48 @@ class FaqCardConfig extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(12.0),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: Container(
-            height: 200,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Color(0xff201919),
-              boxShadow: [
-                BoxShadow(
-                    spreadRadius: 7,
-                    blurRadius: 10,
-                    offset: const Offset(0, 8),
-                    color: Colors.black.withOpacity(0.1))
-              ],
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    pergunta,
-                    style: TextStyle(color: Colors.white),
+          borderRadius: const BorderRadius.only(
+            bottomLeft: Radius.circular(20),
+            bottomRight: Radius.circular(20),
+            topLeft: Radius.circular(20),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                    bottom: 8, top: 8, left: 16, right: 16),
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(20),
+                    topLeft: Radius.circular(20),
                   ),
+                  child: ExpansionTile(
+                      collapsedBackgroundColor: const Color(0xff201919),
+                      backgroundColor: const Color(0xff201919),
+                      collapsedIconColor: Colors.white,
+                      title: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          pergunta,
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                      ),
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ListTile(
+                            title: Text(
+                              resposta,
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      ]),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    resposta /*  */,
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

@@ -1,9 +1,11 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
-class cartaoPage extends StatelessWidget {
+class CartaoPage extends StatelessWidget {
   static String route = "cartao";
 
-  const cartaoPage({super.key});
+  const CartaoPage({super.key});
 
   @override
   Widget build(BuildContext context) {
