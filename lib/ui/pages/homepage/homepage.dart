@@ -16,15 +16,19 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 253, 250, 250),
       floatingActionButton: buildMenuButton(context),
-      body: const CustomScrollView(
+      body: CustomScrollView(
         slivers: [
-          SizedBox(
-            height: 8,
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: 8,
+            ),
           ),
           AppBarSliver(),
           BalanceValue(),
-          SizedBox(
-            height: 40,
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: 40,
+            ),
           ),
           ButtonList(),
           TransactionBody(),
