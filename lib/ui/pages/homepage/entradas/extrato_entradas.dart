@@ -40,24 +40,29 @@ class _ExtratoEntradasState extends State<ExtratoEntradas> {
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
               children: [
                 Row(
                   children: [
                     Expanded(
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(vertical: 32),
-                        margin: const EdgeInsets.only(
-                          bottom: 8,
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                          bottomLeft: Radius.circular(20),
+                          bottomRight: Radius.circular(20),
+                          topLeft: Radius.circular(20),
                         ),
-                        color: const Color(0xff413d3d),
-                        child: const Text(
-                          'Depósitos',
-                          textAlign: TextAlign.end,
-                          style: TextStyle(
-                            fontSize: 32,
-                            color: Color(0xfffff9f9),
-                            fontWeight: FontWeight.w500,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(vertical: 32),
+                          color: const Color(0xff413d3d),
+                          child: const Text(
+                            'Depósitos',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 32,
+                              color: Color(0xfffff9f9),
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ),
                       ),
@@ -67,81 +72,89 @@ class _ExtratoEntradasState extends State<ExtratoEntradas> {
                 const SizedBox(
                   height: 8,
                 ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: TextFormField(
-                        controller: descriptionController,
-                        decoration: const InputDecoration(
-                          labelText: 'Descrição',
-                          hintText: 'Viagem',
-                          labelStyle: TextStyle(
-                            color: Color(0xff120c0c),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextFormField(
+                          controller: descriptionController,
+                          decoration: const InputDecoration(
+                            labelText: 'Descrição',
+                            hintText: 'Viagem',
+                            labelStyle: TextStyle(
+                              color: Color(0xff120c0c),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 const SizedBox(
                   height: 8,
                 ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: TextFormField(
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          CurrencyTextInputFormatter(
-                              locale: "pt_BR", decimalDigits: 2, symbol: '')
-                        ],
-                        controller: inputController,
-                        decoration: InputDecoration(
-                          labelText: 'Adicionar dinheiro',
-                          hintText: 'R\$ 1.500,00',
-                          errorText: errorInputText,
-                          labelStyle: const TextStyle(
-                            color: Color(0xff120c0c),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      top: 64, bottom: 64, left: 8, right: 8),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextFormField(
+                          keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            CurrencyTextInputFormatter(
+                                locale: "pt_BR", decimalDigits: 2, symbol: '')
+                          ],
+                          controller: inputController,
+                          decoration: InputDecoration(
+                            labelText: 'Adicionar dinheiro',
+                            hintText: 'R\$ 1.500,00',
+                            errorText: errorInputText,
+                            labelStyle: const TextStyle(
+                              color: Color(0xff120c0c),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      width: 4,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        String text = inputController.text;
-                        String text2 = descriptionController.text;
-                        if (text.isEmpty) {
+                      const SizedBox(
+                        width: 4,
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          String text = inputController.text;
+                          String text2 = descriptionController.text;
+                          if (text.isEmpty) {
+                            setState(() {
+                              errorInputText = 'Adicionar um valor';
+                            });
+                            return;
+                          }
                           setState(() {
-                            errorInputText = 'Adicionar um valor';
+                            Extrato newExtrato = Extrato(
+                              title: text,
+                              date: DateTime.now(),
+                              description: text2,
+                            );
+                            inputs.add(newExtrato);
                           });
-                          return;
-                        }
-                        setState(() {
-                          Extrato newExtrato = Extrato(
-                            title: text,
-                            date: DateTime.now(),
-                            description: text2,
-                          );
-                          inputs.add(newExtrato);
-                        });
-                        errorInputText = null;
-                        inputController.clear();
-                        descriptionController.clear();
-                        inputRepository.saveInputList(inputs);
-                      },
-                      child: const Icon(
-                        Icons.east_sharp,
-                        size: 32,
+                          errorInputText = null;
+                          inputController.clear();
+                          descriptionController.clear();
+                          inputRepository.saveInputList(inputs);
+                        },
+                        child: const Icon(
+                          Icons.east_sharp,
+                          size: 32,
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color.fromARGB(255, 33, 32, 32),
+                          padding: const EdgeInsets.all(16),
+                        ),
                       ),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 33, 32, 32),
-                        padding: const EdgeInsets.all(16),
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 Flexible(
                   child: ListView(
@@ -158,25 +171,28 @@ class _ExtratoEntradasState extends State<ExtratoEntradas> {
                 const SizedBox(
                   height: 8,
                 ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        'Seus depositos: ${inputs.length} ',
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          'Seus depositos: ${inputs.length} ',
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      width: 8,
-                    ),
-                    ElevatedButton(
-                      onPressed: showDeleteDialog,
-                      child: const Text('Limpar depositos'),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xff413d3d),
-                        padding: const EdgeInsets.all(14),
+                      const SizedBox(
+                        width: 8,
                       ),
-                    ),
-                  ],
+                      ElevatedButton(
+                        onPressed: showDeleteDialog,
+                        child: const Text('Limpar depositos'),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xff413d3d),
+                          padding: const EdgeInsets.all(14),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

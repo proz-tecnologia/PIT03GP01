@@ -25,7 +25,7 @@ class ButtonList extends StatelessWidget {
               InkWell(
                 onTap: () =>
                     Navigator.pushNamed(context, ExtratoEntradas.route),
-                child: Container(
+                child: SizedBox(
                   child: FormatIconText(
                     icon: Icons.east,
                     text: GeneralTexts.home_page_deposito_icon,
@@ -34,7 +34,7 @@ class ButtonList extends StatelessWidget {
               ),
               InkWell(
                 onTap: () => Navigator.pushNamed(context, Sonhos.route),
-                child: Container(
+                child: SizedBox(
                   child: FormatIconText(
                       icon: Icons.cloud_outlined,
                       text: GeneralTexts.home_page_sonhos_icon),
@@ -42,7 +42,7 @@ class ButtonList extends StatelessWidget {
               ),
               InkWell(
                 onTap: () => Navigator.pushNamed(context, Controle.route),
-                child: Container(
+                child: SizedBox(
                   child: FormatIconText(
                       icon: Icons.pie_chart_outline,
                       text: GeneralTexts.home_page_controle_icon),
@@ -50,7 +50,7 @@ class ButtonList extends StatelessWidget {
               ),
               InkWell(
                 onTap: () => Navigator.pushNamed(context, ExtratoSaidas.route),
-                child: Container(
+                child: SizedBox(
                   child: FormatIconText(
                       icon: Icons.west, text: GeneralTexts.home_page_mais),
                 ),

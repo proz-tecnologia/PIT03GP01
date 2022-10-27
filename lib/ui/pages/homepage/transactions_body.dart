@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:srminhaeiro/texts/texts_and_strings.dart';
 
 class TransactionBody extends StatelessWidget {
-  TransactionBody({
+  const TransactionBody({
     Key? key,
   }) : super(key: key);
 
@@ -46,7 +46,6 @@ class TransactionBody extends StatelessWidget {
                       width: 80,
                       height: 50,
                       child: GeneralTexts.verTudo,
-
                     ),
                   ],
                 ),
@@ -108,7 +107,7 @@ class TransactionBody extends StatelessWidget {
                         ),
                       ),
                       trailing: Text(
-                        '-R\$ 1.161,27',
+                        '-R\$ 14,90',
                         style: TextStyle(
                             color: Colors.red[300],
                             fontWeight: FontWeight.bold),

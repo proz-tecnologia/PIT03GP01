@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:srminhaeiro/ui/pages/homepage/widgets/layout_icon_buttons.dart';
 
 class Controle extends StatefulWidget {
   static String route = "controle";

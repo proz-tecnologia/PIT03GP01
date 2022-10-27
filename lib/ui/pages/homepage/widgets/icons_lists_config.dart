@@ -29,19 +29,19 @@ class FormatIconText extends StatelessWidget {
                       topLeft: Radius.circular(20),
                       bottomLeft: Radius.circular(20),
                       bottomRight: Radius.circular(20)),
-                  color: Color(0xff120c0c).withOpacity(0.9),
+                  color: const Color(0xff120c0c).withOpacity(0.9),
                   boxShadow: [
                     BoxShadow(
                         inset: true,
                         blurRadius: 4,
-                        offset: Offset(5, 5),
-                        color: Color(0xfffff9f9).withOpacity(0.5))
+                        offset: const Offset(5, 5),
+                        color: const Color(0xfffff9f9).withOpacity(0.5))
                   ],
                 ),
                 child: Icon(
                   icon,
                   size: 40,
-                  color: Color.fromARGB(255, 253, 250, 250),
+                  color: const Color.fromARGB(255, 253, 250, 250),
                 )),
           ],
         ),

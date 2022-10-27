@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:srminhaeiro/ui/pages/homepage/appbar_config/appbar.dart';
-import 'package:srminhaeiro/ui/pages/homepage/widgets/extrato_list.dart';
+
 import 'package:srminhaeiro/ui/pages/homepage/widgets/icons_list.dart';
 import 'package:srminhaeiro/ui/pages/homepage/transactions_body.dart';
 import 'package:srminhaeiro/ui/pages/homepage/widgets/balance_value.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/floating_menu.dart';
-import '../../../models/extrato.dart';
-import '../../../repositories/input_repository.dart';
-import '../../../repositories/output_repository.dart';
 
 class HomePage extends StatefulWidget {
   static String route = "inicial";

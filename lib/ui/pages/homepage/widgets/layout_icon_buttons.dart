@@ -7,7 +7,7 @@ class Layout extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xfffbf1f1),
+        backgroundColor: const Color(0xfffbf1f1),
         floatingActionButton: FloatingActionButton.extended(
           backgroundColor: const Color(0xfffbf1f1),
           label: const Text(
@@ -23,7 +23,7 @@ class Layout extends StatelessWidget {
               floating: true,
               title: const Center(child: Text("Precisa de ajuda?")),
               toolbarTextStyle: const TextStyle(fontSize: 60),
-              backgroundColor: Color.fromARGB(255, 61, 61, 63),
+              backgroundColor: const Color.fromARGB(255, 61, 61, 63),
               expandedHeight: 120,
               flexibleSpace: FlexibleSpaceBar(
                 background: Container(
