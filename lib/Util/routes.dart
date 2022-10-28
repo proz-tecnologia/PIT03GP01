@@ -10,6 +10,7 @@ import 'package:srminhaeiro/ui/pages/homepage/saidas/saidas_extrato.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/sonhos.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/ajudapage/ajuda_page.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/cartaopage/cartao_page.dart';
+import 'package:srminhaeiro/ui/pages/menu_page/pages/conta_menu_page/conta_menu.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/salario_extra_page/salario_extra_page.dart';
 import 'package:srminhaeiro/ui/splash/pages/splash_page.dart';
 
@@ -18,6 +19,7 @@ getRoutes() {
     HomePage.route: (context) => const HomePage(),
     AjudaPage.route: (context) => const AjudaPage(),
     CartaoPage.route: (context) => const CartaoPage(),
+    ContaPage.route: (context) => const ContaPage(),
     SalarioExtraPage.route: (context) => const SalarioExtraPage(),
     SplashPage.route: (context) => const SplashPage(),
     ProfilePage.route: (context) => const ProfilePage(),
