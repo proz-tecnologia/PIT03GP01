@@ -13,6 +13,13 @@ class _SonhosState extends State<Sonhos> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: Colors.black,
+        label: const Text("Voltar"),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
       backgroundColor: Colors.purple[300],
     );
   }

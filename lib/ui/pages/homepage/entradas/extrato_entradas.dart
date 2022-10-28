@@ -36,6 +36,13 @@ class _ExtratoEntradasState extends State<ExtratoEntradas> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        floatingActionButton: FloatingActionButton.extended(
+          backgroundColor: Colors.black,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          label: Text("Voltar"),
+        ),
         body: Center(
           child: Padding(
             padding: const EdgeInsets.all(16),

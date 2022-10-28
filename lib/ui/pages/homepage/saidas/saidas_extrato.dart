@@ -38,6 +38,12 @@ class _ExtratoSaidasState extends State<ExtratoSaidas> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        floatingActionButton: FloatingActionButton.extended(
+            backgroundColor: Colors.black,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            label: const Text("Voltar")),
         body: Center(
           child: Padding(
             padding: const EdgeInsets.all(16),
