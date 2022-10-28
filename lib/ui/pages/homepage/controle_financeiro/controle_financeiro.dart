@@ -12,7 +12,13 @@ class Controle extends StatefulWidget {
 class _ControleState extends State<Controle> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      floatingActionButton: FloatingActionButton.extended(
+          backgroundColor: Colors.black,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          label: const Text("Voltar")),
       backgroundColor: Colors.black38,
     );
   }
