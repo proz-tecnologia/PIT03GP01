@@ -89,6 +89,7 @@ class _ExtratoEntradasState extends State<ExtratoEntradas> {
                           decoration: const InputDecoration(
                             labelText: 'Descrição',
                             hintText: 'Viagem',
+                            hintStyle:TextStyle(color:Color(0xff5e5959) ,),
                             labelStyle: TextStyle(
                               color: Color(0xff120c0c),
                             ),
@@ -103,7 +104,7 @@ class _ExtratoEntradasState extends State<ExtratoEntradas> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
-                      top: 64, bottom: 64, left: 8, right: 8),
+                      top: 32, bottom: 60, left: 8, right: 8),
                   child: Row(
                     children: [
                       Expanded(
@@ -116,7 +117,8 @@ class _ExtratoEntradasState extends State<ExtratoEntradas> {
                           controller: inputController,
                           decoration: InputDecoration(
                             labelText: 'Adicionar dinheiro',
-                            hintText: 'R\$ 1.500,00',
+                            hintText: 'R\$ 0,00',
+                            hintStyle:TextStyle(color:Color(0xff5e5959) ,),
                             errorText: errorInputText,
                             labelStyle: const TextStyle(
                               color: Color(0xff120c0c),

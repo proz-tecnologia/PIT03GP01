@@ -8,7 +8,6 @@ class Controle extends StatefulWidget {
   @override
   State<Controle> createState() => _ControleState();
 }
-
 class _ControleState extends State<Controle> {
   @override
   Widget build(BuildContext context) {
