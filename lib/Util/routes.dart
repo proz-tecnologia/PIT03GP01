@@ -11,6 +11,7 @@ import 'package:srminhaeiro/ui/pages/homepage/sonhos/sonhos.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/ajudapage/ajuda_page.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/cartaopage/cartao_page.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/conta_menu_page/conta_menu.dart';
+import 'package:srminhaeiro/ui/pages/menu_page/pages/salario_extra_page/criargrupo_page.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/salario_extra_page/salario_extra_page.dart';
 import 'package:srminhaeiro/ui/splash/pages/splash_page.dart';
 
@@ -29,6 +30,7 @@ getRoutes() {
     Sonhos.route: (context) => const Sonhos(),
     Notificacoes.route: (context) => const Notificacoes(),
     Dados.route: (context) => const Dados(),
-    Privacidade.route: (context) => Privacidade(),
+    Privacidade.route: (context) => const Privacidade(),
+    GroupCreate.route: (context) => const GroupCreate(),
   };
 }
