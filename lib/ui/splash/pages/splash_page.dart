@@ -1,7 +1,9 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:srminhaeiro/ui/pages/homepage/homepage.dart';
+
+import 'package:srminhaeiro/ui/pages/login_page/login_page.dart';
+import 'package:srminhaeiro/ui/pages/login_page/onboarding.dart';
 
 class SplashPage extends StatefulWidget {
   static String route = "splash";
@@ -15,7 +17,7 @@ class _SplashPageState extends State<SplashPage> {
   void init() async {
     await Future.delayed(const Duration(seconds: 5));
 
-    Navigator.pushReplacementNamed(context, HomePage.route);
+    Navigator.pushReplacementNamed(context, Onboarding.route);
   }
 
   @override
