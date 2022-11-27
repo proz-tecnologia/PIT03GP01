@@ -2,14 +2,13 @@ import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/dados_
 import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/notificacoes.dart';
 import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/privacidade.dart';
 import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/profile_page.dart';
-
 import 'package:srminhaeiro/ui/pages/homepage/controle_financeiro/controle_financeiro.dart';
 import 'package:srminhaeiro/ui/pages/homepage/entradas/extrato_entradas.dart';
 import 'package:srminhaeiro/ui/pages/homepage/homepage.dart';
 import 'package:srminhaeiro/ui/pages/homepage/saidas/saidas_extrato.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/sonhos.dart';
-import 'package:srminhaeiro/ui/pages/homepage/widgets/layout_icon_buttons.dart';
 import 'package:srminhaeiro/ui/pages/login_page/login_page.dart';
+import 'package:srminhaeiro/ui/pages/login_page/login_page_two.dart';
 import 'package:srminhaeiro/ui/pages/login_page/onboarding.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/ajudapage/ajuda_page.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/cartaopage/cartao_page.dart';
@@ -37,5 +36,6 @@ getRoutes() {
     GroupCreate.route: (context) => const GroupCreate(),
     LoginPage.route: (context) => const LoginPage(),
     Onboarding.route: (context) => const Onboarding(),
+    LoginPageTwo.route: (context) => const LoginPageTwo(),
   };
 }
