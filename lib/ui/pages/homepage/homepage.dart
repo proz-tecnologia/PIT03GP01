@@ -46,8 +46,8 @@ class _HomePageState extends State<HomePage> {
               height: 40,
             ),
           ),
-          const ButtonList(),
-          const TransactionBody(),
+           ButtonList(),
+          TransactionBody(),
         ],
       ),
     );

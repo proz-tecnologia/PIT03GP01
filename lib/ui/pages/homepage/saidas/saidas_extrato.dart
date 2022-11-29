@@ -6,7 +6,7 @@ import '../../../../../models/extrato.dart';
 import '../../../../../repositories/output_repository.dart';
 
 class ExtratoSaidas extends StatefulWidget {
-  static String route = "saidas";
+
 
   const ExtratoSaidas({Key? key}) : super(key: key);
 
@@ -89,7 +89,7 @@ class _ExtratoSaidasState extends State<ExtratoSaidas> {
                           decoration: const InputDecoration(
                             labelText: 'Descrição',
                             hintText: 'Pagamento Luz',
-                            hintStyle: TextStyle(color: Color(0xff5e5959)),
+                            hintStyle: TextStyle(color: Color(0xffcdc4c4)),
                             labelStyle: TextStyle(
                               color: Color(0xff120c0c),
                             ),
@@ -118,7 +118,7 @@ class _ExtratoSaidasState extends State<ExtratoSaidas> {
                           decoration: InputDecoration(
                             labelText: 'Transferência',
                             hintText: 'R\$ 0,00',
-                            hintStyle: TextStyle(color: Color(0xff5e5959)),
+                            hintStyle: TextStyle(color: Color(0xffcdc4c4)),
                             errorText: errorOutputText,
                             labelStyle: const TextStyle(
                               color: Color(0xff120c0c),
