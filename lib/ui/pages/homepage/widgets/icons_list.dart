@@ -1,15 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:srminhaeiro/ui/pages/homepage/controle_financeiro/bloc_state.dart';
 import 'package:srminhaeiro/ui/pages/homepage/widgets/icons_lists_config.dart';
 import 'package:srminhaeiro/texts/texts_and_strings.dart';
+import '../controle_financeiro/bloc_controller.dart';
 import '../controle_financeiro/controle_financeiro.dart';
 import '../entradas/extrato_entradas.dart';
-import '../saidas/saidas_extrato.dart';
+import '../entradas/transaction_entrada.dart';
+
+
 import '../sonhos/view/sonhos.dart';
 
+import '../saidas/transaction_saida.dart';
+
+
+
 class ButtonList extends StatelessWidget {
-  const ButtonList({
+  ButtonList({
     Key? key,
   }) : super(key: key);
+  final controller = GaugeController();
+  double sonhos = 0.0;
+  double salarioExtra = 0.0;
+  double rendaFixa = 0.0;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +36,7 @@ class ButtonList extends StatelessWidget {
             children: [
               InkWell(
                 onTap: () =>
-                    Navigator.pushNamed(context, ExtratoEntradas.route),
+                    Navigator.pushNamed(context, EntradasTransaction.route),
                 child: SizedBox(
                   child: FormatIconText(
                     icon: Icons.east,
@@ -41,7 +53,16 @@ class ButtonList extends StatelessWidget {
                 ),
               ),
               InkWell(
-                onTap: () => Navigator.pushNamed(context, Controle.route),
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    Controle.route,
+                  );
+                  controller.gaugeLoad(
+                      sonhos: sonhos,
+                      salarioExtra: salarioExtra,
+                      rendaFixa: rendaFixa);
+                },
                 child: SizedBox(
                   child: FormatIconText(
                       icon: Icons.pie_chart_outline,
@@ -49,7 +70,7 @@ class ButtonList extends StatelessWidget {
                 ),
               ),
               InkWell(
-                onTap: () => Navigator.pushNamed(context, ExtratoSaidas.route),
+                onTap: () => Navigator.pushNamed(context, SaidasTransaction.route),
                 child: SizedBox(
                   child: FormatIconText(
                       icon: Icons.west, text: GeneralTexts.home_page_mais),

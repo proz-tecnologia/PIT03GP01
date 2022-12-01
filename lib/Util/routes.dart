@@ -20,6 +20,9 @@ import 'package:srminhaeiro/ui/pages/menu_page/pages/salario_extra_page/criargru
 import 'package:srminhaeiro/ui/pages/menu_page/pages/salario_extra_page/salario_extra_page.dart';
 import 'package:srminhaeiro/ui/splash/pages/splash_page.dart';
 
+import '../ui/pages/homepage/entradas/transaction_entrada.dart';
+import '../ui/pages/homepage/saidas/transaction_saida.dart';
+
 getRoutes() {
   return {
     HomePage.route: (context) => const HomePage(),
@@ -29,8 +32,8 @@ getRoutes() {
     SalarioExtraPage.route: (context) => const SalarioExtraPage(),
     SplashPage.route: (context) => const SplashPage(),
     ProfilePage.route: (context) => const ProfilePage(),
-    ExtratoEntradas.route: (context) => const ExtratoEntradas(),
-    ExtratoSaidas.route: (context) => const ExtratoSaidas(),
+    EntradasTransaction.route: (context) => const EntradasTransaction(),
+    SaidasTransaction.route: (context) => const SaidasTransaction(),
     Controle.route: (context) => const Controle(),
     Sonhos.route: (context) => const Sonhos(),
     Notificacoes.route: (context) => const Notificacoes(),
