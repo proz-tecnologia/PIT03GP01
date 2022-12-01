@@ -1,10 +1,8 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:srminhaeiro/texts/texts_and_strings.dart';
 import 'package:srminhaeiro/ui/pages/homepage/controller/extrato_provider_controller.dart';
-
 import '../../../models/transacao_model.dart';
 import '../../component/item_transaction.dart';
 
@@ -36,7 +34,7 @@ class _TransactionBodyState extends State<TransactionBody> {
                   child: Container(
                     color: const Color.fromARGB(255, 253, 250, 250),
                     height: 1,
-                    width: 350,
+                    width:  MediaQuery.of(context).size.width*0.9,
                   ),
                 ),
                 Padding(
@@ -58,72 +56,42 @@ class _TransactionBodyState extends State<TransactionBody> {
                     ],
                   ),
                 ),
-                Consumer<ExtratoProvider>(
-                  builder: (context, extratoProvider, child) =>
-                      SingleChildScrollView(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            // const SizedBox(
-                            //   height: 24,
-                            // ),
-                            // const Text(
-                            //   'Saldo',
-                            //   style: TextStyle(
-                            //       color: Colors.black87,
-                            //       fontWeight: FontWeight.bold),
-                            // ),
-                            // const SizedBox(
-                            //   height: 24,
-                            // ),
-                            // const Text(
-                            //   'Resultado',
-                            //   style: TextStyle(
-                            //       color: Colors.black87,
-                            //       fontWeight: FontWeight.bold),
-                            // ),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            // CardResult(
-                            //     incomingValue:
-                            //     extratoProvider.getTotalIncoming,
-                            //     outcomingValue:
-                            //     extratoProvider.getTotalOutcoming),
-                            // const SizedBox(
-                            //   height: 32,
-                            // ),
-                            // const Text(
-                            //   "TRANSAÇÕES",
-                            //   style: TextStyle(
-                            //       color: Colors.black87,
-                            //       fontWeight: FontWeight.bold),
-                            // ),
-                            ListView.builder(
-                                shrinkWrap: true,
-                                itemBuilder: (_, index) => Dismissible(
-                                  key: ValueKey<Transaction>(
+                Container(
+                  child: Consumer<ExtratoProvider>(
+                    builder: (context, extratoProvider, child) =>
+                        SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              ListView.builder(
+                                  shrinkWrap: true,
+                                  itemBuilder: (_, index) => Dismissible(
+                                    key: ValueKey<Transaction>(
+                                        extratoProvider
+                                            .extratoProvider[index]),
+                                    direction: DismissDirection.endToStart,
+                                    resizeDuration:
+                                    const Duration(milliseconds: 300),
+                                    background:
+                                    Container(color: Colors.red),
+                                    onDismissed: (direction) =>
+                                        extratoProvider
+                                            .removeByPosition(index),
+                                    child: ItemTransaction(
                                       extratoProvider
-                                          .extratoProvider[index]),
-                                  direction: DismissDirection.endToStart,
-                                  resizeDuration:
-                                  const Duration(milliseconds: 300),
-                                  background:
-                                  Container(color: Colors.red),
-                                  onDismissed: (direction) =>
-                                      extratoProvider
-                                          .removeByPosition(index),
-                                  child: ItemTransaction(
-                                    extratoProvider
-                                        .extratoProvider[index],
-                                    key: ValueKey<int>(index),
+                                          .extratoProvider[index],
+                                      key: ValueKey<int>(index),
+                                    ),
                                   ),
-                                ),
-                                itemCount:
-                                extratoProvider.extratoProvider.length)
-                          ],
+                                  itemCount:
+                                  extratoProvider.extratoProvider.length)
+                            ],
+                          ),
                         ),
-                      ),
+                  ),
                 ),
 
               ]),
