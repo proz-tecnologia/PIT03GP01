@@ -1,6 +1,11 @@
 
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:srminhaeiro/ui/pages/homepage/sonhos/controller/card.list.controller.dart';
+
+import 'package:srminhaeiro/ui/pages/homepage/sonhos/controller/dropdown.years.controller.dart';
+
 import 'package:srminhaeiro/ui/splash/pages/splash_page.dart';
 import 'package:srminhaeiro/util/dark_mode.dart';
 import 'package:srminhaeiro/util/routes.dart';
@@ -21,15 +26,21 @@ class MyApp extends StatelessWidget {
     return AnimatedBuilder(
         animation: Appcontroller.instance,
         builder: (context, child) {
-          return MaterialApp(
-            title: 'SR. M I N H A E I R O',
-            debugShowCheckedModeBanner: false,
-            /* theme: ThemeData(
-                brightness: Appcontroller.instance.theme
-                    ? Brightness.dark
-                    : Brightness.light), */
-            initialRoute: SplashPage.route,
-            routes: getRoutes(),
+          return MultiProvider(
+            providers: [
+              ChangeNotifierProvider(create: (_) => DropdownYearscontroller()),
+              ChangeNotifierProvider(create: (_) => CardListController()),
+            ],
+            child: MaterialApp(
+              title: 'SR. M I N H A E I R O',
+              debugShowCheckedModeBanner: false,
+              /* theme: ThemeData(
+                  brightness: Appcontroller.instance.theme
+                      ? Brightness.dark
+                      : Brightness.light), */
+              initialRoute: SplashPage.route,
+              routes: getRoutes(),
+            ),
           );
         });
   }

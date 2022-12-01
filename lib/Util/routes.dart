@@ -6,7 +6,10 @@ import 'package:srminhaeiro/ui/pages/homepage/controle_financeiro/controle_finan
 import 'package:srminhaeiro/ui/pages/homepage/entradas/extrato_entradas.dart';
 import 'package:srminhaeiro/ui/pages/homepage/homepage.dart';
 import 'package:srminhaeiro/ui/pages/homepage/saidas/saidas_extrato.dart';
-import 'package:srminhaeiro/ui/pages/homepage/sonhos/sonhos.dart';
+import 'package:srminhaeiro/ui/pages/homepage/sonhos/view/criar_sonho_page.dart';
+import 'package:srminhaeiro/ui/pages/homepage/sonhos/view/meus_sonhos_page.dart';
+import 'package:srminhaeiro/ui/pages/homepage/sonhos/view/sonhos.dart';
+
 import 'package:srminhaeiro/ui/pages/login_page/login_page.dart';
 import 'package:srminhaeiro/ui/pages/login_page/login_page_two.dart';
 import 'package:srminhaeiro/ui/pages/login_page/onboarding.dart';
@@ -40,5 +43,7 @@ getRoutes() {
     LoginPage.route: (context) => const LoginPage(),
     Onboarding.route: (context) => const Onboarding(),
     LoginPageTwo.route: (context) => const LoginPageTwo(),
+    DreamCreate.route: (context) => DreamCreate(),
+    MeusSonhosPage.route: (context) => const MeusSonhosPage(),
   };
 }
