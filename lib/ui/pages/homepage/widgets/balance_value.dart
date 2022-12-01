@@ -25,8 +25,8 @@ class BalanceValue extends StatelessWidget {
               children: [
                 Text(
                   isVisible?
-                '${(extratoProvider.getTotalIncoming -
-                    extratoProvider.getTotalOutcoming).formatBRL}' : "..........",
+                (extratoProvider.getTotalIncoming -
+                    extratoProvider.getTotalOutcoming).formatBRL : "..........",
                   style: const TextStyle(
                       color: Color(0xff2f2a2a),
                       fontSize: 40,

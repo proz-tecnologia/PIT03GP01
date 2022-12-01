@@ -111,7 +111,8 @@ class _ControleState extends State<Controle> {
                           builder: (context, snapshot){
                             return Gauge(rendaFixa: rendaFixa,
                               sonhos: sonhos,
-                              salarioExtra: salarioExtra,extrato: extrato,);
+                              salarioExtra: salarioExtra,
+                              extrato: extrato, incomingValue: 0.0, outcomingValue: 0.0, );
                           },),
                         StreamBuilder(
                           stream: controller.gaugeOut,

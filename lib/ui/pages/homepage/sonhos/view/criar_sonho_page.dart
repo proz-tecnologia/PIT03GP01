@@ -1,21 +1,25 @@
-import 'package:brasil_fields/brasil_fields.dart';
+//import 'package:brasil_fields/brasil_fields.dart';
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-
+//import 'package:intl/intl.dart';
 import 'package:mask/mask/mask.dart';
 import 'package:provider/provider.dart';
-import 'package:srminhaeiro/extensions/extension_double.dart';
+//import 'package:srminhaeiro/extensions/extension_double.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/controller/card.controller.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/controller/card.list.controller.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/controller/dropdown.years.controller.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/model/card_sonho_model.dart';
 
-class DreamCreate extends StatelessWidget {
+class DreamCreate extends StatefulWidget {
   static String route = "criarsonhos";
 
-  DreamCreate({super.key});
+  const DreamCreate({super.key});
 
+  @override
+  State<DreamCreate> createState() => _DreamCreateState();
+}
+
+class _DreamCreateState extends State<DreamCreate> {
   /* final controller = Dropdowncontroller();
   _DreamCreateState() {
     controller.selectedValue = controller.mesesList[0];
