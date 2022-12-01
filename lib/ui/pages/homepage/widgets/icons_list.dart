@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:srminhaeiro/ui/pages/homepage/controle_financeiro/bloc_state.dart';
+//import 'package:srminhaeiro/ui/pages/homepage/controle_financeiro/bloc_state.dart';
 import 'package:srminhaeiro/ui/pages/homepage/widgets/icons_lists_config.dart';
 import 'package:srminhaeiro/texts/texts_and_strings.dart';
 import '../controle_financeiro/bloc_controller.dart';
 import '../controle_financeiro/controle_financeiro.dart';
-import '../entradas/extrato_entradas.dart';
+//import '../entradas/extrato_entradas.dart';
 import '../entradas/transaction_entrada.dart';
 
 
@@ -14,14 +14,25 @@ import '../saidas/transaction_saida.dart';
 
 
 
-class ButtonList extends StatelessWidget {
-  ButtonList({
+class ButtonList extends StatefulWidget {
+  const ButtonList({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<ButtonList> createState() => _ButtonListState();
+}
+
+class _ButtonListState extends State<ButtonList> {
   final controller = GaugeController();
+
   double sonhos = 0.0;
+
   double salarioExtra = 0.0;
+
   double rendaFixa = 0.0;
+
+  double extrato = 0.0;
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +72,7 @@ class ButtonList extends StatelessWidget {
                   controller.gaugeLoad(
                       sonhos: sonhos,
                       salarioExtra: salarioExtra,
-                      rendaFixa: rendaFixa);
+                      rendaFixa: rendaFixa, extrato: extrato);
                 },
                 child: SizedBox(
                   child: FormatIconText(

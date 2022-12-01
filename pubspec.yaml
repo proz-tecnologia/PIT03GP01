@@ -43,8 +43,6 @@ dependencies:
   flutter_inset_box_shadow: ^1.0.8
   currency_text_input_formatter: ^2.1.7
 
-  syncfusion_flutter_gauges: ^20.3.57
-  provider: ^6.0.4
   uuid: ^3.0.6
 
   lottie: ^2.0.0
