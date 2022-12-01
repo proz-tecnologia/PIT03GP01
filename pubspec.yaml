@@ -44,6 +44,10 @@ dependencies:
   currency_text_input_formatter: ^2.1.7
   lottie: ^2.0.0
   mask: ^1.0.4
+  provider: ^6.0.4
+  syncfusion_flutter_gauges: ^20.3.58
+  dropdown_button2: ^1.9.1
+  brasil_fields: ^1.8.0
   
 
 dev_dependencies:
