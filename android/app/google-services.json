@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "950059396842",
+    "project_id": "sr-minhareiro",
+    "storage_bucket": "sr-minhareiro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:950059396842:android:ddc8e2c3d8563f6ad03193",
+        "android_client_info": {
+          "package_name": "com.example.srminhaeiro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "950059396842-r38d6r18scfov0sto9nemrkg5r3m5o03.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwEGUJeYKLX5r2mQTAf2FfRCQWWcFrL28"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "950059396842-r38d6r18scfov0sto9nemrkg5r3m5o03.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

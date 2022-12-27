@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:srminhaeiro/ui/pages/menu_page/pages/salario_extra_page/group_button_config.dart';
+import 'package:srminhaeiro/Util/group_button_config.dart';
 
 class GroupCreate extends StatelessWidget {
   static String route = "group";

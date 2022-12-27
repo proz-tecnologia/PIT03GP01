@@ -3,8 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/controller/card.list.controller.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/widgets/card_dos_sonhos.dart';
 
-import '../widgets/snack_bar_sonhos_info.dart';
-
 class MeusSonhosPage extends StatelessWidget {
   static String route = "meussonhos";
 
@@ -13,57 +11,67 @@ class MeusSonhosPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xff413d3d),
-        centerTitle: true,
-        title: const Text(
-          "M e u s - S o n h o s",
-          style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-        ),
-      ),
       floatingActionButton: FloatingActionButton.extended(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(12),
+              bottomLeft: Radius.circular(12),
+              bottomRight: Radius.circular(12),
+              topRight: Radius.circular(0)),
+        ),
         backgroundColor: const Color(0xff413d3d),
         label: const Text("Voltar"),
         onPressed: () {
           Navigator.pop(context);
         },
       ),
-      body: Column(
-        children: [
-          Consumer<CardListController>(
-            builder: (context, value, child) => value.sonhoCardList.isEmpty
-                ? Expanded(
-                    child: Container(
-                    color: Colors.white,
-                    child: FractionallySizedBox(
-                      heightFactor: 0.70,
-                      child: Column(
+      body: Container(
+        height: double.infinity,
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/images/background.webp"),
+                fit: BoxFit.fill)),
+        child: SafeArea(
+          child: Column(
+            children: [
+              const Padding(
+                padding: EdgeInsets.only(top: 32.0, bottom: 32),
+                child: Text(
+                  "Meus  Sonhos",
+                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Consumer<CardListController>(
+                builder: (context, value, child) => value.sonhoCardList.isEmpty
+                    ? Column(
                         children: [
-                          Image.asset("assets/images/alone.jpg"),
+                          Center(
+                              child: Image.asset(
+                            "assets/images/alonee.png",
+                            fit: BoxFit.cover,
+                          )),
                           const Text(
-                            "Você ainda não tem sonhos...",
-                            style: TextStyle(fontSize: 18),
+                            "Você ainda não tem sonhos, adicionados...",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.w500),
                           )
                         ],
-                      ),
-                    ),
-                  ))
-                : Expanded(
-                    child: GridView.builder(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2),
-                      itemCount: value.sonhoCardList.length,
-                      itemBuilder: (context, index) => InkWell(
-                        onTap: () => snackBarSonhosInfo(context),
-                        child: CardDosSonhos(
-                          value.sonhoCardList[index],
+                      )
+                    : Expanded(
+                        child: GridView.builder(
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2),
+                          itemCount: value.sonhoCardList.length,
+                          itemBuilder: (context, index) => CardDosSonhos(
+                            value.sonhoCardList[index],
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-          )
-        ],
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

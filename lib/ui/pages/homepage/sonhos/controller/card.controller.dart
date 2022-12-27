@@ -5,6 +5,8 @@ class CardController {
 
   double sonhovalorAtual = 0.0;
 
+  double adicionarvalor = 0.0;
+
   setCurrentValue(double value) => sonhovalorAtual = value;
 
   setTotalValue(double value) => sonhoValorTotal = value;

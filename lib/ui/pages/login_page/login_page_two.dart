@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:srminhaeiro/ui/pages/login_page/extensions/extension_string.dart';
 import 'package:srminhaeiro/ui/pages/login_page/onboarding.dart';
-import 'package:srminhaeiro/ui/pages/menu_page/pages/salario_extra_page/group_button_config.dart';
+import 'package:srminhaeiro/Util/group_button_config.dart';
 import 'package:mask/mask.dart';
 
 class LoginPageTwo extends StatefulWidget {

@@ -3,13 +3,10 @@ import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/notifi
 import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/privacidade.dart';
 import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/profile_page.dart';
 import 'package:srminhaeiro/ui/pages/homepage/controle_financeiro/controle_financeiro.dart';
-import 'package:srminhaeiro/ui/pages/homepage/entradas/extrato_entradas.dart';
 import 'package:srminhaeiro/ui/pages/homepage/homepage.dart';
-import 'package:srminhaeiro/ui/pages/homepage/saidas/saidas_extrato.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/view/criar_sonho_page.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/view/meus_sonhos_page.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/view/sonhos.dart';
-
 import 'package:srminhaeiro/ui/pages/login_page/login_page.dart';
 import 'package:srminhaeiro/ui/pages/login_page/login_page_two.dart';
 import 'package:srminhaeiro/ui/pages/login_page/onboarding.dart';
@@ -19,7 +16,6 @@ import 'package:srminhaeiro/ui/pages/menu_page/pages/conta_menu_page/conta_menu.
 import 'package:srminhaeiro/ui/pages/menu_page/pages/salario_extra_page/criargrupo_page.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/salario_extra_page/salario_extra_page.dart';
 import 'package:srminhaeiro/ui/splash/pages/splash_page.dart';
-
 import '../ui/pages/homepage/entradas/transaction_entrada.dart';
 import '../ui/pages/homepage/saidas/transaction_saida.dart';
 
@@ -43,7 +39,7 @@ getRoutes() {
     LoginPage.route: (context) => const LoginPage(),
     Onboarding.route: (context) => const Onboarding(),
     LoginPageTwo.route: (context) => const LoginPageTwo(),
-    DreamCreate.route: (context) => DreamCreate(),
+    DreamCreate.route: (context) => const DreamCreate(),
     MeusSonhosPage.route: (context) => const MeusSonhosPage(),
   };
 }

@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
 
-class DropdownYearscontroller with ChangeNotifier {
+class DropdownYearscontroller extends ChangeNotifier {
   var mesesList = [
-    " 1 Mês",
-    " 2 Meses",
-    " 3 Meses",
-    " 4 Meses",
-    " 5 Meses",
-    " 6 Meses",
-    " 7 Meses",
-    " 8 Meses",
-    " 9 Meses",
-    " 10 Meses",
-    " 11 Meses",
-    " 12 Meses",
-    " 1 Ano",
-    " 2 Anos",
-    " 3 Anos",
-    " 4 Anos",
-    " 5 Anos"
+    "${1} Parcela",
+    " ${2} Parcelas",
+    " ${3} Parcelas",
+    " ${4} Parcelas",
+    " ${5} Parcelas",
+    " ${6} Parcelas",
+    " ${7} Parcelas",
+    " ${8} Parcelas",
+    " ${9} Parcelas",
+    " ${10} Parcelas",
+    " ${11} Parcelas",
+    " ${12} Parcelas",
+    " ${24} Parcelas",
+    " ${36} Parcelas",
+    " ${48} Parcelas",
+    " ${60} Parcelas"
   ];
 
-  var selectedValue = " 1 Mês";
+  var selectedValue = "${1} Parcela";
 
   setMesesValue(value) {
     selectedValue = value;

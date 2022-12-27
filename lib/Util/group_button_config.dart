@@ -4,7 +4,7 @@ import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 class GroupButtonConfig extends StatelessWidget {
   final Text? text;
   final VoidCallback? onpressed;
-  final bool changecolor;
+  final bool? changecolor;
 
   const GroupButtonConfig(
       {required this.changecolor, this.onpressed, this.text, super.key});
@@ -12,20 +12,25 @@ class GroupButtonConfig extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 75,
+      height: 60,
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(20),
-            bottomLeft: Radius.circular(20),
-            bottomRight: Radius.circular(20)),
-        color: changecolor ? const Color(0xff413d3d) : Colors.grey,
-        /*  boxShadow: [
+            topLeft: Radius.circular(10),
+            bottomLeft: Radius.circular(10),
+            bottomRight: Radius.circular(10)),
+        color: changecolor! ? const Color(0xff413d3d) : Colors.grey,
+        boxShadow: const [
           BoxShadow(
               inset: true,
               blurRadius: 4,
-              offset: const Offset(5, 5),
-              color: const Color(0xfffff9f9).withOpacity(0.5))
-        ], */
+              offset: Offset(-2, -2),
+              color: Color.fromARGB(255, 75, 75, 75)),
+          BoxShadow(
+              inset: true,
+              blurRadius: 4,
+              offset: Offset(1, 1),
+              color: Color.fromARGB(255, 100, 99, 99)),
+        ],
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
