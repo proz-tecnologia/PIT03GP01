@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/floating_menu_config.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/ajudapage/ajuda_page.dart';
-import 'package:srminhaeiro/ui/pages/menu_page/pages/cartaopage/cartao_page.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/conta_menu_page/conta_menu.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/profile/profile_page.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/salario_extra_page/salario_extra_page.dart';

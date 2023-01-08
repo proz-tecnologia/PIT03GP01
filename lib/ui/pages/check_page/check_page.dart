@@ -1,9 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:srminhaeiro/ui/components/alert_dialog.component.dart';
-import 'package:srminhaeiro/ui/components/progress_dialog.component.dart';
-import 'package:srminhaeiro/ui/pages/homepage/homepage.dart';
-import 'package:srminhaeiro/ui/pages/login_page/login_page.dart';
 import 'package:srminhaeiro/ui/pages/login_page/login_page_two.dart';
 import 'package:srminhaeiro/ui/pages/login_page/onboarding.dart';
 

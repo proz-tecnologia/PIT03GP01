@@ -5,7 +5,6 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:srminhaeiro/navigator_key.dart';
-import 'package:srminhaeiro/store/user.store.dart';
 import 'package:srminhaeiro/ui/components/alert_dialog.component.dart';
 import 'package:srminhaeiro/ui/components/progress_dialog.component.dart';
 import 'package:srminhaeiro/ui/pages/check_page/check_page.dart';
@@ -14,8 +13,6 @@ import 'package:srminhaeiro/ui/pages/login_page/controller/login.controller.dart
 import 'package:srminhaeiro/ui/pages/login_page/extensions/extension_string.dart';
 import 'package:srminhaeiro/Util/group_button_config.dart';
 import 'package:mask/mask.dart';
-import 'package:srminhaeiro/ui/pages/login_page/login_page.dart';
-import 'package:srminhaeiro/ui/pages/login_page/onboarding.dart';
 
 class LoginPageTwo extends StatefulWidget {
   static String route = "logintwo";
@@ -32,8 +29,8 @@ class _LoginPageState extends State<LoginPageTwo> {
   final _passwordController = TextEditingController();
   bool teste = true;
   bool _showPassword = false;
-  String _email = "";
-  String _password = "";
+  String email = "";
+  String password = "";
   final _controllerLogin = LoginController();
   final _progressDialog = ProgressDialogComponent();
   final _alertDialog = AlertDialogComponent();
@@ -93,7 +90,7 @@ class _LoginPageState extends State<LoginPageTwo> {
                       controller: _emailController,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       validator: (value) => Mask.validations.email(value),
-                      onSaved: (newValue) => _email = newValue!,
+                      onSaved: (newValue) => email = newValue!,
                       keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(
                         focusedBorder: OutlineInputBorder(
@@ -192,7 +189,7 @@ class _LoginPageState extends State<LoginPageTwo> {
 
                           return null;
                         }),
-                        onSaved: (newValue) => _password = newValue!,
+                        onSaved: (newValue) => password = newValue!,
                       ),
                     ),
                   ),

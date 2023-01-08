@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:srminhaeiro/ui/pages/check_page/check_page.dart';
 import 'package:srminhaeiro/ui/pages/login_page/controller/google_login.controller.dart';
 import 'package:srminhaeiro/ui/pages/login_page/login_page_two.dart';
-import 'package:srminhaeiro/ui/pages/login_page/onboarding.dart';
 import 'package:srminhaeiro/Util/group_button_config.dart';
 
 class LoginPage extends StatefulWidget {
