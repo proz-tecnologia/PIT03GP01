@@ -19,6 +19,13 @@ class _NotificacoesState extends State<Notificacoes> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.grey[500],
+        title: Center(
+          child: Text(
+            'Privacidade e segurança',
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
         iconTheme: IconThemeData(color: Colors.grey),
       ),
       backgroundColor: Colors.grey[350],
@@ -34,10 +41,6 @@ class _NotificacoesState extends State<Notificacoes> {
           //mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            const Text(
-              'Configurar',
-              style: TextStyle(fontSize: 20, color: Colors.black),
-            ),
             SwitchListTile(
               title: const Text("Exibir meus investimentos no app"),
               subtitle: const Text(
@@ -69,7 +72,7 @@ class _NotificacoesState extends State<Notificacoes> {
             SwitchListTile(
               title: const Text("Ativar biometria"),
               subtitle: const Text(
-                  "Quando ativado, a configuração se aplica a todos os apps."),
+                  "Quando ativado, a configuração se aplica a todos o aplicativo."),
               value: _modoBiometria,
               onChanged: (valor) {
                 setState(() {
