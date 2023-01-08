@@ -20,13 +20,13 @@ class _NotificacoesState extends State<Notificacoes> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.grey[500],
-        title: Center(
+        title: const Center(
           child: Text(
             'Privacidade e segurança',
             style: TextStyle(color: Colors.black),
           ),
         ),
-        iconTheme: IconThemeData(color: Colors.grey),
+        iconTheme: const IconThemeData(color: Colors.grey),
       ),
       backgroundColor: Colors.grey[350],
       floatingActionButton: FloatingActionButton.extended(
@@ -36,53 +36,51 @@ class _NotificacoesState extends State<Notificacoes> {
           Navigator.pop(context);
         },
       ),
-      body: Container(
-        child: Column(
-          //mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            SwitchListTile(
-              title: const Text("Exibir meus investimentos no app"),
-              subtitle: const Text(
-                  "Quando ativado, possibilita a visualização de seus investimentos."),
-              //activeColor: Colors.blueGrey,
-              selected: false,
-              //secondary: Icon(Icons.mobile_off_outlined),
-              value: _exibirInvest,
-              onChanged: (valor) {
-                setState(() {
-                  _exibirInvest = valor;
-                });
-                print("Modo Avião: $_exibirInvest");
-              },
-            ),
-            SwitchListTile(
-              title:
-                  const Text("Deixar minha conta visível na lista de contatos"),
-              subtitle: const Text(
-                  "Quando ativado, possibilita a visualização de seu saldo"),
-              value: _modoPrivacidade,
-              onChanged: (valor) {
-                setState(() {
-                  _modoPrivacidade = valor;
-                });
-                print("Notificações: $_modoPrivacidade");
-              },
-            ),
-            SwitchListTile(
-              title: const Text("Ativar biometria"),
-              subtitle: const Text(
-                  "Quando ativado, a configuração se aplica a todos o aplicativo."),
-              value: _modoBiometria,
-              onChanged: (valor) {
-                setState(() {
-                  _modoBiometria = valor;
-                });
-                print("Notificações: $_modoBiometria");
-              },
-            ),
-          ],
-        ),
+      body: Column(
+        //mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          SwitchListTile(
+            title: const Text("Exibir meus investimentos no app"),
+            subtitle: const Text(
+                "Quando ativado, possibilita a visualização de seus investimentos."),
+            //activeColor: Colors.blueGrey,
+            selected: false,
+            //secondary: Icon(Icons.mobile_off_outlined),
+            value: _exibirInvest,
+            onChanged: (valor) {
+              setState(() {
+                _exibirInvest = valor;
+              });
+              print("Modo Avião: $_exibirInvest");
+            },
+          ),
+          SwitchListTile(
+            title:
+                const Text("Deixar minha conta visível na lista de contatos"),
+            subtitle: const Text(
+                "Quando ativado, possibilita a visualização de seu saldo"),
+            value: _modoPrivacidade,
+            onChanged: (valor) {
+              setState(() {
+                _modoPrivacidade = valor;
+              });
+              print("Notificações: $_modoPrivacidade");
+            },
+          ),
+          SwitchListTile(
+            title: const Text("Ativar biometria"),
+            subtitle: const Text(
+                "Quando ativado, a configuração se aplica a todos o aplicativo."),
+            value: _modoBiometria,
+            onChanged: (valor) {
+              setState(() {
+                _modoBiometria = valor;
+              });
+              print("Notificações: $_modoBiometria");
+            },
+          ),
+        ],
       ),
     );
   }
