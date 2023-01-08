@@ -1,17 +1,14 @@
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
-
+import 'package:srminhaeiro/navigator_key.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/controller/card.list.controller.dart';
-
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/controller/dropdown.years.controller.dart';
-import 'package:srminhaeiro/ui/pages/homepage/sonhos/view/sonhos.dart';
-
 import 'package:srminhaeiro/ui/splash/pages/splash_page.dart';
 import 'package:srminhaeiro/util/dark_mode.dart';
 import 'package:srminhaeiro/util/routes.dart';
 import 'package:srminhaeiro/ui/pages/homepage/controller/extrato_provider_controller.dart';
 
-void main() {
+Future main() async {
   runApp(const MyApp());
 }
 
@@ -30,6 +27,7 @@ class MyApp extends StatelessWidget {
               ChangeNotifierProvider(create: (_) => ExtratoProvider()),
             ],
             child: MaterialApp(
+              navigatorKey: navigatorKey,
               title: 'SR. M I N H A E I R O',
               debugShowCheckedModeBanner: false,
 

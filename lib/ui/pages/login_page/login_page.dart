@@ -63,12 +63,72 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             Spacer(),
-            Text(
-              "- OU -",
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
+            GestureDetector(
+              onTap: () {},
+              child: RichText(
+                  text: TextSpan(children: const [
+                TextSpan(
+                    text: "Ainda não tem uma conta?",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w400,
+                    )),
+                /*  TextSpan(
+                    text: " Cadastre-se",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    )) */
+              ])),
+            ),
+            Spacer(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: GroupButtonConfig(
+                changecolor: teste,
+                text: const Text(
+                  "Cadastre-se",
+                  style: TextStyle(
+                      fontSize: 22,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),
+                ),
+                onpressed: () {
+                  Navigator.pushReplacementNamed(context, LoginPageTwo.route);
+                },
               ),
+            ),
+            Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    constraints: BoxConstraints(maxWidth: 160, minWidth: 120),
+                    height: 1,
+                    color: Colors.black,
+                  ),
+                ),
+                Text(
+                  "OU",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    constraints: BoxConstraints(maxWidth: 160, minWidth: 120),
+                    height: 1,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
             ),
             Padding(
               padding: const EdgeInsets.all(20.0),
@@ -84,13 +144,6 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   IconButton(
                     icon: Image.asset(
-                      "assets/images/linkedin1.png",
-                    ),
-                    onPressed: () {},
-                    iconSize: 65,
-                  ),
-                  IconButton(
-                    icon: Image.asset(
                       "assets/images/facebook1.png",
                     ),
                     iconSize: 65,
@@ -99,28 +152,6 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
             ),
-            Spacer(),
-            GestureDetector(
-              onTap: () {},
-              child: RichText(
-                  text: TextSpan(children: const [
-                TextSpan(
-                    text: "Não possui uma conta?",
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                    )),
-                TextSpan(
-                    text: " Cadastre-se",
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ))
-              ])),
-            ),
-            Spacer()
           ],
         ),
       ),

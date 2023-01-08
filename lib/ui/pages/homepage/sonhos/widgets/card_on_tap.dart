@@ -15,7 +15,7 @@ class CardOnTap extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<CardListController>(
       builder: (context, value, child) => FractionallySizedBox(
-        heightFactor: 0.70,
+        heightFactor: 0.90,
         child: ClipRRect(
           borderRadius: const BorderRadius.only(topLeft: Radius.circular(60)),
           child: Scaffold(
@@ -48,6 +48,7 @@ class CardOnTap extends StatelessWidget {
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Padding(
