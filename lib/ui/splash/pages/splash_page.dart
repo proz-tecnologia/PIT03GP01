@@ -2,17 +2,12 @@
 
 import 'dart:async';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:srminhaeiro/firebase_options.dart';
-import 'package:srminhaeiro/models/user.model.dart';
-import 'package:srminhaeiro/store/user.store.dart';
 import 'package:srminhaeiro/ui/pages/homepage/homepage.dart';
-
 import 'package:srminhaeiro/ui/pages/login_page/login_page.dart';
-import 'package:srminhaeiro/ui/pages/login_page/onboarding.dart';
 
 class SplashPage extends StatefulWidget {
   static String route = "splash";
