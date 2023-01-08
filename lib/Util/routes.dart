@@ -27,7 +27,7 @@ getRoutes() {
     ContaPage.route: (context) => const ContaPage(),
     SalarioExtraPage.route: (context) => const SalarioExtraPage(),
     SplashPage.route: (context) => const SplashPage(),
-    ProfilePage.route: (context) => const ProfilePage(),
+    ProfilePage.route: (context) => ProfilePage(),
     EntradasTransaction.route: (context) => const EntradasTransaction(),
     SaidasTransaction.route: (context) => const SaidasTransaction(),
     Controle.route: (context) => const Controle(),

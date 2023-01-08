@@ -12,24 +12,24 @@ class GroupButtonConfig extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
+      height: 48,
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(10),
-            bottomLeft: Radius.circular(10),
-            bottomRight: Radius.circular(10)),
-        color: changecolor! ? const Color(0xff413d3d) : Colors.grey,
+            topLeft: Radius.circular(16),
+            bottomLeft: Radius.circular(16),
+            bottomRight: Radius.circular(16)),
+        color: changecolor! ? Colors.black : Colors.grey,
         boxShadow: const [
           BoxShadow(
               inset: true,
               blurRadius: 4,
               offset: Offset(-2, -2),
-              color: Color.fromARGB(255, 75, 75, 75)),
+              color: Color.fromARGB(255, 29, 28, 28)),
           BoxShadow(
               inset: true,
               blurRadius: 4,
               offset: Offset(1, 1),
-              color: Color.fromARGB(255, 100, 99, 99)),
+              color: Color.fromARGB(255, 32, 30, 30)),
         ],
       ),
       child: ClipRRect(

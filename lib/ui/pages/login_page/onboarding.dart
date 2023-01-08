@@ -158,24 +158,23 @@ class Onboard {
 
 List<Onboard> demoData = [
   Onboard(
-    image: "assets/images/archievement.jpg",
+    image: "assets/images/dreamsarchieve.png",
     title: "Transforme o seu sonho\n em realidade",
     description:
         "No Sr Minhaeiro você encontra ferramentas que ajudam a organizar sua vida financeira, permitindo assim, dedicar-se ao seu sonho",
   ),
   Onboard(
-    image: "assets/images/groups.jpg",
+    image: "assets/images/together.png",
     title:
         "Crie grupos com pessoas de sua confiança, para obter um salário extra",
     description:
         "Na área de salário extra é possível criar grupos para juntos criarem um salário extra, saiba mais sobre no menu (preciso de ajuda) ",
   ),
   Onboard(
-    image: "assets/images/savemoney.jpg",
-    title:
-        "Observe suas despesas mensais facilmente para um melhor controle ficanceiro ",
+    image: "assets/images/moneysaves.jpg",
+    title: "Observe as dicas semanais para um melhor controle ficanceiro ",
     description:
-        "Na área de controle financeiro é possível visualizar em quais categorias você mais gasta e a partir daí poupar onde for possível",
+        "Na área de Dicas financeiras é possível visualizar dicas financeiras, rápidas e fáceis e a partir daí poupar onde for possível",
   ),
 ];
 

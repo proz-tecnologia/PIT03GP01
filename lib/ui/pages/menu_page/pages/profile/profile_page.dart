@@ -16,8 +16,8 @@ class ProfilePage extends StatelessWidget {
         backgroundColor: const Color(0xfffbf1f1),
         label: const Text(
           "Voltar",
-          style: TextStyle(
-              color: Color(0xff120c0c), fontWeight: FontWeight.bold),
+          style:
+              TextStyle(color: Color(0xff120c0c), fontWeight: FontWeight.bold),
         ),
         onPressed: () => Navigator.pop(context),
       ),
@@ -26,7 +26,7 @@ class ProfilePage extends StatelessWidget {
         slivers: [
           SliverToBoxAdapter(
             child: SizedBox(
-              height: MediaQuery.of(context).size.height*0.15,
+              height: MediaQuery.of(context).size.height * 0.15,
               child: const Padding(
                 padding: EdgeInsets.only(top: 64, left: 16),
                 child: Text(
@@ -160,7 +160,7 @@ class ProfilePage extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: Container(
-              height: MediaQuery.of(context).size.height*0.3,
+              height: MediaQuery.of(context).size.height * 0.3,
               color: const Color(0xff120c0c),
             ),
           )

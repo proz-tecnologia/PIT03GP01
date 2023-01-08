@@ -1,8 +1,18 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:srminhaeiro/firebase_options.dart';
+import 'package:srminhaeiro/models/user.model.dart';
+import 'package:srminhaeiro/store/user.store.dart';
+import 'package:srminhaeiro/ui/pages/homepage/homepage.dart';
 
 import 'package:srminhaeiro/ui/pages/login_page/login_page.dart';
+import 'package:srminhaeiro/ui/pages/login_page/onboarding.dart';
 
 class SplashPage extends StatefulWidget {
   static String route = "splash";
@@ -13,17 +23,34 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  void init() async {
-    await Future.delayed(const Duration(seconds: 5));
-
-    Navigator.pushReplacementNamed(context, LoginPage.route);
-  }
+  StreamSubscription? _streamSubscription;
 
   @override
   void initState() {
-    init();
+    WidgetsBinding.instance.addPostFrameCallback((_) => init());
     super.initState();
-    // WidgetsBinding.instance.addPostFrameCallback(_) => init();
+  }
+
+  Future init() async {
+    await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform);
+
+    await Future.delayed(const Duration(seconds: 5));
+
+    _streamSubscription =
+        FirebaseAuth.instance.authStateChanges().listen((user) async {
+      if (user == null) {
+        Navigator.pushReplacementNamed(context, LoginPage.route);
+      } else {
+        Navigator.pushReplacementNamed(context, HomePage.route);
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _streamSubscription!.cancel();
+    super.dispose();
   }
 
   @override

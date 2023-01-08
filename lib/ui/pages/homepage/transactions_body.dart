@@ -6,7 +6,7 @@ import 'package:srminhaeiro/texts/texts_and_strings.dart';
 import 'package:srminhaeiro/ui/pages/homepage/controller/extrato_provider_controller.dart';
 
 import '../../../models/transacao_model.dart';
-import '../../component/item_transaction.dart';
+import '../../components/item_transaction.dart';
 
 class TransactionBody extends StatefulWidget {
   const TransactionBody({
@@ -26,7 +26,7 @@ class _TransactionBodyState extends State<TransactionBody> {
         child: ClipRRect(
           borderRadius: const BorderRadius.only(topLeft: Radius.circular(60)),
           child: Container(
-            height: MediaQuery.of(context).size.height*0.7,
+            height: MediaQuery.of(context).size.height * 0.7,
             color: const Color(0xff120c0c),
             child: Padding(
               padding: const EdgeInsets.all(16),
@@ -36,7 +36,7 @@ class _TransactionBodyState extends State<TransactionBody> {
                   child: Container(
                     color: const Color.fromARGB(255, 253, 250, 250),
                     height: 1,
-                    width: MediaQuery.of(context).size.width*0.9,
+                    width: MediaQuery.of(context).size.width * 0.9,
                   ),
                 ),
                 Padding(
@@ -61,70 +61,64 @@ class _TransactionBodyState extends State<TransactionBody> {
                 Consumer<ExtratoProvider>(
                   builder: (context, extratoProvider, child) =>
                       SingleChildScrollView(
-                        child: Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              // const SizedBox(
-                              //   height: 24,
-                              // ),
-                              // const Text(
-                              //   'Saldo',
-                              //   style: TextStyle(
-                              //       color: Colors.black87,
-                              //       fontWeight: FontWeight.bold),
-                              // ),
-                              // const SizedBox(
-                              //   height: 24,
-                              // ),
-                              // const Text(
-                              //   'Resultado',
-                              //   style: TextStyle(
-                              //       color: Colors.black87,
-                              //       fontWeight: FontWeight.bold),
-                              // ),
-                              // CardResult(
-                              //     incomingValue:
-                              //     extratoProvider.getTotalIncoming,
-                              //     outcomingValue:
-                              //     extratoProvider.getTotalOutcoming),
-                              // const SizedBox(
-                              //   height: 32,
-                              // ),
-                              // const Text(
-                              //   "TRANSAÇÕES",
-                              //   style: TextStyle(
-                              //       color: Colors.black87,
-                              //       fontWeight: FontWeight.bold),
-                              // ),
-                              ListView.builder(
-                                  shrinkWrap: true,
-                                  itemBuilder: (_, index) => Dismissible(
+                    child: Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // const SizedBox(
+                          //   height: 24,
+                          // ),
+                          // const Text(
+                          //   'Saldo',
+                          //   style: TextStyle(
+                          //       color: Colors.black87,
+                          //       fontWeight: FontWeight.bold),
+                          // ),
+                          // const SizedBox(
+                          //   height: 24,
+                          // ),
+                          // const Text(
+                          //   'Resultado',
+                          //   style: TextStyle(
+                          //       color: Colors.black87,
+                          //       fontWeight: FontWeight.bold),
+                          // ),
+                          // CardResult(
+                          //     incomingValue:
+                          //     extratoProvider.getTotalIncoming,
+                          //     outcomingValue:
+                          //     extratoProvider.getTotalOutcoming),
+                          // const SizedBox(
+                          //   height: 32,
+                          // ),
+                          // const Text(
+                          //   "TRANSAÇÕES",
+                          //   style: TextStyle(
+                          //       color: Colors.black87,
+                          //       fontWeight: FontWeight.bold),
+                          // ),
+                          ListView.builder(
+                              shrinkWrap: true,
+                              itemBuilder: (_, index) => Dismissible(
                                     key: ValueKey<Transaction>(
-                                        extratoProvider
-                                            .extratoProvider[index]),
+                                        extratoProvider.extratoProvider[index]),
                                     direction: DismissDirection.endToStart,
                                     resizeDuration:
-                                    const Duration(milliseconds: 300),
-                                    background:
-                                    Container(color: Colors.red),
+                                        const Duration(milliseconds: 300),
+                                    background: Container(color: Colors.red),
                                     onDismissed: (direction) =>
-                                        extratoProvider
-                                            .removeByPosition(index),
+                                        extratoProvider.removeByPosition(index),
                                     child: ItemTransaction(
-                                      extratoProvider
-                                          .extratoProvider[index],
+                                      extratoProvider.extratoProvider[index],
                                       key: ValueKey<int>(index),
                                     ),
                                   ),
-                                  itemCount:
-                                  extratoProvider.extratoProvider.length)
-                            ],
-                          ),
-                        ),
+                              itemCount: extratoProvider.extratoProvider.length)
+                        ],
                       ),
+                    ),
+                  ),
                 ),
-
               ]),
             ),
           ),
