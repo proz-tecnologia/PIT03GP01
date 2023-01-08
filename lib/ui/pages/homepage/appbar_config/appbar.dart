@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:srminhaeiro/texts/texts_and_strings.dart';
-import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/profile_page.dart';
 
 class AppBarSliver extends StatelessWidget {
   final bool isVisible;

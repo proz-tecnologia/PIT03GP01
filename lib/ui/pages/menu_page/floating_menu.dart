@@ -3,6 +3,7 @@ import 'package:srminhaeiro/ui/pages/menu_page/floating_menu_config.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/ajudapage/ajuda_page.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/cartaopage/cartao_page.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/conta_menu_page/conta_menu.dart';
+import 'package:srminhaeiro/ui/pages/menu_page/pages/profile/profile_page.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/salario_extra_page/salario_extra_page.dart';
 
 Widget buildMenuButton(BuildContext context) => FloatingActionButton.extended(
@@ -52,6 +53,24 @@ Widget buildMenuButton(BuildContext context) => FloatingActionButton.extended(
                             Container(
                               height: 150,
                               color: const Color.fromARGB(255, 255, 255, 255),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: const [
+                                    Text(
+                                      'Menu',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize: 28,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
                             FormatButtomMenu(
                               text: const Text(
@@ -62,13 +81,13 @@ Widget buildMenuButton(BuildContext context) => FloatingActionButton.extended(
                                     fontWeight: FontWeight.w500,
                                     fontSize: 24),
                               ),
-                              onpressed: () => Navigator.pushNamed(
-                                  context, ContaPage.route),
+                              onpressed: () =>
+                                  Navigator.pushNamed(context, ContaPage.route),
                               color: const Color(0xfffbf1f1),
                             ),
                             FormatButtomMenu(
                               text: const Text(
-                                "Cartão",
+                                "Perfil",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: Color.fromARGB(255, 12, 12, 12),
@@ -76,7 +95,7 @@ Widget buildMenuButton(BuildContext context) => FloatingActionButton.extended(
                                     fontSize: 24),
                               ),
                               onpressed: () => Navigator.pushNamed(
-                                  context, CartaoPage.route),
+                                  context, ProfilePage.route),
                               color: const Color.fromARGB(255, 198, 190, 190),
                             ),
                             FormatButtomMenu(
