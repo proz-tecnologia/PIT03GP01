@@ -6,6 +6,7 @@ import 'package:srminhaeiro/ui/pages/login_page/controller/google_login.controll
 import 'package:srminhaeiro/ui/pages/login_page/login_page_two.dart';
 import 'package:srminhaeiro/ui/pages/login_page/onboarding.dart';
 import 'package:srminhaeiro/Util/group_button_config.dart';
+import 'package:srminhaeiro/ui/pages/login_page/register.dart';
 
 class LoginPage extends StatefulWidget {
   static String route = "login";
@@ -66,7 +67,9 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Spacer(),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushReplacementNamed(context, LoginPageTwo.route);
+              },
               child: RichText(
                   text: TextSpan(children: const [
                 TextSpan(
@@ -80,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                     text: " Cadastre-se",
                     style: TextStyle(
                       fontSize: 18,
-                      color: Colors.black,
+                      color: Colors.blue,
                       fontWeight: FontWeight.bold,
                     )) */
               ])),
@@ -98,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                       fontWeight: FontWeight.bold),
                 ),
                 onpressed: () {
-                  Navigator.pushReplacementNamed(context, LoginPageTwo.route);
+                  Navigator.pushNamed(context, Register.route);
                 },
               ),
             ),
