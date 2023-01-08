@@ -1,9 +1,6 @@
 
 import 'package:srminhaeiro/ui/pages/forgot_password_page/forgot_password_page.dart';
-import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/dados_page.dart';
-import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/notificacoes.dart';
-import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/privacidade.dart';
-import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/profile_page.dart';
+
 import 'package:srminhaeiro/ui/pages/homepage/controle_financeiro/controle_financeiro.dart';
 import 'package:srminhaeiro/ui/pages/homepage/homepage.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/view/criar_sonho_page.dart';
@@ -24,6 +21,7 @@ import '../ui/pages/menu_page/pages/profile/pages/dados_page.dart';
 import '../ui/pages/menu_page/pages/profile/pages/notificacoes.dart';
 import '../ui/pages/menu_page/pages/profile/pages/privacidade.dart';
 import '../ui/pages/menu_page/pages/profile/profile_page.dart';
+import '../ui/pages/register_page/register.dart';
 
 getRoutes() {
   return {
@@ -45,6 +43,7 @@ getRoutes() {
     LoginPage.route: (context) => const LoginPage(),
     Onboarding.route: (context) => const Onboarding(),
     LoginPageTwo.route: (context) => const LoginPageTwo(),
+    Register.route:(context)=> const Register(),
     DreamCreate.route: (context) => const DreamCreate(),
     ForgotPasswordPage.route: (context) => ForgotPasswordPage(),
     MeusSonhosPage.route: (context) => const MeusSonhosPage(),

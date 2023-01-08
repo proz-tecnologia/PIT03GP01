@@ -4,10 +4,14 @@ import 'package:srminhaeiro/navigator_key.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/controller/card.list.controller.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/controller/dropdown.years.controller.dart';
 import 'package:srminhaeiro/ui/pages/login_page/controller/google_login.controller.dart';
+import 'package:srminhaeiro/ui/pages/register_page/controller_register.dart';
+//import 'package:srminhaeiro/ui/pages/register_page/register.dart';
 import 'package:srminhaeiro/ui/splash/pages/splash_page.dart';
 import 'package:srminhaeiro/util/dark_mode.dart';
 import 'package:srminhaeiro/util/routes.dart';
 import 'package:srminhaeiro/ui/pages/homepage/controller/extrato_provider_controller.dart';
+import 'package:srminhaeiro/ui/pages/login_page/login_page.dart';
+
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +30,7 @@ class MyApp extends StatelessWidget {
             providers: [
               ChangeNotifierProvider(create: (_) => DropdownYearscontroller()),
               ChangeNotifierProvider(create: (_) => CardListController()),
+              ChangeNotifierProvider(create: (_) => RegisterController()),
               ChangeNotifierProvider(create: (_) => ExtratoProvider()),
               ChangeNotifierProvider(
                 create: (_) => GoogleLoginController(),
@@ -40,7 +45,7 @@ class MyApp extends StatelessWidget {
                   brightness: Appcontroller.instance.theme
                       ? Brightness.dark
                       : Brightness.light), */
-              initialRoute: SplashPage.route,
+              initialRoute: LoginPage.route,
               routes: getRoutes(),
             ),
           );
