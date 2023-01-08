@@ -4,14 +4,17 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:srminhaeiro/navigator_key.dart';
 import 'package:srminhaeiro/store/user.store.dart';
 import 'package:srminhaeiro/ui/components/alert_dialog.component.dart';
 import 'package:srminhaeiro/ui/components/progress_dialog.component.dart';
+import 'package:srminhaeiro/ui/pages/check_page/check_page.dart';
 import 'package:srminhaeiro/ui/pages/forgot_password_page/forgot_password_page.dart';
 import 'package:srminhaeiro/ui/pages/login_page/controller/login.controller.dart';
 import 'package:srminhaeiro/ui/pages/login_page/extensions/extension_string.dart';
 import 'package:srminhaeiro/Util/group_button_config.dart';
 import 'package:mask/mask.dart';
+import 'package:srminhaeiro/ui/pages/login_page/login_page.dart';
 import 'package:srminhaeiro/ui/pages/login_page/onboarding.dart';
 
 class LoginPageTwo extends StatefulWidget {
@@ -47,12 +50,12 @@ class _LoginPageState extends State<LoginPageTwo> {
         FirebaseAuth.instance.authStateChanges().listen((user) async {
       if (user != null) {
         await _streamSubscription!.cancel();
-        Navigator.pushReplacementNamed(context, Onboarding.route);
+        navigatorKey.currentState?.pushReplacementNamed(CheckPage.route);
       }
     });
   }
 
-  /*  @override
+  /* @override
   void dispose() async {
     if (_streamSubscription != null) await _streamSubscription!.cancel();
     super.dispose();

@@ -1,9 +1,5 @@
-
+import 'package:srminhaeiro/ui/pages/check_page/check_page.dart';
 import 'package:srminhaeiro/ui/pages/forgot_password_page/forgot_password_page.dart';
-import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/dados_page.dart';
-import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/notificacoes.dart';
-import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/privacidade.dart';
-import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/profile_page.dart';
 import 'package:srminhaeiro/ui/pages/homepage/controle_financeiro/controle_financeiro.dart';
 import 'package:srminhaeiro/ui/pages/homepage/homepage.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/view/criar_sonho_page.dart';
@@ -33,7 +29,7 @@ getRoutes() {
     ContaPage.route: (context) => const ContaPage(),
     SalarioExtraPage.route: (context) => const SalarioExtraPage(),
     SplashPage.route: (context) => const SplashPage(),
-    ProfilePage.route: (context) => const ProfilePage(),
+    ProfilePage.route: (context) => ProfilePage(),
     EntradasTransaction.route: (context) => const EntradasTransaction(),
     SaidasTransaction.route: (context) => const SaidasTransaction(),
     Controle.route: (context) => const Controle(),
@@ -48,5 +44,6 @@ getRoutes() {
     DreamCreate.route: (context) => const DreamCreate(),
     ForgotPasswordPage.route: (context) => ForgotPasswordPage(),
     MeusSonhosPage.route: (context) => const MeusSonhosPage(),
+    CheckPage.route: (context) => CheckPage(),
   };
 }

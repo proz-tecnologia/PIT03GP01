@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:srminhaeiro/firebase_options.dart';
+import 'package:srminhaeiro/ui/pages/check_page/check_page.dart';
 import 'package:srminhaeiro/ui/pages/homepage/homepage.dart';
 import 'package:srminhaeiro/ui/pages/login_page/login_page.dart';
 
@@ -37,7 +38,7 @@ class _SplashPageState extends State<SplashPage> {
       if (user == null) {
         Navigator.pushReplacementNamed(context, LoginPage.route);
       } else {
-        Navigator.pushReplacementNamed(context, HomePage.route);
+        Navigator.pushReplacementNamed(context, CheckPage.route);
       }
     });
   }

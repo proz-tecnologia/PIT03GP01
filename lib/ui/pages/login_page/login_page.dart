@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:srminhaeiro/ui/pages/check_page/check_page.dart';
 import 'package:srminhaeiro/ui/pages/login_page/controller/google_login.controller.dart';
 import 'package:srminhaeiro/ui/pages/login_page/login_page_two.dart';
 import 'package:srminhaeiro/ui/pages/login_page/onboarding.dart';
@@ -60,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                       fontWeight: FontWeight.bold),
                 ),
                 onpressed: () {
-                  Navigator.pushReplacementNamed(context, LoginPageTwo.route);
+                  Navigator.pushNamed(context, CheckPage.route);
                 },
               ),
             ),
