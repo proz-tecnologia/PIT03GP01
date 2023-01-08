@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:srminhaeiro/store/user.store.dart';
 import 'package:srminhaeiro/ui/components/alert_dialog.component.dart';
 import 'package:srminhaeiro/ui/components/progress_dialog.component.dart';
+import 'package:srminhaeiro/ui/pages/forgot_password_page/forgot_password_page.dart';
 import 'package:srminhaeiro/ui/pages/login_page/controller/login.controller.dart';
 import 'package:srminhaeiro/ui/pages/login_page/extensions/extension_string.dart';
 import 'package:srminhaeiro/Util/group_button_config.dart';
@@ -92,36 +93,35 @@ class _LoginPageState extends State<LoginPageTwo> {
                       onSaved: (newValue) => _email = newValue!,
                       keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(
-                          focusedBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 2, color: Colors.black),
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(16),
-                                bottomLeft: Radius.circular(16),
-                                bottomRight: Radius.circular(16)),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 2, color: Colors.black),
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(16),
-                                bottomLeft: Radius.circular(16),
-                                bottomRight: Radius.circular(16)),
-                          ),
-                          prefixIcon: Icon(Icons.email, color: Colors.black),
-                          errorBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.redAccent),
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(16),
-                                bottomLeft: Radius.circular(16),
-                                bottomRight: Radius.circular(16)),
-                          ),
-                          labelText: "e-mail",
-                          hintText: "nome@email.com",
-                          labelStyle: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black)),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(width: 2, color: Colors.black),
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(16),
+                              bottomLeft: Radius.circular(16),
+                              bottomRight: Radius.circular(16)),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(width: 2, color: Colors.black),
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(16),
+                              bottomLeft: Radius.circular(16),
+                              bottomRight: Radius.circular(16)),
+                        ),
+                        prefixIcon: Icon(Icons.email, color: Colors.black),
+                        errorBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.redAccent),
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(16),
+                              bottomLeft: Radius.circular(16),
+                              bottomRight: Radius.circular(16)),
+                        ),
+                        labelText: "e-mail",
+                        hintText: "nome@email.com",
+                        labelStyle: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black),
+                      ),
                     )),
                   ),
                   Padding(
@@ -215,7 +215,10 @@ class _LoginPageState extends State<LoginPageTwo> {
                   ),
                   const Spacer(),
                   TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(
+                            context, ForgotPasswordPage.route);
+                      },
                       child: const Text("Esqueci minha senha")),
                   const Spacer(),
                 ]),

@@ -1,3 +1,4 @@
+import 'package:srminhaeiro/ui/pages/forgot_password_page/forgot_password_page.dart';
 import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/dados_page.dart';
 import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/notificacoes.dart';
 import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/privacidade.dart';
@@ -27,7 +28,7 @@ getRoutes() {
     ContaPage.route: (context) => const ContaPage(),
     SalarioExtraPage.route: (context) => const SalarioExtraPage(),
     SplashPage.route: (context) => const SplashPage(),
-    ProfilePage.route: (context) => ProfilePage(),
+    ProfilePage.route: (context) => const ProfilePage(),
     EntradasTransaction.route: (context) => const EntradasTransaction(),
     SaidasTransaction.route: (context) => const SaidasTransaction(),
     Controle.route: (context) => const Controle(),
@@ -40,6 +41,7 @@ getRoutes() {
     Onboarding.route: (context) => const Onboarding(),
     LoginPageTwo.route: (context) => const LoginPageTwo(),
     DreamCreate.route: (context) => const DreamCreate(),
+    ForgotPasswordPage.route: (context) => ForgotPasswordPage(),
     MeusSonhosPage.route: (context) => const MeusSonhosPage(),
   };
 }

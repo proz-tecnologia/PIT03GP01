@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:srminhaeiro/ui/pages/login_page/controller/google_login.controller.dart';
 import 'package:srminhaeiro/ui/pages/login_page/login_page_two.dart';
 import 'package:srminhaeiro/ui/pages/login_page/onboarding.dart';
 import 'package:srminhaeiro/Util/group_button_config.dart';
@@ -139,7 +141,12 @@ class _LoginPageState extends State<LoginPage> {
                     icon: Image.asset(
                       "assets/images/google1.png",
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      final provider = Provider.of<GoogleLoginController>(
+                          context,
+                          listen: false);
+                      provider.googleLogin();
+                    },
                     iconSize: 65,
                   ),
                   IconButton(

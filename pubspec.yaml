@@ -54,6 +54,8 @@ dependencies:
   firebase_auth: ^4.2.1
   flutter_date_difference: ^1.0.1
   cloud_firestore: ^4.3.0
+  google_sign_in: ^5.4.2
+  font_awesome_flutter: ^10.3.0
   
 
 

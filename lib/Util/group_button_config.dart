@@ -7,7 +7,7 @@ class GroupButtonConfig extends StatelessWidget {
   final bool? changecolor;
 
   const GroupButtonConfig(
-      {required this.changecolor, this.onpressed, this.text, super.key});
+      {this.changecolor, this.onpressed, this.text, super.key});
 
   @override
   Widget build(BuildContext context) {
