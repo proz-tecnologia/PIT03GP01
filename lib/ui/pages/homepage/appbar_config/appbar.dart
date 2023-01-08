@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:srminhaeiro/texts/texts_and_strings.dart';
-import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/profile_page.dart';
 
 class AppBarSliver extends StatelessWidget {
   final bool isVisible;
@@ -19,11 +18,10 @@ class AppBarSliver extends StatelessWidget {
         leadingWidth: 80,
         title: GeneralTexts.Home_page_title,
         backgroundColor: const Color.fromARGB(255, 253, 250, 250),
-        leading: IconButton(
-          icon: const Icon(Icons.account_circle,
-              color: Color.fromARGB(245, 21, 20, 20)),
-          iconSize: 52,
-          onPressed: () => Navigator.pushNamed(context, ProfilePage.route),
+        leading: const Icon(
+          Icons.account_circle,
+          color: Color.fromARGB(245, 21, 20, 20),
+          size: 52,
         ),
         expandedHeight: 100,
         actions: [

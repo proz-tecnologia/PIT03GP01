@@ -1,7 +1,3 @@
-import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/dados_page.dart';
-import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/notificacoes.dart';
-import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/privacidade.dart';
-import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/profile_page.dart';
 import 'package:srminhaeiro/ui/pages/homepage/controle_financeiro/controle_financeiro.dart';
 import 'package:srminhaeiro/ui/pages/homepage/homepage.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/view/criar_sonho_page.dart';
@@ -18,6 +14,10 @@ import 'package:srminhaeiro/ui/pages/menu_page/pages/salario_extra_page/salario_
 import 'package:srminhaeiro/ui/splash/pages/splash_page.dart';
 import '../ui/pages/homepage/entradas/transaction_entrada.dart';
 import '../ui/pages/homepage/saidas/transaction_saida.dart';
+import '../ui/pages/menu_page/pages/profile/pages/dados_page.dart';
+import '../ui/pages/menu_page/pages/profile/pages/notificacoes.dart';
+import '../ui/pages/menu_page/pages/profile/pages/privacidade.dart';
+import '../ui/pages/menu_page/pages/profile/profile_page.dart';
 
 getRoutes() {
   return {

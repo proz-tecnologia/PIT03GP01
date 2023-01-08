@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/dados_page.dart';
-import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/notificacoes.dart';
-import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/privacidade.dart';
+import 'package:srminhaeiro/ui/pages/menu_page/pages/profile/pages/dados_page.dart';
+import 'package:srminhaeiro/ui/pages/menu_page/pages/profile/pages/notificacoes.dart';
+import 'package:srminhaeiro/ui/pages/menu_page/pages/profile/pages/privacidade.dart';
 
 import 'package:srminhaeiro/ui/pages/menu_page/floating_menu_config.dart';
 
