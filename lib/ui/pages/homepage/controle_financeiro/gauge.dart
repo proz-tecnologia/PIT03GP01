@@ -4,7 +4,6 @@ import 'package:srminhaeiro/ui/pages/homepage/controller/extrato_provider_contro
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:provider/provider.dart';
 
-
 class Gauge extends StatelessWidget {
   final double incomingValue;
   final double outcomingValue;
@@ -18,28 +17,33 @@ class Gauge extends StatelessWidget {
       required this.rendaFixa,
       required this.salarioExtra,
       required this.sonhos,
-      required this.extrato, required this.incomingValue, required this.outcomingValue})
+      required this.extrato,
+      required this.incomingValue,
+      required this.outcomingValue})
       : super(key: key);
+
   double get total => incomingValue - outcomingValue;
 
   @override
   Widget build(BuildContext context) {
     return Consumer<ExtratoProvider>(
-      builder:(context, extratoProvider, child)=>
-      Column(
+      builder: (context, extratoProvider, child) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(
             height: 32,
           ),
-          const Text('R\$ 850,55', style: TextStyle(fontSize: 16),),
+          const Text(
+            'R\$ 850,55',
+            style: TextStyle(fontSize: 16),
+          ),
           SfLinearGauge(
             showTicks: false,
             showAxisTrack: false,
             showLabels: false,
             minimum: 0.0,
             maximum: 1500.90,
-            axisLabelStyle: TextStyle(),
+            axisLabelStyle: const TextStyle(),
             barPointers: const [
               LinearBarPointer(
                 value: 850.55,
@@ -51,7 +55,10 @@ class Gauge extends StatelessWidget {
           const SizedBox(
             height: 32,
           ),
-          const Text('R\$ 350,55', style: TextStyle(fontSize: 16),),
+          const Text(
+            'R\$ 350,55',
+            style: TextStyle(fontSize: 16),
+          ),
           SfLinearGauge(
             showTicks: false,
             showAxisTrack: false,
@@ -69,7 +76,10 @@ class Gauge extends StatelessWidget {
           const SizedBox(
             height: 32,
           ),
-          const Text('R\$ 150,55', style: TextStyle(fontSize: 16),),
+          const Text(
+            'R\$ 150,55',
+            style: TextStyle(fontSize: 16),
+          ),
           SfLinearGauge(
             showTicks: false,
             showAxisTrack: false,
@@ -87,8 +97,12 @@ class Gauge extends StatelessWidget {
           const SizedBox(
             height: 32,
           ),
-          Text((extratoProvider.getTotalIncoming -
-              extratoProvider.getTotalOutcoming).formatBRL, style: TextStyle(fontSize: 16),),
+          Text(
+            (extratoProvider.getTotalIncoming -
+                    extratoProvider.getTotalOutcoming)
+                .formatBRL,
+            style: const TextStyle(fontSize: 16),
+          ),
           SfLinearGauge(
             showTicks: false,
             showAxisTrack: false,
@@ -96,10 +110,11 @@ class Gauge extends StatelessWidget {
             minimum: 0.0,
             maximum: extratoProvider.getTotalIncoming -
                 extratoProvider.getTotalOutcoming,
-            barPointers: const [
+            barPointers:  [
               LinearBarPointer(
-                value: 1500,
                 color: Colors.green,
+                value: extratoProvider.getTotalIncoming -
+                    extratoProvider.getTotalOutcoming,
                 edgeStyle: LinearEdgeStyle.bothCurve,
               ),
             ],
