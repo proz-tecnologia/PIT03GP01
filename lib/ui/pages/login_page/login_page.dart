@@ -6,7 +6,7 @@ import 'package:srminhaeiro/ui/pages/check_page/check_page.dart';
 import 'package:srminhaeiro/ui/pages/login_page/controller/google_login.controller.dart';
 import 'package:srminhaeiro/ui/pages/login_page/login_page_two.dart';
 import 'package:srminhaeiro/Util/group_button_config.dart';
-import 'package:srminhaeiro/ui/pages/login_page/register.dart';
+import 'package:srminhaeiro/ui/pages/register_page/register.dart';
 
 class LoginPage extends StatefulWidget {
   static String route = "login";
