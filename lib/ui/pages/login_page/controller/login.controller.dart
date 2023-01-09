@@ -1,7 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:srminhaeiro/models/api_response.model.dart';
-import 'package:srminhaeiro/models/user.model.dart';
 import 'package:srminhaeiro/store/user.store.dart';
 import 'package:srminhaeiro/ui/components/progress_dialog.component.dart';
 

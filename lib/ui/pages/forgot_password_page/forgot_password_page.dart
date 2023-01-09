@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:srminhaeiro/Util/group_button_config.dart';
-import 'package:srminhaeiro/navigator_key.dart';
 import 'package:srminhaeiro/ui/components/alert_dialog.component.dart';
 import 'package:srminhaeiro/ui/components/progress_dialog.component.dart';
 import 'package:srminhaeiro/ui/pages/forgot_password_page/forgot_password.controller/forgot_password.controller.dart';
 import 'package:srminhaeiro/ui/pages/login_page/login_page.dart';
-import 'package:srminhaeiro/ui/pages/login_page/login_page_two.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
   static String route = "forgot";

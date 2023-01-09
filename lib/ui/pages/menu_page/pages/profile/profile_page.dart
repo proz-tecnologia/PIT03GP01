@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:srminhaeiro/store/user.store.dart';
+import 'package:srminhaeiro/ui/pages/login_page/controller/google_login.controller.dart';
+import 'package:srminhaeiro/ui/pages/login_page/login_page.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/profile/pages/dados_page.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/profile/pages/notificacoes.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/profile/pages/privacidade.dart';
-
 import 'package:srminhaeiro/ui/pages/menu_page/floating_menu_config.dart';
 
 class ProfilePage extends StatelessWidget {
   static String route = "profile";
-  const ProfilePage({super.key});
+  final UserStore useer = UserStore();
+  ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -156,7 +160,13 @@ class ProfilePage extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(color: Color(0xfffbf1f1), fontSize: 24),
                 ),
-                onpressed: () {}),
+                onpressed: () {
+                  final provider = Provider.of<GoogleLoginController>(context,
+                      listen: false);
+                  provider.googleLogout();
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      LoginPage.route, (route) => false);
+                }),
           ),
           SliverToBoxAdapter(
             child: Container(
