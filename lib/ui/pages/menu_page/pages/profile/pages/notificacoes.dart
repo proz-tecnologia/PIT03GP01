@@ -1,18 +1,86 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 
-class Notificacoes extends StatelessWidget {
+class Notificacoes extends StatefulWidget {
   static String route = "notificacoes";
   const Notificacoes({super.key});
 
   @override
+  State<Notificacoes> createState() => _NotificacoesState();
+}
+
+class _NotificacoesState extends State<Notificacoes> {
+  bool _exibirInvest = false;
+  bool _modoPrivacidade = false;
+  bool _modoBiometria = false;
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber[100],
+      appBar: AppBar(
+        backgroundColor: Colors.grey[500],
+        title: const Center(
+          child: Text(
+            'Privacidade e segurança',
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+        iconTheme: const IconThemeData(color: Colors.grey),
+      ),
+      backgroundColor: Colors.grey[350],
       floatingActionButton: FloatingActionButton.extended(
-        label: Text("Voltar"),
+        label: const Text("Voltar"),
+        backgroundColor: Colors.grey[800],
         onPressed: () {
           Navigator.pop(context);
         },
+      ),
+      body: Column(
+        //mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          SwitchListTile(
+            title: const Text("Exibir meus investimentos no app"),
+            subtitle: const Text(
+                "Quando ativado, possibilita a visualização de seus investimentos."),
+            //activeColor: Colors.blueGrey,
+            selected: false,
+            //secondary: Icon(Icons.mobile_off_outlined),
+            value: _exibirInvest,
+            onChanged: (valor) {
+              setState(() {
+                _exibirInvest = valor;
+              });
+              print("Modo Avião: $_exibirInvest");
+            },
+          ),
+          SwitchListTile(
+            title:
+                const Text("Deixar minha conta visível na lista de contatos"),
+            subtitle: const Text(
+                "Quando ativado, possibilita a visualização de seu saldo"),
+            value: _modoPrivacidade,
+            onChanged: (valor) {
+              setState(() {
+                _modoPrivacidade = valor;
+              });
+              print("Notificações: $_modoPrivacidade");
+            },
+          ),
+          SwitchListTile(
+            title: const Text("Ativar biometria"),
+            subtitle: const Text(
+                "Quando ativado, a configuração se aplica a todos o aplicativo."),
+            value: _modoBiometria,
+            onChanged: (valor) {
+              setState(() {
+                _modoBiometria = valor;
+              });
+              print("Notificações: $_modoBiometria");
+            },
+          ),
+        ],
       ),
     );
   }
