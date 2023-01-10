@@ -1,7 +1,12 @@
-import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mask/mask/mask.dart';
-import 'package:srminhaeiro/ui/pages/login_page/onboarding.dart';
+import 'package:srminhaeiro/navigator_key.dart';
+import 'package:srminhaeiro/ui/components/alert_dialog.component.dart';
+import 'package:srminhaeiro/ui/components/progress_dialog.component.dart';
+import 'package:srminhaeiro/ui/pages/check_page/check_page.dart';
+import 'package:srminhaeiro/ui/pages/login_page/extensions/extension_string.dart';
+import 'package:srminhaeiro/ui/pages/login_page/login_page.dart';
 import 'package:srminhaeiro/ui/pages/register_page/controller_register.dart';
 //import 'package:srminhaeiro/ui/pages/register_page/model_register.dart';
 import '../../../Util/group_button_config.dart';
@@ -22,16 +27,31 @@ class _RegisterState extends State<Register> {
   final TextEditingController telefoneController = TextEditingController();
   final TextEditingController rendaController = TextEditingController();
   final TextEditingController profissaoController = TextEditingController();
-
+  final _progressDialog = ProgressDialogComponent();
+  bool _showPassword = false;
+  bool _showRepeatPassword = false;
+  String password = "";
   bool teste = true;
-
-  // ignore: unused_field
-  var _value = 0.0;
+  final _alertDialog = AlertDialogComponent();
+  final _controller = RegisterController();
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton.extended(
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(16),
+                bottomLeft: Radius.circular(16),
+                bottomRight: Radius.circular(16),
+                topRight: Radius.circular(0)),
+          ),
+          backgroundColor: Colors.black,
+          onPressed: () {
+            Navigator.pushReplacementNamed(context, LoginPage.route);
+          },
+          label: const Text("Voltar")),
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -45,32 +65,39 @@ class _RegisterState extends State<Register> {
               child: Form(
                 key: _formKey,
                 child: Column(children: [
-                  Padding(
-                    padding: const EdgeInsets.all(32.0),
-                    child: SizedBox(
-                        height: 229,
-                        width: 112,
-                        child: Image.asset("assets/images/SrMinhaeiroo.png")),
+                  const Padding(
+                    padding: EdgeInsets.only(
+                      top: 32.0,
+                    ),
+                    child: Text(
+                      "Cadastre-se",
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                    ),
                   ),
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text(
-                          'Novo Cadastro',
-                          style: TextStyle(
-                            fontSize: 32,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ]),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
+                    child: SizedBox(
+                        height: 100,
+                        width: 100,
+                        child: Image.asset("assets/images/add-user.png")),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
                     child: Consumer<RegisterController>(
                         builder: (_, controller, __) {
                       return TextFormField(
-                        maxLength: 20,
+                        onChanged: _controller.changeName,
+                        maxLength: 40,
                         decoration: const InputDecoration(
-                          hintText: "Nome",
+                          labelText: "Nome ",
+                          labelStyle: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black,
+                          ),
+                          hintText: "Digite seu nome completo",
                           focusedBorder: OutlineInputBorder(
                             borderSide:
                                 BorderSide(width: 2, color: Colors.black),
@@ -96,11 +123,18 @@ class _RegisterState extends State<Register> {
                     }),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
+                      onChanged: _controller.changeEmail,
                       maxLength: 40,
                       decoration: const InputDecoration(
-                        hintText: "E-mail",
+                        labelText: "E-mail",
+                        labelStyle: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black,
+                        ),
+                        hintText: "Digite seu e-mail",
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(width: 2, color: Colors.black),
                           borderRadius: BorderRadius.only(
@@ -123,13 +157,20 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                   Padding(
-                      padding: const EdgeInsets.all(16.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: Consumer<RegisterController>(
                           builder: (_, controller, __) {
                         return TextFormField(
-                          maxLength: 11,
+                          onChanged: _controller.changePhoneNumber,
+                          maxLength: 16,
                           decoration: const InputDecoration(
-                            hintText: "Telefone",
+                            labelText: "Telefone",
+                            labelStyle: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black,
+                            ),
+                            hintText: "Digite seu telefone",
                             focusedBorder: OutlineInputBorder(
                               borderSide:
                                   BorderSide(width: 2, color: Colors.black),
@@ -150,89 +191,140 @@ class _RegisterState extends State<Register> {
                           keyboardType: TextInputType.number,
                           controller: telefoneController,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (value) => Mask.validations.phone(value),
+                          validator: Mask.validations.phone,
+                          inputFormatters: [Mask.phone()],
                         );
                       })),
                   Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Consumer<RegisterController>(
-                          builder: (_, controller, __) {
-                        return TextFormField(
-                          maxLength: 20,
-                          decoration: const InputDecoration(
-                            hintText: "Profissão",
-                            focusedBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(width: 2, color: Colors.black),
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(16),
-                                  bottomLeft: Radius.circular(16),
-                                  bottomRight: Radius.circular(16)),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(width: 2, color: Colors.black),
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(16),
-                                  bottomLeft: Radius.circular(16),
-                                  bottomRight: Radius.circular(16)),
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      child: TextFormField(
+                        onChanged: _controller.changePassword,
+                        maxLength: 20,
+                        obscureText: !_showPassword,
+                        decoration: InputDecoration(
+                          focusedBorder: const OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 2, color: Colors.black),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(16),
+                                bottomLeft: Radius.circular(16),
+                                bottomRight: Radius.circular(16)),
+                          ),
+                          enabledBorder: const OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 2, color: Colors.black),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(16),
+                                bottomLeft: Radius.circular(16),
+                                bottomRight: Radius.circular(16)),
+                          ),
+                          errorBorder: const UnderlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 2, color: Colors.redAccent),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(16),
+                                bottomLeft: Radius.circular(16),
+                                bottomRight: Radius.circular(16)),
+                          ),
+                          labelText: "Senha",
+                          hintText: "Digite sua senha",
+                          helperText: "Mín. 6 e máx. 20 caracteres",
+                          labelStyle: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black,
+                          ),
+                          suffixIcon: IconButton(
+                            onPressed: (() {
+                              setState(() {
+                                _showPassword = !_showPassword;
+                              });
+                            }),
+                            icon: Icon(
+                              _showPassword
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: Colors.black,
                             ),
                           ),
-                          keyboardType: TextInputType.text,
-                          controller: profissaoController,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (value) => Mask.validations.generic(value),
-                        );
-                      })),
+                        ),
+                        validator: ((value) {
+                          if (!value!.isValidPassword) {
+                            return "Senha inválida";
+                          }
+
+                          return null;
+                        }),
+                        onSaved: (newValue) => password = newValue!,
+                      ),
+                    ),
+                  ),
                   Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Consumer<RegisterController>(
-                          builder: (_, controller, __) {
-                        return TextFormField(
-                          maxLength: 10,
-                          decoration: const InputDecoration(
-                            hintText: "Sua Renda",
-                            //prefix: Text("R\$ "),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(width: 2, color: Colors.black),
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(16),
-                                  bottomLeft: Radius.circular(16),
-                                  bottomRight: Radius.circular(16)),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(width: 2, color: Colors.black),
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(16),
-                                  bottomLeft: Radius.circular(16),
-                                  bottomRight: Radius.circular(16)),
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      child: TextFormField(
+                        onChanged: _controller.changeRepeatPassword,
+                        maxLength: 20,
+                        obscureText: !_showRepeatPassword,
+                        decoration: InputDecoration(
+                          focusedBorder: const OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 2, color: Colors.black),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(16),
+                                bottomLeft: Radius.circular(16),
+                                bottomRight: Radius.circular(16)),
+                          ),
+                          enabledBorder: const OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 2, color: Colors.black),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(16),
+                                bottomLeft: Radius.circular(16),
+                                bottomRight: Radius.circular(16)),
+                          ),
+                          errorBorder: const UnderlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 2, color: Colors.redAccent),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(16),
+                                bottomLeft: Radius.circular(16),
+                                bottomRight: Radius.circular(16)),
+                          ),
+                          labelText: "Repetir senha",
+                          hintText: "Repita sua senha",
+                          helperText: "Mín. 6 e máx. 20 caracteres",
+                          labelStyle: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black,
+                          ),
+                          suffixIcon: IconButton(
+                            onPressed: (() {
+                              setState(() {
+                                _showRepeatPassword = !_showRepeatPassword;
+                              });
+                            }),
+                            icon: Icon(
+                              _showRepeatPassword
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: Colors.black,
                             ),
                           ),
-                          controller: rendaController,
-                          keyboardType: TextInputType.number,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          inputFormatters: [
-                            CurrencyTextInputFormatter(
-                                locale: "pt_BR", decimalDigits: 2, symbol: '')
-                          ],
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "Informe um valor.";
-                            }
-                            final valueDouble = double.parse(
-                                value.replaceAll('.', '').replaceAll(',', '.'));
-                            if (valueDouble == 0) {
-                              return "Informe um valor diferente de 0";
-                            }
-                            return null;
-                          },
-                          onSaved: (newValue) => _value = double.parse(newValue!
-                              .replaceAll('.', '')
-                              .replaceAll(',', '.')),
-                        );
-                      })),
+                        ),
+                        validator: ((value) {
+                          if (!value!.isValidPassword) {
+                            return "Senha inválida";
+                          }
+
+                          return null;
+                        }),
+                        onSaved: (newValue) => password = newValue!,
+                      ),
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: GroupButtonConfig(
@@ -245,7 +337,10 @@ class _RegisterState extends State<Register> {
                             fontWeight: FontWeight.bold),
                       ),
                       onpressed: () {
-                        Navigator.pushNamed(context, Onboarding.route);
+                        if (_formKey.currentState!.validate()) {
+                          _formKey.currentState!.save();
+                          _signUp();
+                        }
                       },
                     ),
                   ),
@@ -256,5 +351,20 @@ class _RegisterState extends State<Register> {
         ),
       ),
     );
+  }
+
+  _signUp() async {
+    _progressDialog.show("Registrando cadastro...");
+    final response = await _controller.signUp();
+    if (response.isSuccess) {
+      _progressDialog.hide();
+      _alertDialog.showInfo(
+        title: "Parabéns",
+        message: "Conta criada com sucesso!",
+      );
+    } else {
+      _progressDialog.hide();
+      _alertDialog.showInfo(title: "Eita!", message: response.message!);
+    }
   }
 }

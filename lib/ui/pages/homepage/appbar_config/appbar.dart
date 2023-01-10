@@ -17,16 +17,21 @@ class AppBarSliver extends StatelessWidget {
     return SliverAppBar(
         elevation: 20,
         leadingWidth: 80,
-        title: Text(
-          "Olá\n${user.displayName}",
-          style: const TextStyle(color: Colors.black),
-        ),
+        title: user.displayName == null
+            ? const Text(
+                "Olá\nVisitante ",
+                style: TextStyle(color: Colors.black),
+              )
+            : Text(
+                "Olá\n${user.displayName}",
+                style: const TextStyle(color: Colors.black),
+              ),
         backgroundColor: const Color.fromARGB(255, 253, 250, 250),
         leading: CircleAvatar(
           radius: 30,
           backgroundImage: user.photoURL == null
               ? const NetworkImage(
-                  "https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/256x256/plain/user.png")
+                  "https://icon-library.com/images/no-user-image-icon/no-user-image-icon-27.jpg")
               : NetworkImage(user.photoURL!),
         ),
         expandedHeight: 100,

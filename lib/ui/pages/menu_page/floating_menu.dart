@@ -6,6 +6,13 @@ import 'package:srminhaeiro/ui/pages/menu_page/pages/profile/profile_page.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/salario_extra_page/salario_extra_page.dart';
 
 Widget buildMenuButton(BuildContext context) => FloatingActionButton.extended(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(16),
+            bottomLeft: Radius.circular(16),
+            bottomRight: Radius.circular(16),
+            topRight: Radius.circular(0)),
+      ),
       backgroundColor: const Color.fromARGB(255, 253, 250, 250),
       label: const Text(
         "MENU",
@@ -32,6 +39,13 @@ Widget buildMenuButton(BuildContext context) => FloatingActionButton.extended(
                     const BorderRadius.only(topLeft: Radius.circular(60)),
                 child: Scaffold(
                   floatingActionButton: FloatingActionButton.extended(
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(16),
+                          bottomLeft: Radius.circular(16),
+                          bottomRight: Radius.circular(16),
+                          topRight: Radius.circular(0)),
+                    ),
                     backgroundColor: const Color(0xfffbf1f1),
                     label: const Text(
                       "Voltar",
