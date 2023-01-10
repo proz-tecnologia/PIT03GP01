@@ -17,6 +17,13 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(16),
+              bottomLeft: Radius.circular(16),
+              bottomRight: Radius.circular(16),
+              topRight: Radius.circular(0)),
+        ),
         backgroundColor: const Color(0xfffbf1f1),
         label: const Text(
           "Voltar",

@@ -66,7 +66,7 @@ class AlertDialogComponent {
                       if (action != null) action();
                       navigatorKey.currentState!.pop();
                     },
-                    child: Text(actionText ?? "Entendi")),
+                    child: Text(actionText ?? "OK")),
               ],
             ));
   }

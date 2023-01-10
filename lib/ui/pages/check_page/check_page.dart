@@ -1,13 +1,27 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:srminhaeiro/ui/components/alert_dialog.component.dart';
 import 'package:srminhaeiro/ui/pages/login_page/login_page_two.dart';
 import 'package:srminhaeiro/ui/pages/login_page/onboarding.dart';
 
-class CheckPage extends StatelessWidget {
+class CheckPage extends StatefulWidget {
   static String route = "check";
+
+  const CheckPage({super.key});
+
+  @override
+  State<CheckPage> createState() => _CheckPageState();
+}
+
+class _CheckPageState extends State<CheckPage> {
   final AlertDialogComponent _alertDialog = AlertDialogComponent();
-  CheckPage({super.key});
+
+  @override
+  void initState() {
+    Firebase.initializeApp();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
