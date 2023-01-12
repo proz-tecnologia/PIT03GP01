@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class GoogleLoginController extends ChangeNotifier {
@@ -35,5 +36,6 @@ class GoogleLoginController extends ChangeNotifier {
     //await googleSignIn.disconnect();
     await FirebaseAuth.instance.signOut();
     await googleSignIn.signOut();
+    await FacebookAuth.i.logOut();
   }
 }
