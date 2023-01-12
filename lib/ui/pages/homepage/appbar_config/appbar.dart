@@ -15,7 +15,7 @@ class AppBarSliver extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser!;
     return SliverAppBar(
-        elevation: 20,
+        elevation: 40,
         leadingWidth: 80,
         title: user.displayName == null
             ? const Text(
@@ -23,7 +23,7 @@ class AppBarSliver extends StatelessWidget {
                 style: TextStyle(color: Colors.black),
               )
             : Text(
-                "Olá\n${user.displayName}",
+                "Olá\n${user.displayName?.split(" ").first} ${user.displayName?.split(" ").last}",
                 style: const TextStyle(color: Colors.black),
               ),
         backgroundColor: const Color.fromARGB(255, 253, 250, 250),

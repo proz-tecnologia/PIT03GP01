@@ -28,7 +28,7 @@ class _SplashPageState extends State<SplashPage> {
 
   Future init() async {
     await Firebase.initializeApp(
-        options: DefaultFirebaseOptions.currentPlatform);
+        name: "splash", options: DefaultFirebaseOptions.currentPlatform);
 
     await Future.delayed(const Duration(seconds: 5));
 

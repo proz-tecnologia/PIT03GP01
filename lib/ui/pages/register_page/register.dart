@@ -153,7 +153,7 @@ class _RegisterState extends State<Register> {
                       keyboardType: TextInputType.text,
                       controller: emailController,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
-                      validator: (value) => Mask.validations.generic(value),
+                      validator: Mask.validations.email
                     ),
                   ),
                   Padding(

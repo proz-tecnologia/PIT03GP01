@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
@@ -11,10 +12,10 @@ import 'package:srminhaeiro/ui/splash/pages/splash_page.dart';
 import 'package:srminhaeiro/util/dark_mode.dart';
 import 'package:srminhaeiro/util/routes.dart';
 import 'package:srminhaeiro/ui/pages/homepage/controller/extrato_provider_controller.dart';
-import 'package:srminhaeiro/ui/pages/login_page/login_page.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const MyApp());
 }
 
@@ -37,9 +38,7 @@ class MyApp extends StatelessWidget {
               )
             ],
             child: MaterialApp(
-              localizationsDelegates: const [
-                GlobalMaterialLocalizations.delegate
-              ],
+              localizationsDelegates: GlobalMaterialLocalizations.delegates,
               supportedLocales: const [Locale('pt', 'BR')],
               navigatorKey: navigatorKey,
               title: 'SR. M I N H A E I R O',
