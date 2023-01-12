@@ -38,6 +38,14 @@ class RegisterController extends ChangeNotifier {
             "As senhas são diferentes, precisam ser iguais.");
       }
 
+      if (_name.isEmpty) {
+        return ApiResponse.error("Nome não pode ser vazio.");
+      }
+
+      if (_name.split(' ').length == 1) {
+        return ApiResponse.error("É necessário ao menos um sobrenome.");
+      }
+
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: _email, password: _password);
       if (userCredential.user != null) {
