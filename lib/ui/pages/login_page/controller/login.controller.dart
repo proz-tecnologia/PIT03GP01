@@ -43,17 +43,3 @@ class ExceptionUsers implements Exception {
 
   ExceptionUsers(this.message);
 }
-
- /* if (userCredential.user != null) {
-        DocumentSnapshot snapshot = await FirebaseFirestore.instance
-            .collection("Users")
-            .doc(userCredential.user!.uid)
-            .get();
-
-        UserModel person =
-            UserModel.fromFirestore(snapshot.data() as Map<String, dynamic>);
-        _userStore.loadUser();
-        return ApiResponse.sucess(true);
-      } else {
-        return ApiResponse.error("Eita!! deu alguma bronca!");
-      } */

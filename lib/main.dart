@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:srminhaeiro/navigator_key.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/controller/card.list.controller.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/controller/dropdown.years.controller.dart';
+import 'package:srminhaeiro/ui/pages/login_page/controller/facebook_login.controller.dart';
 import 'package:srminhaeiro/ui/pages/login_page/controller/google_login.controller.dart';
 import 'package:srminhaeiro/ui/pages/register_page/controller_register.dart';
 //import 'package:srminhaeiro/ui/pages/register_page/register.dart';
@@ -35,7 +36,8 @@ class MyApp extends StatelessWidget {
               ChangeNotifierProvider(create: (_) => ExtratoProvider()),
               ChangeNotifierProvider(
                 create: (_) => GoogleLoginController(),
-              )
+              ),
+              ChangeNotifierProvider(create: (_) => FacebookLoginController())
             ],
             child: MaterialApp(
               localizationsDelegates: GlobalMaterialLocalizations.delegates,
