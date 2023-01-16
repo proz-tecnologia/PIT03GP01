@@ -22,7 +22,14 @@ class CardOnTap extends StatelessWidget {
             floatingActionButton: Padding(
               padding: const EdgeInsets.all(8.0),
               child: FloatingActionButton.extended(
-                backgroundColor: const Color(0xff413d3d),
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(12),
+                      bottomLeft: Radius.circular(12),
+                      bottomRight: Radius.circular(12),
+                      topRight: Radius.circular(0)),
+                ),
+                backgroundColor: const Color.fromARGB(255, 31, 30, 30),
                 label: const Text(
                   "Voltar",
                   style: TextStyle(
@@ -33,12 +40,22 @@ class CardOnTap extends StatelessWidget {
             ),
             body: Container(
               height: MediaQuery.of(context).size.height * 1,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [
+                    Color.fromARGB(255, 234, 230, 230),
+                    Color.fromARGB(255, 244, 242, 242),
+                    Color.fromARGB(255, 231, 225, 225),
+                    Color.fromARGB(255, 224, 220, 220),
+                    Color.fromARGB(255, 192, 178, 178),
+                    Color.fromARGB(255, 165, 151, 151),
+                  ],
+                ),
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(20),
                 ),
-                color: Color(0xfffbf1f1),
-                boxShadow: [
+                color: Colors.grey[300],
+                boxShadow: const [
                   BoxShadow(
                       inset: true,
                       blurRadius: 5,
@@ -47,13 +64,11 @@ class CardOnTap extends StatelessWidget {
                 ],
               ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsets.only(left: 8, top: 40.0, bottom: 40),
+                        const EdgeInsets.only(left: 8, top: 16.0, bottom: 40),
                     child: SizedBox(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -106,72 +121,85 @@ class CardOnTap extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 32.0, bottom: 12),
+                    padding: const EdgeInsets.all(8.0),
                     child: SizedBox(
-                        child: Text(
-                      "Valor do sonho: ${card.valorTotal.obterReal(2).toString()} ",
-                      style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500),
-                    )),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 32.0, bottom: 12),
-                    child: SizedBox(
-                      child: RichText(
-                          text: TextSpan(children: [
-                        const TextSpan(
-                            text: "Valor faltante para realização: ",
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w500,
-                            )),
-                        TextSpan(
-                            text: value.missingValue(
-                                card.valorTotal, value.currentValue),
-                            style: const TextStyle(
-                              fontSize: 18,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w500,
-                            ))
-                      ])),
+                      width: MediaQuery.of(context).size.width * 1,
+                      child: Text(
+                        "Valor do sonho:\n\n ${card.valorTotal.obterReal(2).toString()}\n ",
+                        textAlign: TextAlign.start,
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500),
+                      ),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 32.0, bottom: 12),
+                    padding: const EdgeInsets.all(8.0),
                     child: SizedBox(
-                        child: Text(
-                      "Data escolhida para realização: ${card.date.day}/${card.date.month}/${card.date.year}",
-                      style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500),
-                    )),
+                      width: MediaQuery.of(context).size.width * 1,
+                      child: RichText(
+                          textAlign: TextAlign.start,
+                          text: TextSpan(children: [
+                            const TextSpan(
+                                text: "Valor faltante para realização:\n\n ",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w500,
+                                )),
+                            TextSpan(
+                                text:
+                                    "${value.missingValue(card.valorTotal, value.currentValue)}\n",
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w500,
+                                ))
+                          ])),
+                    ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(
-                        left: 32.0, bottom: 12, right: 32),
+                    padding: const EdgeInsets.all(8.0),
                     child: SizedBox(
-                        child: Text(
-                      "Tempo restante para a realização: ${value.fullDate(card.date)}",
-                      style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500),
-                    )),
+                      width: MediaQuery.of(context).size.width * 1,
+                      child: Text(
+                        textAlign: TextAlign.start,
+                        "Data escolhida para realização:\n\n ${card.date.day}/${card.date.month}/${card.date.year}\n",
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 32.0, bottom: 12),
+                    padding: const EdgeInsets.all(8.0),
                     child: SizedBox(
-                        child: Text(
-                      "Valor das parcelas mensais: ${value.valueDivideByMonths(card.valorTotal, card.date)}",
-                      style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500),
-                    )),
+                      width: MediaQuery.of(context).size.width * 1,
+                      child: Text(
+                        textAlign: TextAlign.start,
+                        "Tempo restante para a data escolhida:\n\n ${value.fullDate(card.date)}\n",
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width * 1,
+                      child: Text(
+                        "Valor das parcelas mensais:\n\n ${value.valueDivideByMonths(double.parse(value.missingValueTostring(card.valorTotal, value.currentValue)), card.date)}",
+                        textAlign: TextAlign.start,
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ),
                   ),
                 ],
               ),

@@ -1,33 +1,39 @@
+// ignore_for_file: must_be_immutable, use_build_context_synchronously
+
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:mask/mask/mask.dart';
 import 'package:provider/provider.dart';
+import 'package:srminhaeiro/ui/components/alert_dialog.component.dart';
+import 'package:srminhaeiro/ui/components/progress_dialog.component.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/controller/card.controller.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/controller/card.list.controller.dart';
-import 'package:srminhaeiro/ui/pages/homepage/sonhos/controller/dropdown.years.controller.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/model/card_sonho_model.dart';
 
-class DreamCreate extends StatefulWidget {
+class DreamCreate extends StatelessWidget {
   static String route = "criarsonhos";
 
-  const DreamCreate({super.key});
+  DreamCreate({super.key});
 
-  @override
-  State<DreamCreate> createState() => _DreamCreateState();
-}
+  final TextEditingController nomeSonhoController = TextEditingController();
 
-class _DreamCreateState extends State<DreamCreate> {
-  TextEditingController nomeSonhoController = TextEditingController();
-  TextEditingController dateController = TextEditingController();
-  TextEditingController valorController = TextEditingController();
-  var mydatetime = DateTime.now();
+  final TextEditingController dateController = TextEditingController();
+
+  final TextEditingController valorController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
+
   final CardController modelValue = CardController();
+  DateTime mydatetime = DateTime.now();
+  final _progressDialog = ProgressDialogComponent();
+  final _alertDialog = AlertDialogComponent();
+
+  final CardListController _controller = CardListController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[300],
       floatingActionButton: FloatingActionButton.extended(
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -35,15 +41,15 @@ class _DreamCreateState extends State<DreamCreate> {
               bottomLeft: Radius.circular(12),
               bottomRight: Radius.circular(12)),
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: const Color.fromARGB(255, 31, 30, 30),
         label: const Text("Voltar"),
         onPressed: () {
           Navigator.pop(context);
         },
       ),
       body: SafeArea(
-        child: Consumer2<CardListController, DropdownYearscontroller>(
-          builder: (context, value, value2, child) => SingleChildScrollView(
+        child: Consumer<CardListController>(
+          builder: (context, value, child) => SingleChildScrollView(
             child: Form(
               key: _formKey,
               child: Column(
@@ -126,7 +132,7 @@ class _DreamCreateState extends State<DreamCreate> {
                     padding: const EdgeInsets.all(16.0),
                     child: Consumer<CardListController>(
                       builder: (context, value, child) => TextFormField(
-                        maxLength: 20,
+                        maxLength: 10,
                         decoration: const InputDecoration(
                           hintText: "Nome do seu sonho aqui",
                           focusedBorder: OutlineInputBorder(
@@ -225,7 +231,7 @@ class _DreamCreateState extends State<DreamCreate> {
                     padding:
                         const EdgeInsets.only(top: 16.0, left: 16, right: 16),
                     child: TextFormField(
-                        maxLength: 14,
+                        maxLength: 10,
                         inputFormatters: [
                           CurrencyTextInputFormatter(
                               decimalDigits: 2, locale: 'pt_BR', symbol: "")
@@ -276,15 +282,14 @@ class _DreamCreateState extends State<DreamCreate> {
                                       bottomRight: Radius.circular(12),
                                       topRight: Radius.circular(0)),
                                 ),
-                                backgroundColor: Colors.black),
-                            onPressed: () {
+                                backgroundColor:
+                                    const Color.fromARGB(255, 31, 30, 30)),
+                            onPressed: () async {
                               if (_formKey.currentState!.validate()) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                        duration: Duration(seconds: 2),
-                                        content: Text(
-                                            "Card dos sonhos gerado com sucesso!")));
-
+                                _progressDialog.show("Gerando card dos sonhos");
+                                await Future.delayed(
+                                    const Duration(seconds: 2));
+                                _progressDialog.hide();
                                 var model = CardSonhoModel(
                                     nomeSonho: modelValue.nomeSonho,
                                     valorTotal: modelValue.sonhoValorTotal,
@@ -292,6 +297,7 @@ class _DreamCreateState extends State<DreamCreate> {
                                     adicionarValor: modelValue.adicionarvalor,
                                     date: mydatetime);
                                 value.addCard(model);
+
                                 Navigator.pop(context);
                               }
                             },
@@ -309,5 +315,14 @@ class _DreamCreateState extends State<DreamCreate> {
         ),
       ),
     );
+  }
+
+  _addCardDosSonhos() async {
+    _progressDialog.show("Gerando card dos sonhos");
+    var response = await _controller.cloudFirestoreAdd();
+    _progressDialog.hide();
+    if (response.isError) {
+      _alertDialog.showInfo(title: "Eita!", message: response.message!);
+    }
   }
 }

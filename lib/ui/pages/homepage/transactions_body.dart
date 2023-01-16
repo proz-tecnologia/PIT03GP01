@@ -27,7 +27,7 @@ class _TransactionBodyState extends State<TransactionBody> {
           borderRadius: const BorderRadius.only(topLeft: Radius.circular(60)),
           child: Container(
             height: MediaQuery.of(context).size.height * 0.7,
-            color: const Color(0xff120c0c),
+            color: const Color.fromARGB(255, 31, 30, 30),
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Column(children: [
