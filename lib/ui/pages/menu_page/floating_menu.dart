@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/floating_menu_config.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/ajudapage/ajuda_page.dart';
-import 'package:srminhaeiro/ui/pages/menu_page/pages/cartaopage/cartao_page.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/conta_menu_page/conta_menu.dart';
+import 'package:srminhaeiro/ui/pages/menu_page/pages/profile/profile_page.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/salario_extra_page/salario_extra_page.dart';
 
 Widget buildMenuButton(BuildContext context) => FloatingActionButton.extended(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(16),
+            bottomLeft: Radius.circular(16),
+            bottomRight: Radius.circular(16),
+            topRight: Radius.circular(0)),
+      ),
       backgroundColor: const Color.fromARGB(255, 253, 250, 250),
       label: const Text(
         "MENU",
@@ -32,6 +39,13 @@ Widget buildMenuButton(BuildContext context) => FloatingActionButton.extended(
                     const BorderRadius.only(topLeft: Radius.circular(60)),
                 child: Scaffold(
                   floatingActionButton: FloatingActionButton.extended(
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(16),
+                          bottomLeft: Radius.circular(16),
+                          bottomRight: Radius.circular(16),
+                          topRight: Radius.circular(0)),
+                    ),
                     backgroundColor: const Color(0xfffbf1f1),
                     label: const Text(
                       "Voltar",
@@ -50,8 +64,27 @@ Widget buildMenuButton(BuildContext context) => FloatingActionButton.extended(
                         child: ListView(
                           children: <Widget>[
                             Container(
+                              decoration: const BoxDecoration(
+                                  gradient: LinearGradient(
+                                colors: [
+                                  Color.fromARGB(255, 234, 230, 230),
+                                  Color.fromARGB(255, 244, 242, 242),
+                                  Color.fromARGB(255, 231, 225, 225),
+                                  Color.fromARGB(255, 224, 220, 220),
+                                  Color.fromARGB(255, 192, 178, 178),
+                                  Color.fromARGB(255, 165, 151, 151),
+                                ],
+                              )),
                               height: 150,
-                              color: const Color.fromARGB(255, 255, 255, 255),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: const [],
+                                ),
+                              ),
                             ),
                             FormatButtomMenu(
                               text: const Text(
@@ -62,13 +95,13 @@ Widget buildMenuButton(BuildContext context) => FloatingActionButton.extended(
                                     fontWeight: FontWeight.w500,
                                     fontSize: 24),
                               ),
-                              onpressed: () => Navigator.pushNamed(
-                                  context, ContaPage.route),
+                              onpressed: () =>
+                                  Navigator.pushNamed(context, ContaPage.route),
                               color: const Color(0xfffbf1f1),
                             ),
                             FormatButtomMenu(
                               text: const Text(
-                                "Cartão",
+                                "Perfil",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: Color.fromARGB(255, 12, 12, 12),
@@ -76,7 +109,7 @@ Widget buildMenuButton(BuildContext context) => FloatingActionButton.extended(
                                     fontSize: 24),
                               ),
                               onpressed: () => Navigator.pushNamed(
-                                  context, CartaoPage.route),
+                                  context, ProfilePage.route),
                               color: const Color.fromARGB(255, 198, 190, 190),
                             ),
                             FormatButtomMenu(

@@ -1,23 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/dados_page.dart';
-import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/notificacoes.dart';
-import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/privacidade.dart';
-
+import 'package:provider/provider.dart';
+import 'package:srminhaeiro/store/user.store.dart';
+import 'package:srminhaeiro/ui/pages/login_page/controller/google_login.controller.dart';
+import 'package:srminhaeiro/ui/pages/login_page/login_page.dart';
+import 'package:srminhaeiro/ui/pages/menu_page/pages/profile/pages/dados_page.dart';
+import 'package:srminhaeiro/ui/pages/menu_page/pages/profile/pages/notificacoes.dart';
+import 'package:srminhaeiro/ui/pages/menu_page/pages/profile/pages/privacidade.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/floating_menu_config.dart';
 
 class ProfilePage extends StatelessWidget {
   static String route = "profile";
-  const ProfilePage({super.key});
+  final UserStore useer = UserStore();
+  ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(16),
+              bottomLeft: Radius.circular(16),
+              bottomRight: Radius.circular(16),
+              topRight: Radius.circular(0)),
+        ),
         backgroundColor: const Color(0xfffbf1f1),
         label: const Text(
           "Voltar",
-          style: TextStyle(
-              color: Color(0xff120c0c), fontWeight: FontWeight.bold),
+          style:
+              TextStyle(color: Color(0xff120c0c), fontWeight: FontWeight.bold),
         ),
         onPressed: () => Navigator.pop(context),
       ),
@@ -26,7 +37,7 @@ class ProfilePage extends StatelessWidget {
         slivers: [
           SliverToBoxAdapter(
             child: SizedBox(
-              height: MediaQuery.of(context).size.height*0.15,
+              height: MediaQuery.of(context).size.height * 0.15,
               child: const Padding(
                 padding: EdgeInsets.only(top: 64, left: 16),
                 child: Text(
@@ -156,11 +167,17 @@ class ProfilePage extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(color: Color(0xfffbf1f1), fontSize: 24),
                 ),
-                onpressed: () {}),
+                onpressed: () {
+                  final provider = Provider.of<GoogleLoginController>(context,
+                      listen: false);
+                  provider.googleLogout();
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      LoginPage.route, (route) => false);
+                }),
           ),
           SliverToBoxAdapter(
             child: Container(
-              height: MediaQuery.of(context).size.height*0.3,
+              height: MediaQuery.of(context).size.height * 0.3,
               color: const Color(0xff120c0c),
             ),
           )

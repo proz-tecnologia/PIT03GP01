@@ -26,16 +26,21 @@ class FormatIconText extends StatelessWidget {
                 margin: const EdgeInsets.all(4),
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      bottomLeft: Radius.circular(20),
-                      bottomRight: Radius.circular(20)),
-                  color: const Color(0xff120c0c).withOpacity(0.9),
+                      topLeft: Radius.circular(16),
+                      bottomLeft: Radius.circular(16),
+                      bottomRight: Radius.circular(16)),
+                  color: const Color.fromARGB(255, 31, 30, 30),
                   boxShadow: [
                     BoxShadow(
                         inset: true,
-                        blurRadius: 4,
-                        offset: const Offset(5, 5),
-                        color: const Color(0xfffff9f9).withOpacity(0.5))
+                        blurRadius: 2,
+                        offset: const Offset(2, 2),
+                        color: Colors.black.withOpacity(0.6)),
+                    BoxShadow(
+                        inset: true,
+                        blurRadius: 2,
+                        offset: const Offset(-2, -2),
+                        color: Colors.white.withOpacity(0.6))
                   ],
                 ),
                 child: Icon(

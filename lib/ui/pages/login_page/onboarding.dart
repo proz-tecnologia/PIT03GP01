@@ -31,10 +31,10 @@ class _OnboardingState extends State<Onboarding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
               Expanded(
@@ -70,10 +70,10 @@ class _OnboardingState extends State<Onboarding> {
                     TextButton(
                         onPressed: () => Navigator.pushReplacementNamed(
                             context, HomePage.route),
-                        child: const Text(
+                        child: Text(
                           "Pular",
                           style: TextStyle(
-                            color: Colors.grey,
+                            color: Colors.grey[700],
                             fontSize: 16,
                           ),
                         )),
@@ -107,8 +107,15 @@ class _OnboardingState extends State<Onboarding> {
                             width: 60,
                             child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.black,
-                                    shape: const CircleBorder()),
+                                  backgroundColor: Colors.black,
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20),
+                                      bottomLeft: Radius.circular(20),
+                                      bottomRight: Radius.circular(20),
+                                    ),
+                                  ),
+                                ),
                                 onPressed: (() {
                                   _pageController.nextPage(
                                       duration:
@@ -158,24 +165,22 @@ class Onboard {
 
 List<Onboard> demoData = [
   Onboard(
-    image: "assets/images/archievement.jpg",
+    image: "assets/images/dreamsarchieve.png",
     title: "Transforme o seu sonho\n em realidade",
     description:
         "No Sr Minhaeiro você encontra ferramentas que ajudam a organizar sua vida financeira, permitindo assim, dedicar-se ao seu sonho",
   ),
   Onboard(
-    image: "assets/images/groups.jpg",
-    title:
-        "Crie grupos com pessoas de sua confiança, para obter um salário extra",
+    image: "assets/images/together.png",
+    title: "Crie grupos com pessoas de confiança para ter uma renda extra",
     description:
         "Na área de salário extra é possível criar grupos para juntos criarem um salário extra, saiba mais sobre no menu (preciso de ajuda) ",
   ),
   Onboard(
-    image: "assets/images/savemoney.jpg",
-    title:
-        "Observe suas despesas mensais facilmente para um melhor controle ficanceiro ",
+    image: "assets/images/moneysaves.jpg",
+    title: "Observe as dicas semanais para um melhor controle ficanceiro ",
     description:
-        "Na área de controle financeiro é possível visualizar em quais categorias você mais gasta e a partir daí poupar onde for possível",
+        "Na área de Dicas financeiras é possível visualizar dicas financeiras, rápidas e fáceis e a partir daí poupar onde for possível",
   ),
 ];
 
@@ -195,10 +200,16 @@ class OnboardingContent extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Spacer(),
-        Image.asset(
-          image,
-          height: 350,
-          width: 350,
+        ClipRRect(
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(20),
+              bottomLeft: Radius.circular(20),
+              bottomRight: Radius.circular(20)),
+          child: Image.asset(
+            image,
+            height: 350,
+            width: 350,
+          ),
         ),
         const Spacer(),
         Text(
@@ -214,7 +225,7 @@ class OnboardingContent extends StatelessWidget {
           child: Text(
             description,
             textAlign: TextAlign.center,
-            style: const TextStyle(color: Color.fromARGB(255, 150, 150, 150)),
+            style: const TextStyle(color: Color.fromARGB(255, 52, 51, 51)),
           ),
         ),
         const Spacer(),

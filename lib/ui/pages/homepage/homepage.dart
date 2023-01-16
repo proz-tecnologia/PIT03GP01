@@ -23,32 +23,47 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 253, 250, 250),
       floatingActionButton: buildMenuButton(context),
-      body: CustomScrollView(
-        slivers: [
-          const SliverToBoxAdapter(
-            child: SizedBox(
-              height: 8,
-            ),
+      body: SafeArea(
+        child: Container(
+          decoration: const BoxDecoration(
+              gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(255, 234, 230, 230),
+              Color.fromARGB(255, 244, 242, 242),
+              Color.fromARGB(255, 231, 225, 225),
+              Color.fromARGB(255, 224, 220, 220),
+              Color.fromARGB(255, 192, 178, 178),
+              Color.fromARGB(255, 165, 151, 151),
+            ],
+          )),
+          child: CustomScrollView(
+            slivers: [
+              const SliverToBoxAdapter(
+                child: SizedBox(
+                  height: 8,
+                ),
+              ),
+              AppBarSliver(
+                onTapVisibility: () {
+                  setState(() {
+                    visible = !visible;
+                  });
+                },
+                isVisible: visible,
+              ),
+              BalanceValue(
+                isVisible: visible,
+              ),
+              const SliverToBoxAdapter(
+                child: SizedBox(
+                  height: 40,
+                ),
+              ),
+              const ButtonList(),
+              const TransactionBody(),
+            ],
           ),
-          AppBarSliver(
-            onTapVisibility: () {
-              setState(() {
-                visible = !visible;
-              });
-            },
-            isVisible: visible,
-          ),
-          BalanceValue(
-            isVisible: visible,
-          ),
-          const SliverToBoxAdapter(
-            child: SizedBox(
-              height: 40,
-            ),
-          ),
-           ButtonList(),
-          TransactionBody(),
-        ],
+        ),
       ),
     );
   }

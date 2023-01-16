@@ -1,9 +1,13 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:srminhaeiro/ui/pages/check_page/check_page.dart';
+import 'package:srminhaeiro/ui/pages/login_page/controller/facebook_login.controller.dart';
+import 'package:srminhaeiro/ui/pages/login_page/controller/google_login.controller.dart';
 import 'package:srminhaeiro/ui/pages/login_page/login_page_two.dart';
-import 'package:srminhaeiro/ui/pages/login_page/onboarding.dart';
-import 'package:srminhaeiro/ui/pages/menu_page/pages/salario_extra_page/group_button_config.dart';
+import 'package:srminhaeiro/Util/group_button_config.dart';
+import 'package:srminhaeiro/ui/pages/register_page/register.dart';
 
 class LoginPage extends StatefulWidget {
   static String route = "login";
@@ -22,106 +26,162 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            const Spacer(),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 33.0),
-              child: const Text("Bem vindo!",
-                  style: TextStyle(
-                    fontSize: 28,
-                    color: Colors.black,
-                  )),
-            ),
-            SizedBox(
-                height: 229,
-                width: 112,
-                child: Image.asset("assets/images/SrMinhaeiroo.png")),
-            const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Text("Prazer, \$r. Minhaeiro",
-                  style: TextStyle(
-                    fontSize: 28,
-                    color: Colors.black,
-                  )),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: GroupButtonConfig(
-                changecolor: teste,
-                text: const Text(
-                  "Login",
-                  style: TextStyle(
-                      fontSize: 22,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
+        child: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+            colors: const [
+              Color.fromARGB(255, 234, 230, 230),
+              Color.fromARGB(255, 244, 242, 242),
+              Color.fromARGB(255, 231, 225, 225),
+              Color.fromARGB(255, 224, 220, 220),
+              Color.fromARGB(255, 192, 178, 178),
+              Color.fromARGB(255, 165, 151, 151),
+            ],
+          )),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              const Spacer(),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 33.0),
+                child: const Text("Bem vindo!",
+                    style: TextStyle(
+                      fontSize: 28,
+                      color: Colors.black,
+                    )),
+              ),
+              SizedBox(
+                  height: 229,
+                  width: 112,
+                  child: Image.asset("assets/images/SrMinhaeiroo.png")),
+              const Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Text("Prazer, \$r. Minhaeiro",
+                    style: TextStyle(
+                      fontSize: 28,
+                      color: Colors.black,
+                    )),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: GroupButtonConfig(
+                  changecolor: teste,
+                  text: const Text(
+                    "Login",
+                    style: TextStyle(
+                        fontSize: 22,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  onpressed: () {
+                    Navigator.pushNamed(context, CheckPage.route);
+                  },
                 ),
-                onpressed: () {
+              ),
+              Spacer(),
+              GestureDetector(
+                onTap: () {
                   Navigator.pushReplacementNamed(context, LoginPageTwo.route);
                 },
+                child: RichText(
+                    text: TextSpan(children: const [
+                  TextSpan(
+                      text: "Ainda não tem uma conta?",
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400,
+                      )),
+                  /*  TextSpan(
+                      text: " Cadastre-se",
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.blue,
+                        fontWeight: FontWeight.bold,
+                      )) */
+                ])),
               ),
-            ),
-            Spacer(),
-            Text(
-              "- OU -",
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
+              Spacer(),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: GroupButtonConfig(
+                  changecolor: teste,
+                  text: const Text(
+                    "Cadastre-se",
+                    style: TextStyle(
+                        fontSize: 22,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  onpressed: () {
+                    Navigator.pushNamed(context, Register.route);
+                  },
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+              Spacer(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  IconButton(
-                    icon: Image.asset(
-                      "assets/images/google1.png",
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      constraints: BoxConstraints(maxWidth: 160, minWidth: 120),
+                      height: 1,
+                      color: Colors.black,
                     ),
-                    onPressed: () {},
-                    iconSize: 65,
                   ),
-                  IconButton(
-                    icon: Image.asset(
-                      "assets/images/linkedin1.png",
+                  Text(
+                    "OU",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
                     ),
-                    onPressed: () {},
-                    iconSize: 65,
                   ),
-                  IconButton(
-                    icon: Image.asset(
-                      "assets/images/facebook1.png",
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      constraints: BoxConstraints(maxWidth: 160, minWidth: 120),
+                      height: 1,
+                      color: Colors.black,
                     ),
-                    iconSize: 65,
-                    onPressed: () {},
                   ),
                 ],
               ),
-            ),
-            Spacer(),
-            GestureDetector(
-              onTap: () {},
-              child: RichText(
-                  text: TextSpan(children: const [
-                TextSpan(
-                    text: "Não possui uma conta?",
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                    )),
-                TextSpan(
-                    text: " Cadastre-se",
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ))
-              ])),
-            ),
-            Spacer()
-          ],
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    IconButton(
+                      icon: Image.asset(
+                        "assets/images/google1.png",
+                      ),
+                      onPressed: () {
+                        final provider = Provider.of<GoogleLoginController>(
+                            context,
+                            listen: false);
+                        provider.googleLogin();
+                      },
+                      iconSize: 65,
+                    ),
+                    IconButton(
+                      icon: Image.asset(
+                        "assets/images/facebook1.png",
+                      ),
+                      iconSize: 65,
+                      onPressed: () {
+                        final provider = Provider.of<FacebookLoginController>(
+                            context,
+                            listen: false);
+                        provider.facebookLogin();
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

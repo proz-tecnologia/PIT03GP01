@@ -1,6 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:srminhaeiro/texts/texts_and_strings.dart';
-import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/profile_page.dart';
 
 class AppBarSliver extends StatelessWidget {
   final bool isVisible;
@@ -14,16 +13,38 @@ class AppBarSliver extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser!;
     return SliverAppBar(
-        elevation: 20,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+              gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(255, 234, 230, 230),
+              Color.fromARGB(255, 244, 242, 242),
+              Color.fromARGB(255, 231, 225, 225),
+              Color.fromARGB(255, 224, 220, 220),
+              Color.fromARGB(255, 192, 178, 178),
+              Color.fromARGB(255, 165, 151, 151),
+            ],
+          )),
+        ),
+        elevation: 40,
         leadingWidth: 80,
-        title: GeneralTexts.Home_page_title,
-        backgroundColor: const Color.fromARGB(255, 253, 250, 250),
-        leading: IconButton(
-          icon: const Icon(Icons.account_circle,
-              color: Color.fromARGB(245, 21, 20, 20)),
-          iconSize: 52,
-          onPressed: () => Navigator.pushNamed(context, ProfilePage.route),
+        title: user.displayName == null
+            ? const Text(
+                "Olá\nVisitante ",
+                style: TextStyle(color: Colors.black),
+              )
+            : Text(
+                "Olá\n${user.displayName?.split(" ").first} ${user.displayName?.split(" ").last}",
+                style: const TextStyle(color: Colors.black),
+              ),
+        leading: CircleAvatar(
+          radius: 30,
+          backgroundImage: user.photoURL == null
+              ? const NetworkImage(
+                  "https://icon-library.com/images/no-user-image-icon/no-user-image-icon-27.jpg")
+              : NetworkImage(user.photoURL!),
         ),
         expandedHeight: 100,
         actions: [

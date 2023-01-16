@@ -1,15 +1,10 @@
-import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/dados_page.dart';
-import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/notificacoes.dart';
-import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/pages/privacidade.dart';
-import 'package:srminhaeiro/ui/pages/homepage/appbar_config/profile/profile_page.dart';
+import 'package:srminhaeiro/ui/pages/check_page/check_page.dart';
+import 'package:srminhaeiro/ui/pages/forgot_password_page/forgot_password_page.dart';
 import 'package:srminhaeiro/ui/pages/homepage/controle_financeiro/controle_financeiro.dart';
-import 'package:srminhaeiro/ui/pages/homepage/entradas/extrato_entradas.dart';
 import 'package:srminhaeiro/ui/pages/homepage/homepage.dart';
-import 'package:srminhaeiro/ui/pages/homepage/saidas/saidas_extrato.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/view/criar_sonho_page.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/view/meus_sonhos_page.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/view/sonhos.dart';
-
 import 'package:srminhaeiro/ui/pages/login_page/login_page.dart';
 import 'package:srminhaeiro/ui/pages/login_page/login_page_two.dart';
 import 'package:srminhaeiro/ui/pages/login_page/onboarding.dart';
@@ -19,9 +14,13 @@ import 'package:srminhaeiro/ui/pages/menu_page/pages/conta_menu_page/conta_menu.
 import 'package:srminhaeiro/ui/pages/menu_page/pages/salario_extra_page/criargrupo_page.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/salario_extra_page/salario_extra_page.dart';
 import 'package:srminhaeiro/ui/splash/pages/splash_page.dart';
-
 import '../ui/pages/homepage/entradas/transaction_entrada.dart';
 import '../ui/pages/homepage/saidas/transaction_saida.dart';
+import '../ui/pages/menu_page/pages/profile/pages/dados_page.dart';
+import '../ui/pages/menu_page/pages/profile/pages/notificacoes.dart';
+import '../ui/pages/menu_page/pages/profile/pages/privacidade.dart';
+import '../ui/pages/menu_page/pages/profile/profile_page.dart';
+import '../ui/pages/register_page/register.dart';
 
 getRoutes() {
   return {
@@ -31,7 +30,7 @@ getRoutes() {
     ContaPage.route: (context) => const ContaPage(),
     SalarioExtraPage.route: (context) => const SalarioExtraPage(),
     SplashPage.route: (context) => const SplashPage(),
-    ProfilePage.route: (context) => const ProfilePage(),
+    ProfilePage.route: (context) => ProfilePage(),
     EntradasTransaction.route: (context) => const EntradasTransaction(),
     SaidasTransaction.route: (context) => const SaidasTransaction(),
     Controle.route: (context) => const Controle(),
@@ -43,7 +42,10 @@ getRoutes() {
     LoginPage.route: (context) => const LoginPage(),
     Onboarding.route: (context) => const Onboarding(),
     LoginPageTwo.route: (context) => const LoginPageTwo(),
+    Register.route: (context) => const Register(),
     DreamCreate.route: (context) => DreamCreate(),
+    ForgotPasswordPage.route: (context) => ForgotPasswordPage(),
     MeusSonhosPage.route: (context) => const MeusSonhosPage(),
+    CheckPage.route: (context) => CheckPage(),
   };
 }

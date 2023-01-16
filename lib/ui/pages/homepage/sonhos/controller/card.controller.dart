@@ -5,9 +5,7 @@ class CardController {
 
   double sonhovalorAtual = 0.0;
 
-  setCurrentValue(double value) => sonhovalorAtual = value;
+  double adicionarvalor = 0.0;
 
-  setTotalValue(double value) => sonhoValorTotal = value;
-
-  setDescription(String value) => nomeSonho = value;
+  DateTime mydatetime = DateTime.now();
 }

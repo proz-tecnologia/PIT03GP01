@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resource>
+    <string name="app_name">sr-minhaeiro</string>
+    <string name="facebook_app_id">1499562260542056</string>
+    <string name="fb_login_protocol_scheme">fb1499562260542056</string>
+    <string name="facebook_client_token">85ab6a7a94729a1a0feac3ed5dea3593</string>
+
+    </resource>
