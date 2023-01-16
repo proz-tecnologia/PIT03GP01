@@ -18,7 +18,8 @@ class GroupButtonConfig extends StatelessWidget {
             topLeft: Radius.circular(16),
             bottomLeft: Radius.circular(16),
             bottomRight: Radius.circular(16)),
-        color: changecolor! ? Colors.black : Colors.grey,
+        color:
+            changecolor! ? const Color.fromARGB(255, 31, 30, 30) : Colors.grey,
         boxShadow: const [
           BoxShadow(
               inset: true,

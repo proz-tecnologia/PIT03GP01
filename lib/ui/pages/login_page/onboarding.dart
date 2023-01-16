@@ -31,10 +31,10 @@ class _OnboardingState extends State<Onboarding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
               Expanded(
@@ -70,10 +70,10 @@ class _OnboardingState extends State<Onboarding> {
                     TextButton(
                         onPressed: () => Navigator.pushReplacementNamed(
                             context, HomePage.route),
-                        child: const Text(
+                        child: Text(
                           "Pular",
                           style: TextStyle(
-                            color: Colors.grey,
+                            color: Colors.grey[700],
                             fontSize: 16,
                           ),
                         )),
@@ -107,8 +107,15 @@ class _OnboardingState extends State<Onboarding> {
                             width: 60,
                             child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.black,
-                                    shape: const CircleBorder()),
+                                  backgroundColor: Colors.black,
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20),
+                                      bottomLeft: Radius.circular(20),
+                                      bottomRight: Radius.circular(20),
+                                    ),
+                                  ),
+                                ),
                                 onPressed: (() {
                                   _pageController.nextPage(
                                       duration:
@@ -165,8 +172,7 @@ List<Onboard> demoData = [
   ),
   Onboard(
     image: "assets/images/together.png",
-    title:
-        "Crie grupos com pessoas de sua confiança, para obter um salário extra",
+    title: "Crie grupos com pessoas de confiança para ter uma renda extra",
     description:
         "Na área de salário extra é possível criar grupos para juntos criarem um salário extra, saiba mais sobre no menu (preciso de ajuda) ",
   ),
@@ -194,10 +200,16 @@ class OnboardingContent extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Spacer(),
-        Image.asset(
-          image,
-          height: 350,
-          width: 350,
+        ClipRRect(
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(20),
+              bottomLeft: Radius.circular(20),
+              bottomRight: Radius.circular(20)),
+          child: Image.asset(
+            image,
+            height: 350,
+            width: 350,
+          ),
         ),
         const Spacer(),
         Text(
@@ -213,7 +225,7 @@ class OnboardingContent extends StatelessWidget {
           child: Text(
             description,
             textAlign: TextAlign.center,
-            style: const TextStyle(color: Color.fromARGB(255, 150, 150, 150)),
+            style: const TextStyle(color: Color.fromARGB(255, 52, 51, 51)),
           ),
         ),
         const Spacer(),

@@ -24,7 +24,7 @@ class ForgotPasswordPage extends StatelessWidget {
                 bottomRight: Radius.circular(16),
                 topRight: Radius.circular(0)),
           ),
-          backgroundColor: Colors.black,
+          backgroundColor: const Color.fromARGB(255, 31, 30, 30),
           onPressed: () {
             Navigator.pushReplacementNamed(context, LoginPage.route);
           },

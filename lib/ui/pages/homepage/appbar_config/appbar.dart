@@ -15,6 +15,19 @@ class AppBarSliver extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser!;
     return SliverAppBar(
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+              gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(255, 234, 230, 230),
+              Color.fromARGB(255, 244, 242, 242),
+              Color.fromARGB(255, 231, 225, 225),
+              Color.fromARGB(255, 224, 220, 220),
+              Color.fromARGB(255, 192, 178, 178),
+              Color.fromARGB(255, 165, 151, 151),
+            ],
+          )),
+        ),
         elevation: 40,
         leadingWidth: 80,
         title: user.displayName == null
@@ -26,7 +39,6 @@ class AppBarSliver extends StatelessWidget {
                 "Olá\n${user.displayName?.split(" ").first} ${user.displayName?.split(" ").last}",
                 style: const TextStyle(color: Colors.black),
               ),
-        backgroundColor: const Color.fromARGB(255, 253, 250, 250),
         leading: CircleAvatar(
           radius: 30,
           backgroundImage: user.photoURL == null

@@ -64,24 +64,25 @@ Widget buildMenuButton(BuildContext context) => FloatingActionButton.extended(
                         child: ListView(
                           children: <Widget>[
                             Container(
+                              decoration: const BoxDecoration(
+                                  gradient: LinearGradient(
+                                colors: [
+                                  Color.fromARGB(255, 234, 230, 230),
+                                  Color.fromARGB(255, 244, 242, 242),
+                                  Color.fromARGB(255, 231, 225, 225),
+                                  Color.fromARGB(255, 224, 220, 220),
+                                  Color.fromARGB(255, 192, 178, 178),
+                                  Color.fromARGB(255, 165, 151, 151),
+                                ],
+                              )),
                               height: 150,
-                              color: const Color.fromARGB(255, 255, 255, 255),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceAround,
-                                  children: const [
-                                    Text(
-                                      'Menu',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontSize: 28,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ],
+                                  children: const [],
                                 ),
                               ),
                             ),

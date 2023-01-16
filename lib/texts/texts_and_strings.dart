@@ -15,7 +15,7 @@ class GeneralTexts {
   static String home_page_mais = "Saídas";
   static String home_page_deposito_icon = "Entradas";
   static String home_page_sonhos_icon = "Sonhos";
-  static String home_page_controle_icon = "Controle\nFinanceiro";
+  static String home_page_controle_icon = "Dicas";
   // APP BAR REGION ENDS
 
   //HOME PAGE REGION BEGINS

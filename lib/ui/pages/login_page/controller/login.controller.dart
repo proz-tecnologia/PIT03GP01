@@ -28,7 +28,7 @@ class LoginController {
             "Usuário incorreto ou não consta no banco de dados!");
       } else if (exception.code == 'wrong-password') {
         _progressDialog.hide();
-        throw ExceptionUsers("O Email tá certinho, já a senha, tá incorreta!");
+        throw ExceptionUsers("Senha incorreta, tente novamente.");
       } else {
         _progressDialog.hide();
         throw ExceptionUsers("Algo deu errado!");
