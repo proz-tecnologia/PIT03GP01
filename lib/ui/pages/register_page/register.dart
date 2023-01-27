@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:mask/mask/mask.dart';
 
@@ -37,20 +39,24 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
+    final bool showFab = MediaQuery.of(context).viewInsets.bottom == 0.0;
     return Scaffold(
-      floatingActionButton: FloatingActionButton.extended(
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(16),
-                bottomLeft: Radius.circular(16),
-                bottomRight: Radius.circular(16),
-                topRight: Radius.circular(0)),
-          ),
-          backgroundColor: const Color.fromARGB(255, 31, 30, 30),
-          onPressed: () {
-            Navigator.pushReplacementNamed(context, LoginPage.route);
-          },
-          label: const Text("Fazer login")),
+      floatingActionButton: Visibility(
+        visible: showFab,
+        child: FloatingActionButton.extended(
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(16),
+                  bottomLeft: Radius.circular(16),
+                  bottomRight: Radius.circular(16),
+                  topRight: Radius.circular(0)),
+            ),
+            backgroundColor: const Color.fromARGB(255, 31, 30, 30),
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, LoginPage.route);
+            },
+            label: const Text("Fazer login")),
+      ),
       body: SafeArea(
         child: Container(
           decoration: const BoxDecoration(
@@ -133,6 +139,22 @@ class _RegisterState extends State<Register> {
                                   bottomLeft: Radius.circular(16),
                                   bottomRight: Radius.circular(16)),
                             ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(width: 2, color: Colors.redAccent),
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(16),
+                                  bottomLeft: Radius.circular(16),
+                                  bottomRight: Radius.circular(16)),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(width: 2, color: Colors.redAccent),
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(16),
+                                  bottomLeft: Radius.circular(16),
+                                  bottomRight: Radius.circular(16)),
+                            ),
                           ),
                           keyboardType: TextInputType.text,
                           controller: nomeController,
@@ -165,6 +187,22 @@ class _RegisterState extends State<Register> {
                             enabledBorder: OutlineInputBorder(
                               borderSide:
                                   BorderSide(width: 2, color: Colors.black),
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(16),
+                                  bottomLeft: Radius.circular(16),
+                                  bottomRight: Radius.circular(16)),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(width: 2, color: Colors.redAccent),
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(16),
+                                  bottomLeft: Radius.circular(16),
+                                  bottomRight: Radius.circular(16)),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(width: 2, color: Colors.redAccent),
                               borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(16),
                                   bottomLeft: Radius.circular(16),
@@ -207,6 +245,22 @@ class _RegisterState extends State<Register> {
                                     bottomLeft: Radius.circular(16),
                                     bottomRight: Radius.circular(16)),
                               ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    width: 2, color: Colors.redAccent),
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(16),
+                                    bottomLeft: Radius.circular(16),
+                                    bottomRight: Radius.circular(16)),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    width: 2, color: Colors.redAccent),
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(16),
+                                    bottomLeft: Radius.circular(16),
+                                    bottomRight: Radius.circular(16)),
+                              ),
                             ),
                             keyboardType: TextInputType.number,
                             controller: telefoneController,
@@ -240,7 +294,15 @@ class _RegisterState extends State<Register> {
                                   bottomLeft: Radius.circular(16),
                                   bottomRight: Radius.circular(16)),
                             ),
-                            errorBorder: const UnderlineInputBorder(
+                            focusedErrorBorder: const OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(width: 2, color: Colors.redAccent),
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(16),
+                                  bottomLeft: Radius.circular(16),
+                                  bottomRight: Radius.circular(16)),
+                            ),
+                            errorBorder: const OutlineInputBorder(
                               borderSide:
                                   BorderSide(width: 2, color: Colors.redAccent),
                               borderRadius: BorderRadius.only(
@@ -305,7 +367,15 @@ class _RegisterState extends State<Register> {
                                   bottomLeft: Radius.circular(16),
                                   bottomRight: Radius.circular(16)),
                             ),
-                            errorBorder: const UnderlineInputBorder(
+                            focusedErrorBorder: const OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(width: 2, color: Colors.redAccent),
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(16),
+                                  bottomLeft: Radius.circular(16),
+                                  bottomRight: Radius.circular(16)),
+                            ),
+                            errorBorder: const OutlineInputBorder(
                               borderSide:
                                   BorderSide(width: 2, color: Colors.redAccent),
                               borderRadius: BorderRadius.only(
@@ -357,10 +427,11 @@ class _RegisterState extends State<Register> {
                               color: Colors.white,
                               fontWeight: FontWeight.bold),
                         ),
-                        onpressed: () {
+                        onpressed: () async {
                           if (_formKey.currentState!.validate()) {
                             _formKey.currentState!.save();
-                            _signUp();
+                            await _signUp();
+                            Navigator.pop(context);
                           }
                         },
                       ),

@@ -46,6 +46,6 @@ getRoutes() {
     DreamCreate.route: (context) => DreamCreate(),
     ForgotPasswordPage.route: (context) => ForgotPasswordPage(),
     MeusSonhosPage.route: (context) => const MeusSonhosPage(),
-    CheckPage.route: (context) => CheckPage(),
+    CheckPage.route: (context) => const CheckPage(),
   };
 }

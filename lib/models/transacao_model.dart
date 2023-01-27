@@ -1,3 +1,4 @@
+// ignore_for_file: constant_identifier_names
 
 import 'package:uuid/uuid.dart';
 
@@ -10,9 +11,9 @@ class Transaction {
 
   Transaction(
       {this.transactionType = TransactionType.INCOME,
-        this.dateTime,
-        this.description = "",
-        this.value = 0.0});
+      this.dateTime,
+      this.description = "",
+      this.value = 0.0});
 }
 
 enum TransactionType { INCOME, EXPENSE }

@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:srminhaeiro/models/api_response.model.dart';
@@ -12,14 +11,14 @@ import 'package:flutter_date_difference/flutter_date_difference.dart';
 class CardListController extends ChangeNotifier {
   TextEditingController textEditingController = TextEditingController();
   final List<CardSonhoModel> _sonhoCardList = [];
-
   final CardController card = CardController();
 
   List<CardSonhoModel> get sonhoCardList => _sonhoCardList;
 
+  // ignore: unused_field
   bool _isLoading = true;
 
-  double currentValue = 0.0;
+  double sonhoParcela = 0.0;
 
   String nomeSonho = "";
 
@@ -75,6 +74,16 @@ class CardListController extends ChangeNotifier {
     return result.toString();
   }
 
+  currentValue(
+    double value1,
+    double value2,
+  ) {
+    var currentValue = value1 += value2;
+
+    notifyListeners();
+    return currentValue;
+  }
+
   fullDate(date) {
     final DateTime dateOne = DateTime.now();
     final DateTime dateTwo = date;
@@ -107,25 +116,21 @@ class CardListController extends ChangeNotifier {
   }
 
   String plus(double result) {
-    var value = result += currentValue;
+    var value = result += sonhoParcela;
     notifyListeners();
     return value.toString();
   }
 
-  Future<ApiResponse<CardSonhoModel>> cloudFirestoreAdd() async {
+  Future<ApiResponse<CardSonhoModel>> cloudFirestoreAdd(
+      CardSonhoModel model) async {
     try {
       var userCredential = FirebaseAuth.instance.currentUser;
-      CardSonhoModel model = CardSonhoModel(
-          nomeSonho: nomeSonho,
-          valorTotal: sonhoValorTotal,
-          valorAtual: sonhovalorAtual,
-          adicionarValor: currentValue,
-          date: dataSonho);
+
       if (userCredential != null) {
         var docRef = await FirebaseFirestore.instance
             .collection("Users")
             .doc(userCredential.uid)
-            .collection("Dreams")
+            .collection("Dreamcard")
             .add(model.toMap());
         model.uid = docRef.id;
         sonhoCardList.add(model);
@@ -142,17 +147,18 @@ class CardListController extends ChangeNotifier {
     }
   }
 
-  Future<ApiResponse<List<CardSonhoModel>>> cloudFirestoneGetAll() async {
+  Future<ApiResponse<List<CardSonhoModel>>> cloudFirestoreGetAll() async {
     try {
       _isLoading = true;
       var userCredential = FirebaseAuth.instance.currentUser;
       if (userCredential != null) {
+        sonhoCardList.clear();
         QuerySnapshot querySnapshot = await FirebaseFirestore.instance
             .collection("Users")
             .doc(userCredential.uid)
-            .collection("Sonhos")
+            .collection("Dreamcard")
             .get();
-        sonhoCardList.clear();
+
         for (var doc in querySnapshot.docs) {
           CardSonhoModel model =
               CardSonhoModel.fromFirestore(doc.data() as Map<String, dynamic>);
@@ -160,6 +166,7 @@ class CardListController extends ChangeNotifier {
           sonhoCardList.add(model);
         }
         _isLoading = false;
+
         return ApiResponse.sucess(sonhoCardList);
       } else {
         _isLoading = false;
@@ -167,6 +174,9 @@ class CardListController extends ChangeNotifier {
       }
     } on FirebaseAuthException catch (e) {
       _isLoading = false;
+      if (kDebugMode) {
+        print(e.message);
+      }
       return ApiResponse.error("Eita! Deu errado!");
     }
   }
@@ -180,7 +190,7 @@ class CardListController extends ChangeNotifier {
         await FirebaseFirestore.instance
             .collection("Users")
             .doc(userCredential.uid)
-            .collection("Sonhos")
+            .collection("Dreamcard")
             .doc(model.uid)
             .update(model.toMap());
 
@@ -208,11 +218,11 @@ class CardListController extends ChangeNotifier {
         await FirebaseFirestore.instance
             .collection("Users")
             .doc(userCredential.uid)
-            .collection("Sonhos")
+            .collection("Dreamcard")
             .doc(model.uid)
             .delete();
 
-        sonhoCardList.remove(model);
+        sonhoCardList.removeWhere((element) => element == model);
 
         return ApiResponse.sucess(true);
       } else {

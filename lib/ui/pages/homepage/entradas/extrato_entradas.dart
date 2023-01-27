@@ -5,7 +5,6 @@ import '../../../../../models/extrato.dart';
 import '../../../../../repositories/input_repository.dart';
 
 class ExtratoEntradas extends StatefulWidget {
-
   const ExtratoEntradas({Key? key}) : super(key: key);
 
   @override
@@ -41,7 +40,7 @@ class _ExtratoEntradasState extends State<ExtratoEntradas> {
           onPressed: () {
             Navigator.pop(context);
           },
-          label: Text("Voltar"),
+          label: const Text("Voltar"),
         ),
         body: Center(
           child: Padding(
@@ -93,6 +92,38 @@ class _ExtratoEntradasState extends State<ExtratoEntradas> {
                             labelStyle: TextStyle(
                               color: Color(0xff120c0c),
                             ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(width: 2, color: Colors.black),
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(16),
+                                  bottomLeft: Radius.circular(16),
+                                  bottomRight: Radius.circular(16)),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(width: 2, color: Colors.black),
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(16),
+                                  bottomLeft: Radius.circular(16),
+                                  bottomRight: Radius.circular(16)),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(width: 2, color: Colors.redAccent),
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(16),
+                                  bottomLeft: Radius.circular(16),
+                                  bottomRight: Radius.circular(16)),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(width: 2, color: Colors.redAccent),
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(16),
+                                  bottomLeft: Radius.circular(16),
+                                  bottomRight: Radius.circular(16)),
+                            ),
                           ),
                         ),
                       ),
@@ -118,7 +149,8 @@ class _ExtratoEntradasState extends State<ExtratoEntradas> {
                           decoration: InputDecoration(
                             labelText: 'Adicionar dinheiro',
                             hintText: 'R\$ 0,00',
-                            hintStyle: TextStyle(color: Color(0xffcdc4c4)),
+                            hintStyle:
+                                const TextStyle(color: Color(0xffcdc4c4)),
                             errorText: errorInputText,
                             labelStyle: const TextStyle(
                               color: Color(0xff120c0c),
@@ -152,14 +184,14 @@ class _ExtratoEntradasState extends State<ExtratoEntradas> {
                           descriptionController.clear();
                           inputRepository.saveInputList(inputs);
                         },
-                        child: const Icon(
-                          Icons.east_sharp,
-                          size: 32,
-                        ),
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
                               const Color.fromARGB(255, 33, 32, 32),
                           padding: const EdgeInsets.all(16),
+                        ),
+                        child: const Icon(
+                          Icons.east_sharp,
+                          size: 32,
                         ),
                       ),
                     ],
@@ -194,11 +226,11 @@ class _ExtratoEntradasState extends State<ExtratoEntradas> {
                       ),
                       ElevatedButton(
                         onPressed: showDeleteDialog,
-                        child: const Text('Limpar depositos'),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xff413d3d),
                           padding: const EdgeInsets.all(14),
                         ),
+                        child: const Text('Limpar depositos'),
                       ),
                     ],
                   ),

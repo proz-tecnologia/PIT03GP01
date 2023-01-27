@@ -1,5 +1,4 @@
 // ignore_for_file: use_build_context_synchronously
-
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:mask/mask/mask.dart';
@@ -79,176 +78,162 @@ class CardDosSonhos extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   SizedBox(
-                    child: Expanded(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              left: 12.0,
-                              top: 12,
-                              bottom: 8,
-                            ),
-                            child: SizedBox(
-                              width: 110,
-                              child: Text(
-                                textAlign: TextAlign.start,
-                                card.nomeSonho.toLowerCase(),
-                                style: const TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.w600),
-                              ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            left: 12.0,
+                            top: 12,
+                            bottom: 8,
+                          ),
+                          child: SizedBox(
+                            width: 110,
+                            child: Text(
+                              textAlign: TextAlign.start,
+                              card.nomeSonho.toLowerCase(),
+                              style: const TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.w600),
                             ),
                           ),
-                          IconButton(
-                            icon: const Icon(
-                              Icons.add_circle,
-                              color: Color(0xff413d3d),
-                            ),
-                            onPressed: () {
-                              showDialog(
-                                context: context,
-                                builder: (context) =>
-                                    Consumer<CardListController>(
-                                  builder: (context, value, child) =>
-                                      AlertDialog(
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(12),
-                                          bottomLeft: Radius.circular(12),
-                                          bottomRight: Radius.circular(12),
-                                          topRight: Radius.circular(0)),
-                                    ),
-                                    title: Text(
-                                        "Qual o valor da parcela que deseja adicionar ao seu sonho '${card.nomeSonho}' ?"),
-                                    actions: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: TextFormField(
-                                            maxLength: 14,
-                                            inputFormatters: [
-                                              CurrencyTextInputFormatter(
-                                                  decimalDigits: 2,
-                                                  locale: 'pt_BR',
-                                                  symbol: "")
-                                            ],
-                                            decoration: const InputDecoration(
-                                              hintText: "00,00",
-                                              helperText: "ex: R\$ 5.000,00",
-                                              focusedBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    width: 1,
-                                                    color: Colors.black),
-                                                borderRadius: BorderRadius.only(
-                                                    topLeft:
-                                                        Radius.circular(12),
-                                                    bottomLeft:
-                                                        Radius.circular(12),
-                                                    bottomRight:
-                                                        Radius.circular(12)),
-                                              ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    width: 1,
-                                                    color: Colors.black),
-                                                borderRadius: BorderRadius.only(
-                                                    topLeft:
-                                                        Radius.circular(12),
-                                                    bottomLeft:
-                                                        Radius.circular(12),
-                                                    bottomRight:
-                                                        Radius.circular(12)),
-                                              ),
-                                              prefix: Text("R\$ "),
-                                            ),
-                                            keyboardType: TextInputType.number,
-                                            controller: valorController,
-                                            validator: (value) =>
-                                                Mask.validations.money(value),
-                                            onChanged: (va) {
-                                              value.currentValue = double.parse(
-                                                  va
-                                                      .replaceAll(".", "")
-                                                      .replaceAll(",", "."));
-                                            }
-                                            /*  modelValue.adicionarvalor =
-                                                    double.parse(va
-                                                        .replaceAll(".", "")
-                                                        .replaceAll(",", ".")
-                                                        ), */
-                                            ),
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          ElevatedButton(
-                                              style: ElevatedButton.styleFrom(
-                                                shape:
-                                                    const RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.only(
-                                                          topLeft: Radius
-                                                              .circular(12),
-                                                          bottomLeft:
-                                                              Radius.circular(
-                                                                  12),
-                                                          bottomRight:
-                                                              Radius.circular(
-                                                                  12),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  0)),
-                                                ),
-                                                backgroundColor:
-                                                    const Color(0xff413d3d),
-                                              ),
-                                              onPressed: () async {
-                                                Navigator.pop(context);
-                                                await Future.delayed(
-                                                    const Duration(seconds: 2));
-                                                _progressDialog.show(
-                                                    "Adicionado parcela ao sonhos");
-                                                await Future.delayed(
-                                                    const Duration(seconds: 1));
-
-                                                _progressDialog.hide();
-                                                value.plus(value.currentValue);
-                                              },
-                                              child: const Text("Adicionar")),
-                                          ElevatedButton(
-                                              style: ElevatedButton.styleFrom(
-                                                shape:
-                                                    const RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.only(
-                                                          topLeft: Radius
-                                                              .circular(12),
-                                                          bottomLeft:
-                                                              Radius.circular(
-                                                                  12),
-                                                          bottomRight:
-                                                              Radius.circular(
-                                                                  12),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  0)),
-                                                ),
-                                                backgroundColor:
-                                                    const Color(0xff413d3d),
-                                              ),
-                                              onPressed: () =>
-                                                  Navigator.pop(context),
-                                              child: const Text("Cancelar"))
-                                        ],
-                                      )
-                                    ],
+                        ),
+                        IconButton(
+                          icon: const Icon(
+                            Icons.add_circle,
+                            color: Color(0xff413d3d),
+                          ),
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) =>
+                                  Consumer<CardListController>(
+                                builder: (context, value, child) => AlertDialog(
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(12),
+                                        bottomLeft: Radius.circular(12),
+                                        bottomRight: Radius.circular(12),
+                                        topRight: Radius.circular(0)),
                                   ),
+                                  title: Text(
+                                      "Qual o valor da parcela que deseja adicionar ao seu sonho '${card.nomeSonho}' ?"),
+                                  actions: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: TextFormField(
+                                          maxLength: 14,
+                                          inputFormatters: [
+                                            CurrencyTextInputFormatter(
+                                                decimalDigits: 2,
+                                                locale: 'pt_BR',
+                                                symbol: "")
+                                          ],
+                                          decoration: const InputDecoration(
+                                            hintText: "00,00",
+                                            helperText: "ex: R\$ 5.000,00",
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  width: 1,
+                                                  color: Colors.black),
+                                              borderRadius: BorderRadius.only(
+                                                  topLeft: Radius.circular(12),
+                                                  bottomLeft:
+                                                      Radius.circular(12),
+                                                  bottomRight:
+                                                      Radius.circular(12)),
+                                            ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  width: 1,
+                                                  color: Colors.black),
+                                              borderRadius: BorderRadius.only(
+                                                  topLeft: Radius.circular(12),
+                                                  bottomLeft:
+                                                      Radius.circular(12),
+                                                  bottomRight:
+                                                      Radius.circular(12)),
+                                            ),
+                                            prefix: Text("R\$ "),
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                          controller: valorController,
+                                          validator: (value) =>
+                                              Mask.validations.money(value),
+                                          onChanged: (va) {
+                                            value.sonhoParcela = double.parse(va
+                                                .replaceAll(".", "")
+                                                .replaceAll(",", "."));
+                                          }
+                                          /*  modelValue.adicionarvalor =
+                                                  double.parse(va
+                                                      .replaceAll(".", "")
+                                                      .replaceAll(",", ".")
+                                                      ), */
+                                          ),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              shape:
+                                                  const RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.only(
+                                                    topLeft:
+                                                        Radius.circular(12),
+                                                    bottomLeft:
+                                                        Radius.circular(12),
+                                                    bottomRight:
+                                                        Radius.circular(12),
+                                                    topRight:
+                                                        Radius.circular(0)),
+                                              ),
+                                              backgroundColor:
+                                                  const Color(0xff413d3d),
+                                            ),
+                                            onPressed: () async {
+                                              Navigator.pop(context);
+                                              _progressDialog.show(
+                                                  "Adicionado parcela ao sonhos");
+                                              await Future.delayed(
+                                                  const Duration(seconds: 1));
+                                              value.currentValue(
+                                                value.sonhovalorAtual,
+                                                value.sonhoParcela,
+                                              );
+                                              _progressDialog.hide();
+                                            },
+                                            child: const Text("Adicionar")),
+                                        ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              shape:
+                                                  const RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.only(
+                                                    topLeft:
+                                                        Radius.circular(12),
+                                                    bottomLeft:
+                                                        Radius.circular(12),
+                                                    bottomRight:
+                                                        Radius.circular(12),
+                                                    topRight:
+                                                        Radius.circular(0)),
+                                              ),
+                                              backgroundColor:
+                                                  const Color(0xff413d3d),
+                                            ),
+                                            onPressed: () =>
+                                                Navigator.pop(context),
+                                            child: const Text("Cancelar"))
+                                      ],
+                                    )
+                                  ],
                                 ),
-                              );
-                            },
-                          )
-                        ],
-                      ),
+                              ),
+                            );
+                          },
+                        )
+                      ],
                     ),
                   ),
                   Row(
@@ -310,8 +295,7 @@ class CardDosSonhos extends StatelessWidget {
                                             Navigator.pop(context);
                                             _progressDialog
                                                 .show("Removendo card...");
-                                            await Future.delayed(
-                                                const Duration(seconds: 2));
+                                            await _deleteSonho(card);
                                             _progressDialog.hide();
                                             value.removeCard(card);
                                           },
@@ -353,7 +337,7 @@ class CardDosSonhos extends StatelessWidget {
                         maximum: card.valorTotal,
                         barPointers: [
                           LinearBarPointer(
-                            value: value.currentValue,
+                            value: value.sonhovalorAtual,
                             color: const Color(0xff413d3d),
                           )
                         ],
@@ -375,6 +359,16 @@ class CardDosSonhos extends StatelessWidget {
     _progressDialog.hide();
     if (response.isError) {
       _alertDialog.showInfo(title: "Eita!", message: response.message!);
+    }
+  }
+
+  // ignore: unused_element
+  _updateSonho(int index, CardSonhoModel model) async {
+    _progressDialog.show("Adicionando parcela...");
+    final response = await _controller.cloudFirestoneUpdate(index, model);
+    _progressDialog.hide();
+    if (response.isError) {
+      _alertDialog.showInfo(title: "Ops!", message: response.message!);
     }
   }
 }

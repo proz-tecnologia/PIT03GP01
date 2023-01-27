@@ -6,8 +6,6 @@ import '../../../../../models/extrato.dart';
 import '../../../../../repositories/output_repository.dart';
 
 class ExtratoSaidas extends StatefulWidget {
-
-
   const ExtratoSaidas({Key? key}) : super(key: key);
 
   @override
@@ -118,7 +116,8 @@ class _ExtratoSaidasState extends State<ExtratoSaidas> {
                           decoration: InputDecoration(
                             labelText: 'Transferência',
                             hintText: 'R\$ 0,00',
-                            hintStyle: TextStyle(color: Color(0xffcdc4c4)),
+                            hintStyle:
+                                const TextStyle(color: Color(0xffcdc4c4)),
                             errorText: errorOutputText,
                             labelStyle: const TextStyle(
                               color: Color(0xff120c0c),
@@ -152,14 +151,14 @@ class _ExtratoSaidasState extends State<ExtratoSaidas> {
                           descriptionController.clear();
                           outputRepository.saveOutputList(outputs);
                         },
-                        child: const Icon(
-                          Icons.west,
-                          size: 32,
-                        ),
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
                               const Color.fromARGB(255, 33, 32, 32),
                           padding: const EdgeInsets.all(16),
+                        ),
+                        child: const Icon(
+                          Icons.west,
+                          size: 32,
                         ),
                       ),
                     ],
@@ -194,11 +193,11 @@ class _ExtratoSaidasState extends State<ExtratoSaidas> {
                       ),
                       ElevatedButton(
                         onPressed: showDeleteDialog,
-                        child: const Text('Limpar Transferências'),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xff413d3d),
                           padding: const EdgeInsets.all(14),
                         ),
+                        child: const Text('Limpar Transferências'),
                       ),
                     ],
                   ),

@@ -1,6 +1,3 @@
-
-
-
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -22,7 +19,8 @@ class _SaidasTransactionState extends State<SaidasTransaction> {
       'Saidas',
       TransactionType.EXPENSE,
       Colors.green,
-    ),];
+    ),
+  ];
   final _formKey = GlobalKey<FormState>();
   final _transactionType = TransactionType.EXPENSE;
   var _description = "";
@@ -32,15 +30,26 @@ class _SaidasTransactionState extends State<SaidasTransaction> {
 
   @override
   Widget build(BuildContext context) {
+    final bool showFab = MediaQuery.of(context).viewInsets.bottom == 0.0;
     return Scaffold(
-        floatingActionButton: FloatingActionButton.extended(
-          backgroundColor: Colors.black,
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          label: const Text("Voltar"),),
-
-        body:Center(
+        floatingActionButton: Visibility(
+          visible: showFab,
+          child: FloatingActionButton.extended(
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(16),
+                  bottomLeft: Radius.circular(16),
+                  bottomRight: Radius.circular(16),
+                  topRight: Radius.circular(0)),
+            ),
+            backgroundColor: const Color.fromARGB(255, 31, 30, 30),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            label: const Text("Voltar"),
+          ),
+        ),
+        body: Center(
             child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Column(
@@ -57,7 +66,8 @@ class _SaidasTransactionState extends State<SaidasTransaction> {
                                 topLeft: Radius.circular(20),
                               ),
                               child: Container(
-                                padding: const EdgeInsets.symmetric(vertical: 32),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 32),
                                 color: const Color(0xff413d3d),
                                 child: const Text(
                                   'Saídas',
@@ -73,20 +83,53 @@ class _SaidasTransactionState extends State<SaidasTransaction> {
                           ),
                         ],
                       ),
-
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 24),
-                        child: SingleChildScrollView(
-                          child: Form(
-                            key: _formKey,
-                            child:
-                            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                      SingleChildScrollView(
+                        child: Form(
+                          key: _formKey,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
                               const SizedBox(
                                 height: 16,
                               ),
                               TextFormField(
-                                decoration: const InputDecoration(labelText: "Descrição"),
-                                autovalidateMode: AutovalidateMode.onUserInteraction,
+                                decoration: const InputDecoration(
+                                  labelText: "Descrição",
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        width: 2, color: Colors.black),
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(16),
+                                        bottomLeft: Radius.circular(16),
+                                        bottomRight: Radius.circular(16)),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        width: 2, color: Colors.black),
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(16),
+                                        bottomLeft: Radius.circular(16),
+                                        bottomRight: Radius.circular(16)),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        width: 2, color: Colors.redAccent),
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(16),
+                                        bottomLeft: Radius.circular(16),
+                                        bottomRight: Radius.circular(16)),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        width: 2, color: Colors.redAccent),
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(16),
+                                        bottomLeft: Radius.circular(16),
+                                        bottomRight: Radius.circular(16)),
+                                  ),
+                                ),
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
                                 maxLength: 30,
                                 validator: (value) {
                                   if (value!.length < 3 || value.length > 30) {
@@ -94,7 +137,8 @@ class _SaidasTransactionState extends State<SaidasTransaction> {
                                   }
                                   return null;
                                 },
-                                onSaved: ((newValue) => _description = newValue!),
+                                onSaved: ((newValue) =>
+                                    _description = newValue!),
                               ),
                               const SizedBox(
                                 height: 16,
@@ -103,40 +147,111 @@ class _SaidasTransactionState extends State<SaidasTransaction> {
                                 keyboardType: TextInputType.number,
                                 inputFormatters: [
                                   CurrencyTextInputFormatter(
-                                      locale: "pt_BR", decimalDigits: 2, symbol: '')
+                                      locale: "pt_BR",
+                                      decimalDigits: 2,
+                                      symbol: '')
                                 ],
-                                autovalidateMode: AutovalidateMode.onUserInteraction,
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
                                 decoration: const InputDecoration(
-                                    labelText: "Valor",
-                                    hintText: "0,00",
-                                    prefix: Text("R\$ "),
-                                    ),
+                                  labelText: "Valor",
+                                  hintText: "0,00",
+                                  prefix: Text("R\$ "),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        width: 2, color: Colors.black),
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(16),
+                                        bottomLeft: Radius.circular(16),
+                                        bottomRight: Radius.circular(16)),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        width: 2, color: Colors.black),
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(16),
+                                        bottomLeft: Radius.circular(16),
+                                        bottomRight: Radius.circular(16)),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        width: 2, color: Colors.redAccent),
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(16),
+                                        bottomLeft: Radius.circular(16),
+                                        bottomRight: Radius.circular(16)),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        width: 2, color: Colors.redAccent),
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(16),
+                                        bottomLeft: Radius.circular(16),
+                                        bottomRight: Radius.circular(16)),
+                                  ),
+                                ),
                                 maxLength: 10,
                                 validator: (value) {
                                   if (value!.isEmpty) {
                                     return "Informe um valor.";
                                   }
-                                  final valueDouble = double.parse(
-                                      value.replaceAll('.', '').replaceAll(',', '.'));
+                                  final valueDouble = double.parse(value
+                                      .replaceAll('.', '')
+                                      .replaceAll(',', '.'));
                                   if (valueDouble == 0) {
                                     return "Informe um valor diferente de 0";
                                   }
                                   return null;
                                 },
                                 onSaved: (newValue) => _value = double.parse(
-                                    newValue!.replaceAll('.', '').replaceAll(',', '.')),
+                                    newValue!
+                                        .replaceAll('.', '')
+                                        .replaceAll(',', '.')),
                               ),
                               const SizedBox(
                                 height: 8,
                               ),
-
                               TextFormField(
                                 controller: dateController,
                                 keyboardType: TextInputType.datetime,
-                                decoration:
-                                const InputDecoration(labelText: "Data da Operação"),
+                                decoration: const InputDecoration(
+                                  labelText: "Data da Operação",
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        width: 2, color: Colors.black),
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(16),
+                                        bottomLeft: Radius.circular(16),
+                                        bottomRight: Radius.circular(16)),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        width: 2, color: Colors.black),
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(16),
+                                        bottomLeft: Radius.circular(16),
+                                        bottomRight: Radius.circular(16)),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        width: 2, color: Colors.redAccent),
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(16),
+                                        bottomLeft: Radius.circular(16),
+                                        bottomRight: Radius.circular(16)),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        width: 2, color: Colors.redAccent),
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(16),
+                                        bottomLeft: Radius.circular(16),
+                                        bottomRight: Radius.circular(16)),
+                                  ),
+                                ),
                                 maxLength: 10,
-                                autovalidateMode: AutovalidateMode.onUserInteraction,
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
                                 validator: (value) {
                                   if (value!.isEmpty) {
                                     return "Informe uma data.";
@@ -144,28 +259,37 @@ class _SaidasTransactionState extends State<SaidasTransaction> {
                                   return null;
                                 },
                                 onTap: () async {
-                                  FocusScope.of(context).requestFocus(FocusNode());
+                                  FocusScope.of(context)
+                                      .requestFocus(FocusNode());
                                   DateTime? date = await showDatePicker(
-                                      builder:
-                                          (context, child)=> Theme(
-                                        data:
-                                        Theme.of(context).copyWith(colorScheme:const ColorScheme.dark(
-                                            primary: Colors.black,
-                                            onPrimary: Colors.white,
-                                            onSurface: Colors.grey
-                                        )),
-                                        child: child!,),
-                                      firstDate:
-                                      DateTime.now().subtract(const Duration(days: 360)),
+                                      builder: (context, child) => Theme(
+                                            data: Theme.of(context).copyWith(
+                                              colorScheme:
+                                                  const ColorScheme.dark(
+                                                      primary: Colors.white,
+                                                      onPrimary: Colors.black,
+                                                      onSurface: Colors.white,
+                                                      surface: Colors.black),
+                                              dialogBackgroundColor:
+                                                  Colors.black,
+                                            ),
+                                            child: child!,
+                                          ),
+                                      firstDate: DateTime.now()
+                                          .subtract(const Duration(days: 360)),
                                       lastDate: DateTime.now(),
-                                      initialDate: _dateTime, context: context);
+                                      initialDate: _dateTime,
+                                      context: context);
                                   _dateTime = date ?? _dateTime;
                                   dateController.text =
-                                  "${_dateTime.day}/${_dateTime.month}/${_dateTime.year}";
+                                      "${_dateTime.day}/${_dateTime.month}/${_dateTime.year}";
                                 },
                               ),
-                              const SizedBox(height: 32,),
-                              Row(mainAxisAlignment: MainAxisAlignment.end,
+                              const SizedBox(
+                                height: 32,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   ElevatedButton(
                                       onPressed: () {
@@ -177,31 +301,38 @@ class _SaidasTransactionState extends State<SaidasTransaction> {
                                               description: _description,
                                               value: _value);
 
-                                          Provider.of<ExtratoProvider>(context, listen: false)
+                                          Provider.of<ExtratoProvider>(context,
+                                                  listen: false)
                                               .add(transaction);
                                           Navigator.pop(context);
                                         }
                                       },
                                       style: ElevatedButton.styleFrom(
-                                        backgroundColor:
-                                        const Color.fromARGB(255, 33, 32, 32),
+                                        shape: const RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(16),
+                                              bottomLeft: Radius.circular(16),
+                                              bottomRight: Radius.circular(16),
+                                              topRight: Radius.circular(0)),
+                                        ),
+                                        backgroundColor: const Color.fromARGB(
+                                            255, 31, 30, 30),
                                         padding: const EdgeInsets.all(16),
                                       ),
-                                      child:const Icon(
+                                      child: const Icon(
                                         Icons.east_sharp,
                                         size: 32,
                                       )),
                                 ],
                               ),
                             ],
-                            ),
                           ),
-
                         ),
                       ),
                     ]))));
   }
 }
+
 class TransactionTypeOption {
   String label;
   TransactionType type;
