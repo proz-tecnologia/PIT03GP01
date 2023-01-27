@@ -9,7 +9,7 @@ class Dados extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey,
       floatingActionButton: FloatingActionButton.extended(
-        label: Text("Voltar"),
+        label: const Text("Voltar"),
         onPressed: () {
           Navigator.pop(context);
         },

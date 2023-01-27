@@ -44,11 +44,7 @@ class CardOnTap extends StatelessWidget {
                 gradient: const LinearGradient(
                   colors: [
                     Color.fromARGB(255, 234, 230, 230),
-                    Color.fromARGB(255, 244, 242, 242),
-                    Color.fromARGB(255, 231, 225, 225),
-                    Color.fromARGB(255, 224, 220, 220),
-                    Color.fromARGB(255, 192, 178, 178),
-                    Color.fromARGB(255, 165, 151, 151),
+                    Color.fromARGB(255, 228, 139, 139)
                   ],
                 ),
                 borderRadius: const BorderRadius.only(
@@ -96,7 +92,7 @@ class CardOnTap extends StatelessWidget {
                                   maximum: card.valorTotal,
                                   barPointers: [
                                     LinearBarPointer(
-                                      value: value.currentValue,
+                                      value: value.sonhoParcela,
                                       color: const Color(0xff413d3d),
                                     )
                                   ],
@@ -111,7 +107,7 @@ class CardOnTap extends StatelessWidget {
                                 bottomLeft: Radius.circular(20),
                                 bottomRight: Radius.circular(20)),
                             child: Image.asset(
-                              "assets/images/SrMinhaeiroo.png",
+                              "assets/images/esonho.png",
                               height: 120,
                               width: 120,
                             ),
@@ -150,7 +146,7 @@ class CardOnTap extends StatelessWidget {
                                 )),
                             TextSpan(
                                 text:
-                                    "${value.missingValue(card.valorTotal, value.currentValue)}\n",
+                                    "${value.missingValue(card.valorTotal, value.sonhoParcela)}\n",
                                 style: const TextStyle(
                                   fontSize: 20,
                                   color: Colors.black,
@@ -192,7 +188,7 @@ class CardOnTap extends StatelessWidget {
                     child: SizedBox(
                       width: MediaQuery.of(context).size.width * 1,
                       child: Text(
-                        "Valor das parcelas mensais:\n\n ${value.valueDivideByMonths(double.parse(value.missingValueTostring(card.valorTotal, value.currentValue)), card.date)}",
+                        "Valor das parcelas mensais:\n\n ${value.valueDivideByMonths(double.parse(value.missingValueTostring(card.valorTotal, value.sonhoParcela)), card.date)}",
                         textAlign: TextAlign.start,
                         style: const TextStyle(
                             color: Colors.black,

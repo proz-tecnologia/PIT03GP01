@@ -4,7 +4,6 @@ import 'package:currency_text_input_formatter/currency_text_input_formatter.dart
 import 'package:flutter/material.dart';
 import 'package:mask/mask/mask.dart';
 import 'package:provider/provider.dart';
-import 'package:srminhaeiro/ui/components/alert_dialog.component.dart';
 import 'package:srminhaeiro/ui/components/progress_dialog.component.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/controller/card.controller.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/controller/card.list.controller.dart';
@@ -16,36 +15,33 @@ class DreamCreate extends StatelessWidget {
   DreamCreate({super.key});
 
   final TextEditingController nomeSonhoController = TextEditingController();
-
   final TextEditingController dateController = TextEditingController();
-
   final TextEditingController valorController = TextEditingController();
-
   final _formKey = GlobalKey<FormState>();
-
   final CardController modelValue = CardController();
-  DateTime mydatetime = DateTime.now();
   final _progressDialog = ProgressDialogComponent();
-  final _alertDialog = AlertDialogComponent();
-
   final CardListController _controller = CardListController();
 
   @override
   Widget build(BuildContext context) {
+    final bool showFab = MediaQuery.of(context).viewInsets.bottom == 0.0;
     return Scaffold(
-      backgroundColor: Colors.grey[300],
-      floatingActionButton: FloatingActionButton.extended(
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(12),
-              bottomLeft: Radius.circular(12),
-              bottomRight: Radius.circular(12)),
+      backgroundColor: const Color.fromARGB(255, 242, 206, 219),
+      floatingActionButton: Visibility(
+        visible: showFab,
+        child: FloatingActionButton.extended(
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(12),
+                bottomLeft: Radius.circular(12),
+                bottomRight: Radius.circular(12)),
+          ),
+          backgroundColor: const Color.fromARGB(255, 31, 30, 30),
+          label: const Text("Voltar"),
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
-        backgroundColor: const Color.fromARGB(255, 31, 30, 30),
-        label: const Text("Voltar"),
-        onPressed: () {
-          Navigator.pop(context);
-        },
       ),
       body: SafeArea(
         child: Consumer<CardListController>(
@@ -55,72 +51,82 @@ class DreamCreate extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        const Text(
-                          "Sonhos",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 32,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        IconButton(
-                            color: const Color(0xff120c0c),
-                            icon: const Icon(Icons.add_a_photo),
-                            iconSize: 40,
-                            onPressed: () {
-                              showModalBottomSheet<void>(
-                                backgroundColor: const Color(0xfffbf1f1),
-                                shape: const RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(60)),
-                                ),
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return Padding(
-                                    padding: const EdgeInsets.only(
-                                      top: 32.0,
-                                      left: 32,
-                                    ),
-                                    child: SizedBox(
-                                      height: 120,
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          const Text(
-                                            "Alterar Foto do sonho",
-                                            style: TextStyle(fontSize: 20),
-                                          ),
-                                          TextButton(
-                                              onPressed: () {},
-                                              child: const Text(
-                                                  "Selecionar na galeria")),
-                                          TextButton(
-                                              onPressed: () {},
-                                              child: Text(
-                                                "Remover foto",
-                                                style: TextStyle(
-                                                    color: Colors.red[300]),
-                                              ))
-                                        ],
-                                      ),
-                                    ),
-                                  );
-                                },
-                              );
-                            }),
-                      ],
+                  const Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: Text(
+                      "Sonhos",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                   const Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: Text(
+                      textAlign: TextAlign.center,
+                      "Adicione uma foto seu sonho (Opcional):",
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                  Stack(
+                    alignment: AlignmentDirectional.bottomEnd,
+                    children: [
+                      IconButton(
+                          color: const Color(0xff120c0c),
+                          icon: const Icon(Icons.image),
+                          iconSize: 48,
+                          onPressed: () {
+                            showModalBottomSheet<void>(
+                              backgroundColor: const Color(0xfffbf1f1),
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(60)),
+                              ),
+                              context: context,
+                              builder: (BuildContext context) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(
+                                    top: 32.0,
+                                    left: 32,
+                                  ),
+                                  child: SizedBox(
+                                    height: 120,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        const Text(
+                                          "Alterar Foto do sonho",
+                                          style: TextStyle(fontSize: 20),
+                                        ),
+                                        TextButton(
+                                            onPressed: () {},
+                                            child: const Text(
+                                                "Selecionar na galeria")),
+                                        TextButton(
+                                            onPressed: () {},
+                                            child: Text(
+                                              "Remover foto",
+                                              style: TextStyle(
+                                                  color: Colors.red[300]),
+                                            ))
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                          }),
+                      const Icon(Icons.add_circle)
+                    ],
+                  ),
+                  const Padding(
                     padding: EdgeInsets.only(
-                      top: 46.0,
+                      top: 16.0,
                     ),
                     child: Text(
                       "Coloque um nome especial no seu sonho:",
@@ -151,12 +157,28 @@ class DreamCreate extends StatelessWidget {
                                 bottomLeft: Radius.circular(16),
                                 bottomRight: Radius.circular(16)),
                           ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 2, color: Colors.redAccent),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(16),
+                                bottomLeft: Radius.circular(16),
+                                bottomRight: Radius.circular(16)),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 2, color: Colors.redAccent),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(16),
+                                bottomLeft: Radius.circular(16),
+                                bottomRight: Radius.circular(16)),
+                          ),
                         ),
                         keyboardType: TextInputType.text,
                         controller: nomeSonhoController,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) => Mask.validations.generic(value),
-                        onChanged: (v) => modelValue.nomeSonho = v,
+                        onChanged: value.nomeSonhoOnChanged,
                       ),
                     ),
                   ),
@@ -187,12 +209,28 @@ class DreamCreate extends StatelessWidget {
                                 bottomLeft: Radius.circular(16),
                                 bottomRight: Radius.circular(16)),
                           ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 2, color: Colors.redAccent),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(16),
+                                bottomLeft: Radius.circular(16),
+                                bottomRight: Radius.circular(16)),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 2, color: Colors.redAccent),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(16),
+                                bottomLeft: Radius.circular(16),
+                                bottomRight: Radius.circular(16)),
+                          ),
                           labelText: "Data de realização"),
                       maxLength: 10,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
-                      validator: (value) {
-                        if (value!.isEmpty ||
-                            mydatetime.isBefore(DateTime.now())) {
+                      validator: (va) {
+                        if (va!.isEmpty ||
+                            value.dataSonho.isBefore(DateTime.now())) {
                           return "Informe uma data válida.";
                         }
                         return null;
@@ -212,14 +250,13 @@ class DreamCreate extends StatelessWidget {
                                   ),
                                   child: child!,
                                 ),
-                            firstDate: DateTime.now()
-                                .subtract(const Duration(days: 360)),
+                            firstDate: DateTime.now(),
                             lastDate: DateTime(2072, 12, 31),
-                            initialDate: mydatetime,
+                            initialDate: value.dataSonho,
                             context: context);
-                        mydatetime = date ?? mydatetime;
+                        value.dataSonho = date ?? value.dataSonho;
                         dateController.text =
-                            "${mydatetime.day}/${mydatetime.month}/${mydatetime.year}";
+                            "${value.dataSonho.day}/${value.dataSonho.month}/${value.dataSonho.year}";
                       },
                     ),
                   ),
@@ -255,14 +292,29 @@ class DreamCreate extends StatelessWidget {
                                 bottomLeft: Radius.circular(16),
                                 bottomRight: Radius.circular(16)),
                           ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 2, color: Colors.redAccent),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(16),
+                                bottomLeft: Radius.circular(16),
+                                bottomRight: Radius.circular(16)),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 2, color: Colors.redAccent),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(16),
+                                bottomLeft: Radius.circular(16),
+                                bottomRight: Radius.circular(16)),
+                          ),
                           prefix: Text("R\$ "),
                         ),
                         keyboardType: TextInputType.number,
                         controller: valorController,
                         validator: (value) => Mask.validations.money(value),
-                        onChanged: (va) => modelValue.sonhoValorTotal =
-                            double.parse(
-                                va.replaceAll(".", "").replaceAll(",", "."))),
+                        onChanged: (va) => value.sonhoValorTotal = double.parse(
+                            va.replaceAll(".", "").replaceAll(",", "."))),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
@@ -287,17 +339,15 @@ class DreamCreate extends StatelessWidget {
                             onPressed: () async {
                               if (_formKey.currentState!.validate()) {
                                 _progressDialog.show("Gerando card dos sonhos");
-                                await Future.delayed(
-                                    const Duration(seconds: 2));
-                                _progressDialog.hide();
                                 var model = CardSonhoModel(
-                                    nomeSonho: modelValue.nomeSonho,
-                                    valorTotal: modelValue.sonhoValorTotal,
-                                    valorAtual: modelValue.sonhovalorAtual,
-                                    adicionarValor: modelValue.adicionarvalor,
-                                    date: mydatetime);
+                                    nomeSonho: value.nomeSonho,
+                                    valorTotal: value.sonhoValorTotal,
+                                    valorAtual: value.sonhovalorAtual,
+                                    adicionarValor: value.sonhoParcela,
+                                    date: value.dataSonho);
                                 value.addCard(model);
-
+                                await _controller.cloudFirestoreAdd(model);
+                                _progressDialog.hide();
                                 Navigator.pop(context);
                               }
                             },
@@ -315,14 +365,5 @@ class DreamCreate extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  _addCardDosSonhos() async {
-    _progressDialog.show("Gerando card dos sonhos");
-    var response = await _controller.cloudFirestoreAdd();
-    _progressDialog.hide();
-    if (response.isError) {
-      _alertDialog.showInfo(title: "Eita!", message: response.message!);
-    }
   }
 }

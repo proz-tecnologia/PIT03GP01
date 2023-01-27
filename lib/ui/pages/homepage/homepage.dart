@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:srminhaeiro/ui/pages/homepage/appbar_config/appbar.dart';
+import 'package:srminhaeiro/ui/pages/homepage/sonhos/controller/card.list.controller.dart';
 
 import 'package:srminhaeiro/ui/pages/homepage/widgets/icons_list.dart';
 import 'package:srminhaeiro/ui/pages/homepage/transactions_body.dart';
@@ -18,6 +20,12 @@ class HomePage extends StatefulWidget {
 bool visible = false;
 
 class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    context.read<CardListController>().cloudFirestoreGetAll();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

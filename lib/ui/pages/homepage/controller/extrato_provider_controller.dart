@@ -1,20 +1,16 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:srminhaeiro/mock/mock_transacao.dart';
 import 'package:srminhaeiro/models/transacao_model.dart';
 
-
-class ExtratoProvider extends ChangeNotifier{
+class ExtratoProvider extends ChangeNotifier {
   final List<Transaction> _extratoProvider = [];
 
-  TransactionController(){
+  transactionController() {
     _extratoProvider.addAll(TransactionMock.generateTransaction());
     _extratoProvider.sort((a, b) => b.dateTime!.compareTo(a.dateTime!));
   }
 
   List<Transaction> get extratoProvider => _extratoProvider;
-
-
 
   double get getTotalIncoming {
     double value = 0;
@@ -25,6 +21,7 @@ class ExtratoProvider extends ChangeNotifier{
     }
     return value;
   }
+
   double get getTotalOutcoming {
     double value = 0;
     var filtered = extratoProvider
@@ -50,6 +47,4 @@ class ExtratoProvider extends ChangeNotifier{
     extratoProvider.removeAt(index);
     notifyListeners();
   }
-
-
 }

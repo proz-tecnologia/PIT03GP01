@@ -12,7 +12,7 @@ import 'package:srminhaeiro/util/dark_mode.dart';
 import 'package:srminhaeiro/util/routes.dart';
 import 'package:srminhaeiro/ui/pages/homepage/controller/extrato_provider_controller.dart';
 
-Future main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
   runApp(const MyApp());
