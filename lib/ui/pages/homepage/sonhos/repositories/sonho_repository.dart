@@ -82,7 +82,8 @@ class SonhosRepository {
             model.valorTotal,
             model.valorAtual,
             model.adicionarValor,
-            model.date);
+            model.date,
+            model.date2);
 
         return ApiResponse.sucess(true);
       } else {

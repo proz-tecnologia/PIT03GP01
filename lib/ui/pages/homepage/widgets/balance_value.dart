@@ -21,9 +21,9 @@ class BalanceValue extends StatelessWidget {
     return SliverToBoxAdapter(
       child: Consumer<ExtratoProvider>(
         builder: (context, extratoProvider, child) => SizedBox(
-          height: MediaQuery.of(context).size.height * 0.1,
+          height: MediaQuery.of(context).size.height * 0.2,
           child: Center(
-            child: Row(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -36,6 +36,32 @@ class BalanceValue extends StatelessWidget {
                       fontSize: 40,
                       fontWeight: FontWeight.bold),
                 ),
+                Padding(
+                  padding: const EdgeInsets.all(32.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text(
+                        isVisible
+                            ? '+ ${(extratoProvider.getTotalIncoming).formatBRL}'
+                            : "..........",
+                        style: const TextStyle(
+                            color: Color(0xff2f2a2a),
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        isVisible
+                            ? '- ${(extratoProvider.getTotalOutcoming).formatBRL}'
+                            : "..........",
+                        style: const TextStyle(
+                            color: Color(0xff2f2a2a),
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                )
               ],
             ),
           ),

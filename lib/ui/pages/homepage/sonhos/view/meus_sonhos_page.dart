@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:srminhaeiro/Util/group_button_config.dart';
 
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/controller/card.list.controller.dart';
+import 'package:srminhaeiro/ui/pages/homepage/sonhos/view/criar_sonho_page.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/widgets/card_dos_sonhos.dart';
 
 class MeusSonhosPage extends StatelessWidget {
@@ -15,10 +17,11 @@ class MeusSonhosPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton.extended(
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(12),
-              bottomLeft: Radius.circular(12),
-              bottomRight: Radius.circular(12),
-              topRight: Radius.circular(0)),
+            topLeft: Radius.elliptical(25, 50),
+            // topRight: Radius.elliptical(60, 20),
+            bottomLeft: Radius.elliptical(25, 50),
+            bottomRight: Radius.elliptical(25, 50),
+          ),
         ),
         backgroundColor: const Color.fromARGB(255, 31, 30, 30),
         label: const Text("Voltar"),
@@ -61,7 +64,23 @@ class MeusSonhosPage extends StatelessWidget {
                                     fontSize: 20, fontWeight: FontWeight.w500),
                               ),
                             ),
-                          )
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 32, left: 8.0, right: 8.0, bottom: 12),
+                            child: GroupButtonConfig(
+                                changecolor: true,
+                                text: const Text(
+                                  "Criar Sonhos",
+                                  style: TextStyle(
+                                    fontSize: 22,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                onpressed: () => Navigator.pushReplacementNamed(
+                                    context, DreamCreate.route)),
+                          ),
                         ],
                       )
                     : Expanded(

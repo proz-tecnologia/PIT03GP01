@@ -16,17 +16,7 @@ class AppBarSliver extends StatelessWidget {
     final user = FirebaseAuth.instance.currentUser!;
     return SliverAppBar(
         flexibleSpace: Container(
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-            colors: [
-              Color.fromARGB(255, 234, 230, 230),
-              Color.fromARGB(255, 244, 242, 242),
-              Color.fromARGB(255, 231, 225, 225),
-              Color.fromARGB(255, 224, 220, 220),
-              Color.fromARGB(255, 192, 178, 178),
-              Color.fromARGB(255, 165, 151, 151),
-            ],
-          )),
+          color: const Color.fromARGB(255, 230, 230, 233),
         ),
         elevation: 40,
         leadingWidth: 80,
@@ -40,10 +30,11 @@ class AppBarSliver extends StatelessWidget {
                 style: const TextStyle(color: Colors.black),
               ),
         leading: CircleAvatar(
-          radius: 30,
+          radius: 60,
           backgroundImage: user.photoURL == null
               ? const NetworkImage(
-                  "https://icon-library.com/images/no-user-image-icon/no-user-image-icon-27.jpg")
+                  "https://icon-library.com/images/2018/1644353_world-of-warcraft-world-of-warcraft-battle-for.png",
+                )
               : NetworkImage(user.photoURL!),
         ),
         expandedHeight: 100,

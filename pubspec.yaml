@@ -58,6 +58,7 @@ dependencies:
   google_sign_in: ^5.4.2
   font_awesome_flutter: ^10.3.0
   flutter_facebook_auth: ^5.0.7
+  flutter_speed_dial: ^6.2.0
 
   
 

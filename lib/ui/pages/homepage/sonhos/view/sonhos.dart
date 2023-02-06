@@ -21,10 +21,11 @@ class _SonhosState extends State<Sonhos> {
       floatingActionButton: FloatingActionButton.extended(
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(12),
-              bottomLeft: Radius.circular(12),
-              bottomRight: Radius.circular(12),
-              topRight: Radius.circular(0)),
+            topLeft: Radius.elliptical(25, 50),
+            // topRight: Radius.elliptical(60, 20),
+            bottomLeft: Radius.elliptical(25, 50),
+            bottomRight: Radius.elliptical(25, 50),
+          ),
         ),
         backgroundColor: const Color.fromARGB(255, 31, 30, 30),
         label: const Text("Voltar"),
@@ -34,21 +35,11 @@ class _SonhosState extends State<Sonhos> {
       ),
       body: SafeArea(
         child: Container(
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-            colors: [
-              Color.fromARGB(255, 234, 230, 230),
-              Color.fromARGB(255, 244, 242, 242),
-              Color.fromARGB(255, 231, 225, 225),
-              Color.fromARGB(255, 224, 220, 220),
-              Color.fromARGB(255, 192, 178, 178),
-              Color.fromARGB(255, 165, 151, 151),
-            ],
-          )),
+          color: const Color.fromARGB(255, 230, 230, 233),
           child: Center(
             child: Padding(
               padding: const EdgeInsets.all(16),
-              child: ListView(
+              child: Column(
                 /*  mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.max, */
                 children: [
@@ -71,6 +62,30 @@ class _SonhosState extends State<Sonhos> {
                       ),
                     ],
                   ),
+                  const Divider(
+                    thickness: 3,
+                    endIndent: 150,
+                  ),
+                  const Divider(
+                    thickness: 3,
+                    endIndent: 20,
+                    indent: 150,
+                  ),
+                  const Divider(
+                    thickness: 3,
+                    endIndent: 150,
+                    indent: 40,
+                  ),
+                  const Divider(
+                    thickness: 3,
+                    endIndent: 60,
+                    indent: 150,
+                  ),
+                  const Divider(
+                    thickness: 3,
+                    endIndent: 150,
+                    indent: 120,
+                  ),
                   Padding(
                     padding: const EdgeInsets.only(
                         top: 8, left: 8, right: 8, bottom: 64.0),
@@ -80,9 +95,11 @@ class _SonhosState extends State<Sonhos> {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: const BorderRadius.only(
-                                topLeft: Radius.circular(16),
-                                bottomLeft: Radius.circular(16),
-                                bottomRight: Radius.circular(16)),
+                              topLeft: Radius.elliptical(25, 50),
+                              // topRight: Radius.elliptical(60, 20),
+                              bottomLeft: Radius.elliptical(25, 50),
+                              bottomRight: Radius.elliptical(25, 50),
+                            ),
                             color: Colors.grey[800],
                           ),
                           child: const Text(

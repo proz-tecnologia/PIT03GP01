@@ -15,9 +15,11 @@ class GroupButtonConfig extends StatelessWidget {
       height: 48,
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(16),
-            bottomLeft: Radius.circular(16),
-            bottomRight: Radius.circular(16)),
+          topLeft: Radius.elliptical(25, 50),
+          // topRight: Radius.elliptical(60, 20),
+          bottomLeft: Radius.elliptical(25, 50),
+          bottomRight: Radius.elliptical(25, 50),
+        ),
         color:
             changecolor! ? const Color.fromARGB(255, 31, 30, 30) : Colors.grey,
         boxShadow: const [

@@ -15,19 +15,24 @@ class CardOnTap extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<CardListController>(
       builder: (context, value, child) => FractionallySizedBox(
-        heightFactor: 0.90,
+        heightFactor: 0.93,
         child: ClipRRect(
-          borderRadius: const BorderRadius.only(topLeft: Radius.circular(60)),
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.elliptical(160, 80),
+            //topRight: Radius.elliptical(60, 20),
+          ),
           child: Scaffold(
+            backgroundColor: Colors.transparent,
             floatingActionButton: Padding(
               padding: const EdgeInsets.all(8.0),
               child: FloatingActionButton.extended(
                 shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(12),
-                      bottomLeft: Radius.circular(12),
-                      bottomRight: Radius.circular(12),
-                      topRight: Radius.circular(0)),
+                    topLeft: Radius.elliptical(25, 50),
+                    // topRight: Radius.elliptical(60, 20),
+                    bottomLeft: Radius.elliptical(25, 50),
+                    bottomRight: Radius.elliptical(25, 50),
+                  ),
                 ),
                 backgroundColor: const Color.fromARGB(255, 31, 30, 30),
                 label: const Text(
@@ -47,9 +52,6 @@ class CardOnTap extends StatelessWidget {
                     Color.fromARGB(255, 228, 139, 139)
                   ],
                 ),
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                ),
                 color: Colors.grey[300],
                 boxShadow: const [
                   BoxShadow(
@@ -60,11 +62,12 @@ class CardOnTap extends StatelessWidget {
                 ],
               ),
               child: Column(
-                mainAxisSize: MainAxisSize.min,
                 children: [
                   Padding(
-                    padding:
-                        const EdgeInsets.only(left: 8, top: 16.0, bottom: 40),
+                    padding: const EdgeInsets.only(
+                      left: 8,
+                      top: 16.0,
+                    ),
                     child: SizedBox(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -77,15 +80,16 @@ class CardOnTap extends StatelessWidget {
                                 height: 30,
                                 width: 200,
                                 child: Text(
+                                  overflow: TextOverflow.ellipsis,
                                   textAlign: TextAlign.start,
                                   card.nomeSonho,
                                   style: const TextStyle(
                                       fontSize: 24,
-                                      fontWeight: FontWeight.w600),
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ),
                               SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.4,
+                                width: MediaQuery.of(context).size.width * 0.5,
                                 child: SfLinearGauge(
                                   interval: 0,
                                   minimum: 0,
@@ -102,10 +106,11 @@ class CardOnTap extends StatelessWidget {
                           ),
                           ClipRRect(
                             borderRadius: const BorderRadius.only(
-                                topRight: Radius.circular(20),
-                                topLeft: Radius.circular(20),
-                                bottomLeft: Radius.circular(20),
-                                bottomRight: Radius.circular(20)),
+                              topLeft: Radius.elliptical(25, 50),
+                              // topRight: Radius.elliptical(60, 20),
+                              bottomLeft: Radius.elliptical(25, 50),
+                              bottomRight: Radius.elliptical(25, 50),
+                            ),
                             child: Image.asset(
                               "assets/images/esonho.png",
                               height: 120,
@@ -116,87 +121,108 @@ class CardOnTap extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width * 1,
-                      child: Text(
-                        "Valor do sonho:\n\n ${card.valorTotal.obterReal(2).toString()}\n ",
-                        textAlign: TextAlign.start,
-                        style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width * 1,
-                      child: RichText(
-                          textAlign: TextAlign.start,
-                          text: TextSpan(children: [
-                            const TextSpan(
-                                text: "Valor faltante para realização:\n\n ",
-                                style: TextStyle(
-                                  fontSize: 20,
+                  Expanded(
+                    child: ListView(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width * 1,
+                            child: Text(
+                              "Valor do sonho:\n\n ${card.valorTotal.obterReal(2).toString()}\n ",
+                              textAlign: TextAlign.start,
+                              style: const TextStyle(
                                   color: Colors.black,
-                                  fontWeight: FontWeight.w500,
-                                )),
-                            TextSpan(
-                                text:
-                                    "${value.missingValue(card.valorTotal, value.sonhoParcela)}\n",
-                                style: const TextStyle(
                                   fontSize: 20,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width * 1,
+                            child: RichText(
+                                textAlign: TextAlign.start,
+                                text: TextSpan(children: [
+                                  const TextSpan(
+                                      text:
+                                          "Valor faltante para realização:\n\n ",
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w500,
+                                      )),
+                                  TextSpan(
+                                      text:
+                                          "${value.missingValue(card.valorTotal, value.sonhoParcela)}\n",
+                                      style: const TextStyle(
+                                        fontSize: 20,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w500,
+                                      ))
+                                ])),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width * 1,
+                            child: Text(
+                              textAlign: TextAlign.start,
+                              "Início do sonho:\n\n ${card.date.day}/${card.date.month}/${card.date.year}\n",
+                              style: const TextStyle(
                                   color: Colors.black,
-                                  fontWeight: FontWeight.w500,
-                                ))
-                          ])),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width * 1,
+                            child: Text(
+                              textAlign: TextAlign.start,
+                              "Realização do sonho:\n\n ${card.date2.day}/${card.date2.month}/${card.date2.year}\n",
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width * 1,
+                            child: Text(
+                              textAlign: TextAlign.start,
+                              "Tempo para a realização:\n\n ${value.fullDate(card.date, card.date2)}\n",
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width * 1,
+                            child: Text(
+                              "Parcelas mensais:\n\n ${value.valueDivideByMonths(double.parse(value.missingValueTostring(card.valorTotal, value.sonhoParcela)), card.date, card.date2)}",
+                              textAlign: TextAlign.start,
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width * 1,
-                      child: Text(
-                        textAlign: TextAlign.start,
-                        "Data escolhida para realização:\n\n ${card.date.day}/${card.date.month}/${card.date.year}\n",
-                        style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width * 1,
-                      child: Text(
-                        textAlign: TextAlign.start,
-                        "Tempo restante para a data escolhida:\n\n ${value.fullDate(card.date)}\n",
-                        style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width * 1,
-                      child: Text(
-                        "Valor das parcelas mensais:\n\n ${value.valueDivideByMonths(double.parse(value.missingValueTostring(card.valorTotal, value.sonhoParcela)), card.date)}",
-                        textAlign: TextAlign.start,
-                        style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500),
-                      ),
-                    ),
-                  ),
+                  )
                 ],
               ),
             ),

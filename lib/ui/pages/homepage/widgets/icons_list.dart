@@ -7,12 +7,9 @@ import '../controle_financeiro/controle_financeiro.dart';
 //import '../entradas/extrato_entradas.dart';
 import '../entradas/transaction_entrada.dart';
 
-
 import '../sonhos/view/sonhos.dart';
 
 import '../saidas/transaction_saida.dart';
-
-
 
 class ButtonList extends StatefulWidget {
   const ButtonList({
@@ -59,7 +56,7 @@ class _ButtonListState extends State<ButtonList> {
                 onTap: () => Navigator.pushNamed(context, Sonhos.route),
                 child: SizedBox(
                   child: FormatIconText(
-                      icon: Icons.cloud_outlined,
+                      icon: Icons.hotel_class_rounded,
                       text: GeneralTexts.home_page_sonhos_icon),
                 ),
               ),
@@ -72,19 +69,22 @@ class _ButtonListState extends State<ButtonList> {
                   controller.gaugeLoad(
                       sonhos: sonhos,
                       salarioExtra: salarioExtra,
-                      rendaFixa: rendaFixa, extrato: extrato);
+                      rendaFixa: rendaFixa,
+                      extrato: extrato);
                 },
                 child: SizedBox(
                   child: FormatIconText(
-                      icon: Icons.pie_chart_outline,
+                      icon: Icons.tips_and_updates_sharp,
                       text: GeneralTexts.home_page_controle_icon),
                 ),
               ),
               InkWell(
-                onTap: () => Navigator.pushNamed(context, SaidasTransaction.route),
+                onTap: () =>
+                    Navigator.pushNamed(context, SaidasTransaction.route),
                 child: SizedBox(
                   child: FormatIconText(
-                      icon: Icons.west, text: GeneralTexts.home_page_mais),
+                      icon: Icons.west_rounded,
+                      text: GeneralTexts.home_page_mais),
                 ),
               ),
             ],

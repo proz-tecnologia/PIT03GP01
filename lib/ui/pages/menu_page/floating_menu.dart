@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:srminhaeiro/ui/pages/login_page/controller/google_login.controller.dart';
+import 'package:srminhaeiro/ui/pages/login_page/login_page.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/floating_menu_config.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/ajudapage/ajuda_page.dart';
-import 'package:srminhaeiro/ui/pages/menu_page/pages/conta_menu_page/conta_menu.dart';
+import 'package:srminhaeiro/ui/pages/menu_page/pages/conta_menu_page/conta_extrato.page.dart';
 import 'package:srminhaeiro/ui/pages/menu_page/pages/profile/profile_page.dart';
-import 'package:srminhaeiro/ui/pages/menu_page/pages/salario_extra_page/salario_extra_page.dart';
 
 Widget buildMenuButton(BuildContext context) => FloatingActionButton.extended(
       shape: const RoundedRectangleBorder(
@@ -101,7 +103,7 @@ Widget buildMenuButton(BuildContext context) => FloatingActionButton.extended(
                             ),
                             FormatButtomMenu(
                               text: const Text(
-                                "Perfil",
+                                "Dados cadastrais",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: Color.fromARGB(255, 12, 12, 12),
@@ -114,19 +116,6 @@ Widget buildMenuButton(BuildContext context) => FloatingActionButton.extended(
                             ),
                             FormatButtomMenu(
                               text: const Text(
-                                "Salário Extra",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Color(0xfffbf1f1),
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 24),
-                              ),
-                              onpressed: () => Navigator.pushNamed(
-                                  context, SalarioExtraPage.route),
-                              color: const Color.fromARGB(255, 82, 79, 79),
-                            ),
-                            FormatButtomMenu(
-                              text: const Text(
                                 "Precisa de ajuda?",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
@@ -136,6 +125,25 @@ Widget buildMenuButton(BuildContext context) => FloatingActionButton.extended(
                               ),
                               onpressed: () =>
                                   Navigator.pushNamed(context, AjudaPage.route),
+                              color: const Color.fromARGB(255, 82, 79, 79),
+                            ),
+                            FormatButtomMenu(
+                              text: const Text(
+                                "Sair do App",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Color(0xfffbf1f1),
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 24),
+                              ),
+                              onpressed: () {
+                                final provider =
+                                    Provider.of<GoogleLoginController>(context,
+                                        listen: false);
+                                provider.googleLogout();
+                                Navigator.of(context).pushNamedAndRemoveUntil(
+                                    LoginPage.route, (route) => false);
+                              },
                               color: const Color.fromARGB(255, 33, 32, 32),
                             ),
                             Container(

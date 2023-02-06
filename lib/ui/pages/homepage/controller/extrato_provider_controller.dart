@@ -34,7 +34,7 @@ class ExtratoProvider extends ChangeNotifier {
 
   void add(Transaction item) {
     extratoProvider.add(item);
-    extratoProvider.sort(((a, b) => b.dateTime!.compareTo(a.dateTime!)));
+    extratoProvider.sort(((a, b) => a.dateTime!.compareTo(b.dateTime!)));
     notifyListeners();
   }
 
