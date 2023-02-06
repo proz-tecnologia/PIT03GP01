@@ -96,7 +96,7 @@ class CardOnTap extends StatelessWidget {
                                   maximum: card.valorTotal,
                                   barPointers: [
                                     LinearBarPointer(
-                                      value: value.sonhoParcela,
+                                      value: card.valorAtual,
                                       color: const Color(0xff413d3d),
                                     )
                                   ],
@@ -155,7 +155,7 @@ class CardOnTap extends StatelessWidget {
                                       )),
                                   TextSpan(
                                       text:
-                                          "${value.missingValue(card.valorTotal, value.sonhoParcela)}\n",
+                                          "${value.missingValue(card.valorTotal, card.valorAtual)}\n",
                                       style: const TextStyle(
                                         fontSize: 20,
                                         color: Colors.black,

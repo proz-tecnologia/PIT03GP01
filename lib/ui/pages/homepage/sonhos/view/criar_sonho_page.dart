@@ -9,6 +9,7 @@ import 'package:srminhaeiro/ui/pages/homepage/sonhos/controller/card.controller.
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/controller/card.list.controller.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/model/card_sonho_model.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/view/meus_sonhos_page.dart';
+import 'package:uuid/uuid.dart';
 
 class DreamCreate extends StatelessWidget {
   static String route = "criarsonhos";
@@ -422,6 +423,7 @@ class DreamCreate extends StatelessWidget {
                               if (_formKey.currentState!.validate()) {
                                 _progressDialog.show("Gerando card dos sonhos");
                                 var model = CardSonhoModel(
+                                    uid: const Uuid().v4(),
                                     nomeSonho: value.nomeSonho,
                                     valorTotal: value.sonhoValorTotal,
                                     valorAtual: value.sonhovalorAtual,

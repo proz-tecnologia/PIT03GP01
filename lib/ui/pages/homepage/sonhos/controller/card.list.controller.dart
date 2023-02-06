@@ -82,9 +82,15 @@ class CardListController extends ChangeNotifier {
     register[0] = sonhoParcela;
   }
 
+  currentElement(String id, double v1) {
+    var element = sonhoCardList.where((element) => element.uid == id).first;
+    element.valorAtual += v1;
+    notifyListeners();
+  }
+
   void currentValue(double v1) {
     for (var element in sonhoCardList) {
-      v1 = element.adicionarValor;
+      v1 += element.adicionarValor;
       element.adicionarValor += element.valorAtual;
     }
     notifyListeners();

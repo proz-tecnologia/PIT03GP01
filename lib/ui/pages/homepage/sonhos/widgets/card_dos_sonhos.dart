@@ -204,11 +204,11 @@ class CardDosSonhos extends StatelessWidget {
                                               Navigator.pop(context);
                                               _progressDialog.show(
                                                   "Adicionado parcela ao sonhos");
+
                                               await Future.delayed(
                                                   const Duration(seconds: 1));
-                                              value.currentValue(
-                                                value.sonhoParcela,
-                                              );
+                                              value.currentElement(card.uid!,
+                                                  value.sonhoParcela);
                                               _progressDialog.hide();
                                             },
                                             child: const Text("Adicionar")),
@@ -349,7 +349,7 @@ class CardDosSonhos extends StatelessWidget {
                         maximum: card.valorTotal,
                         barPointers: [
                           LinearBarPointer(
-                            value: value.sonhoParcela,
+                            value: card.valorAtual,
                             color: const Color(0xff413d3d),
                           )
                         ],

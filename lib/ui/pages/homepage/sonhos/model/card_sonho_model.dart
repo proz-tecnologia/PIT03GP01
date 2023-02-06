@@ -2,7 +2,7 @@ class CardSonhoModel {
   String? uid;
   final String nomeSonho;
   final double valorTotal;
-  final double valorAtual;
+  double valorAtual;
   late double adicionarValor;
   final DateTime date;
   final DateTime date2;
