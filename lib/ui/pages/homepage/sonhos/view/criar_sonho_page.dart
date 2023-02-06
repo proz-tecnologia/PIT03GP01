@@ -8,6 +8,7 @@ import 'package:srminhaeiro/ui/components/progress_dialog.component.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/controller/card.controller.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/controller/card.list.controller.dart';
 import 'package:srminhaeiro/ui/pages/homepage/sonhos/model/card_sonho_model.dart';
+import 'package:srminhaeiro/ui/pages/homepage/sonhos/view/meus_sonhos_page.dart';
 
 class DreamCreate extends StatelessWidget {
   static String route = "criarsonhos";
@@ -16,6 +17,7 @@ class DreamCreate extends StatelessWidget {
 
   final TextEditingController nomeSonhoController = TextEditingController();
   final TextEditingController dateController = TextEditingController();
+  final TextEditingController date2Controller = TextEditingController();
   final TextEditingController valorController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   final CardController modelValue = CardController();
@@ -26,7 +28,7 @@ class DreamCreate extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool showFab = MediaQuery.of(context).viewInsets.bottom == 0.0;
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 242, 206, 219),
+      backgroundColor: const Color.fromARGB(255, 221, 206, 212),
       floatingActionButton: Visibility(
         visible: showFab,
         child: FloatingActionButton.extended(
@@ -61,7 +63,7 @@ class DreamCreate extends StatelessWidget {
                           fontWeight: FontWeight.bold),
                     ),
                   ),
-                  const Padding(
+                  /*  const Padding(
                     padding: EdgeInsets.all(16.0),
                     child: Text(
                       textAlign: TextAlign.center,
@@ -123,13 +125,13 @@ class DreamCreate extends StatelessWidget {
                           }),
                       const Icon(Icons.add_circle)
                     ],
-                  ),
+                  ), */
                   const Padding(
                     padding: EdgeInsets.only(
                       top: 16.0,
                     ),
                     child: Text(
-                      "Coloque um nome especial no seu sonho:",
+                      "Coloque um nome no sonho:",
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                     ),
@@ -138,9 +140,9 @@ class DreamCreate extends StatelessWidget {
                     padding: const EdgeInsets.all(16.0),
                     child: Consumer<CardListController>(
                       builder: (context, value, child) => TextFormField(
-                        maxLength: 10,
+                        maxLength: 40,
                         decoration: const InputDecoration(
-                          hintText: "Nome do seu sonho aqui",
+                          hintText: "Nome do seu sonho ",
                           focusedBorder: OutlineInputBorder(
                             borderSide:
                                 BorderSide(width: 2, color: Colors.black),
@@ -184,7 +186,7 @@ class DreamCreate extends StatelessWidget {
                   ),
                   const Text(
                     textAlign: TextAlign.center,
-                    "Escolha uma data para realizar seu sonho:",
+                    "Escolha uma data de início do sonho:",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                   Padding(
@@ -225,12 +227,12 @@ class DreamCreate extends StatelessWidget {
                                 bottomLeft: Radius.circular(16),
                                 bottomRight: Radius.circular(16)),
                           ),
-                          labelText: "Data de realização"),
+                          labelText: "Data de início"),
                       maxLength: 10,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       validator: (va) {
                         if (va!.isEmpty ||
-                            value.dataSonho.isBefore(DateTime.now())) {
+                            value.dataISonho.isBefore(DateTime.now())) {
                           return "Informe uma data válida.";
                         }
                         return null;
@@ -252,11 +254,91 @@ class DreamCreate extends StatelessWidget {
                                 ),
                             firstDate: DateTime.now(),
                             lastDate: DateTime(2072, 12, 31),
-                            initialDate: value.dataSonho,
+                            initialDate: value.dataISonho,
                             context: context);
-                        value.dataSonho = date ?? value.dataSonho;
+                        value.dataISonho = date ?? value.dataISonho;
                         dateController.text =
-                            "${value.dataSonho.day}/${value.dataSonho.month}/${value.dataSonho.year}";
+                            "${value.dataISonho.day}/${value.dataISonho.month}/${value.dataISonho.year}";
+                      },
+                    ),
+                  ),
+                  const Text(
+                    textAlign: TextAlign.center,
+                    "Escolha uma data de realização do sonho:",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: TextFormField(
+                      controller: date2Controller,
+                      keyboardType: TextInputType.datetime,
+                      decoration: const InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 2, color: Colors.black),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(16),
+                                bottomLeft: Radius.circular(16),
+                                bottomRight: Radius.circular(16)),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 2, color: Colors.black),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(16),
+                                bottomLeft: Radius.circular(16),
+                                bottomRight: Radius.circular(16)),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 2, color: Colors.redAccent),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(16),
+                                bottomLeft: Radius.circular(16),
+                                bottomRight: Radius.circular(16)),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 2, color: Colors.redAccent),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(16),
+                                bottomLeft: Radius.circular(16),
+                                bottomRight: Radius.circular(16)),
+                          ),
+                          labelText: "Data de realização"),
+                      maxLength: 10,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      validator: (va) {
+                        if (va!.isEmpty ||
+                            value.dataRSonho.isBefore(DateTime.now())) {
+                          return "Informe uma data válida.";
+                        }
+                        return null;
+                      },
+                      onTap: () async {
+                        FocusScope.of(context).requestFocus(FocusNode());
+                        DateTime? date2 = await showDatePicker(
+                            locale: const Locale('pt', 'BR'),
+                            builder: (context, child) => Theme(
+                                  data: Theme.of(context).copyWith(
+                                    colorScheme: const ColorScheme.dark(
+                                        secondary: Colors.white,
+                                        onSecondary: Colors.white,
+                                        primary: Colors.white,
+                                        onPrimary: Colors.black,
+                                        onSurface: Colors.white,
+                                        surface: Colors.black),
+                                    dialogBackgroundColor: Colors.black,
+                                  ),
+                                  child: child!,
+                                ),
+                            firstDate: DateTime.now(),
+                            lastDate: DateTime(2072, 12, 31),
+                            initialDate: value.dataRSonho,
+                            context: context);
+                        value.dataRSonho = date2 ?? value.dataRSonho;
+                        date2Controller.text =
+                            "${value.dataRSonho.day}/${value.dataRSonho.month}/${value.dataRSonho.year}";
                       },
                     ),
                   ),
@@ -344,11 +426,13 @@ class DreamCreate extends StatelessWidget {
                                     valorTotal: value.sonhoValorTotal,
                                     valorAtual: value.sonhovalorAtual,
                                     adicionarValor: value.sonhoParcela,
-                                    date: value.dataSonho);
+                                    date: value.dataISonho,
+                                    date2: value.dataRSonho);
                                 value.addCard(model);
                                 await _controller.cloudFirestoreAdd(model);
                                 _progressDialog.hide();
-                                Navigator.pop(context);
+                                Navigator.pushReplacementNamed(
+                                    context, MeusSonhosPage.route);
                               }
                             },
                             child: const Text(

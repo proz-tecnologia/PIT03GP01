@@ -15,20 +15,25 @@ class ForgotPasswordPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool showFab = MediaQuery.of(context).viewInsets.bottom == 0.0;
     return Scaffold(
-      floatingActionButton: FloatingActionButton.extended(
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(16),
-                bottomLeft: Radius.circular(16),
-                bottomRight: Radius.circular(16),
-                topRight: Radius.circular(0)),
-          ),
-          backgroundColor: const Color.fromARGB(255, 31, 30, 30),
-          onPressed: () {
-            Navigator.pushReplacementNamed(context, LoginPage.route);
-          },
-          label: const Text("Voltar")),
+      floatingActionButton: Visibility(
+        visible: showFab,
+        child: FloatingActionButton.extended(
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.elliptical(25, 50),
+                // topRight: Radius.elliptical(60, 20),
+                bottomLeft: Radius.elliptical(25, 50),
+                bottomRight: Radius.elliptical(25, 50),
+              ),
+            ),
+            backgroundColor: const Color.fromARGB(255, 31, 30, 30),
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, LoginPage.route);
+            },
+            label: const Text("Voltar")),
+      ),
       body: SafeArea(
         child: Column(
           children: [
@@ -42,12 +47,44 @@ class ForgotPasswordPage extends StatelessWidget {
                 style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Image.asset(
-                "assets/images/forgot.png",
-                width: 150,
-                height: 150,
+            const Padding(
+              padding: EdgeInsets.only(top: 60.0),
+              child: Divider(
+                thickness: 3,
+                endIndent: 150,
+              ),
+            ),
+            const Divider(
+              thickness: 3,
+              endIndent: 20,
+              indent: 150,
+            ),
+            const Divider(
+              thickness: 3,
+              endIndent: 150,
+              indent: 20,
+            ),
+            const Divider(
+              thickness: 3,
+              endIndent: 20,
+              indent: 150,
+            ),
+            const Divider(
+              thickness: 3,
+              endIndent: 150,
+              indent: 40,
+            ),
+            const Divider(
+              thickness: 3,
+              endIndent: 60,
+              indent: 150,
+            ),
+            const Padding(
+              padding: EdgeInsets.only(bottom: 40.0),
+              child: Divider(
+                thickness: 3,
+                endIndent: 150,
+                indent: 120,
               ),
             ),
             const Padding(
@@ -109,6 +146,14 @@ class ForgotPasswordPage extends StatelessWidget {
                       color: Colors.white,
                       fontWeight: FontWeight.bold),
                 ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Image.asset(
+                "assets/images/forgot.png",
+                width: 150,
+                height: 150,
               ),
             ),
           ],

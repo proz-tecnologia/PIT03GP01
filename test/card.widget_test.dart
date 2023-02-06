@@ -16,9 +16,10 @@ void main() {
   final card = CardSonhoModel(
       nomeSonho: "Meu Sonho",
       valorTotal: 30000,
-      valorAtual: 15000,
+      valorAtual: 0.0,
       adicionarValor: 0.0,
-      date: DateTime.now());
+      date: DateTime.now(),
+      date2: DateTime.now());
   testWidgets('Validate buttons', (widgetTester) async {
     // Build our app and trigger a frame.
     await widgetTester.pumpWidget(MultiProvider(
@@ -29,12 +30,12 @@ void main() {
           home: Material(child: CardDosSonhos(card)),
         )));
 
-    // Verify that our counter starts at 0.
+    // Verify that there isn´t the texts blow that belongs to another page.
     expect(find.text("Login"), findsNothing);
     expect(find.text("Cadastre-se"), findsNothing);
     expect(find.text("cancelar"), findsNothing);
 
-    // Tap the '+' icon and trigger a frame.
+    // Find and Tap the iconbuttons below without warn.
     await widgetTester.tap(find.byIcon(Icons.add_circle), warnIfMissed: false);
     await widgetTester.pump();
     await widgetTester.tap(find.byIcon(Icons.remove_circle),

@@ -11,6 +11,12 @@ class RegisterController extends ChangeNotifier {
   String _repeatpassword = "";
   String _phoneNumber = "";
 
+  String get name => _name;
+
+  String get phone => _phoneNumber;
+
+  String get password => _password;
+
   changeName(String value) {
     _name = value;
   }

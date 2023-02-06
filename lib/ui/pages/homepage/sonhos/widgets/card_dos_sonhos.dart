@@ -34,9 +34,11 @@ class CardDosSonhos extends StatelessWidget {
     return Consumer<CardListController>(
       builder: (context, value, child) => ClipRRect(
         borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(20),
-            bottomLeft: Radius.circular(20),
-            bottomRight: Radius.circular(20)),
+          topLeft: Radius.elliptical(25, 50),
+          // topRight: Radius.elliptical(60, 20),
+          bottomLeft: Radius.elliptical(25, 50),
+          bottomRight: Radius.elliptical(25, 50),
+        ),
         child: Padding(
           padding:
               const EdgeInsets.only(left: 8.0, right: 8, top: 32, bottom: 32),
@@ -45,7 +47,10 @@ class CardDosSonhos extends StatelessWidget {
               isScrollControlled: true,
               backgroundColor: const Color(0xfffbf1f1),
               shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(60)),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.elliptical(250, 80),
+                  //topRight: Radius.elliptical(60, 20),
+                ),
               ),
               context: context,
               builder: (BuildContext context) {
@@ -55,9 +60,11 @@ class CardDosSonhos extends StatelessWidget {
             child: Container(
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    bottomLeft: Radius.circular(20),
-                    bottomRight: Radius.circular(20)),
+                  topLeft: Radius.elliptical(25, 50),
+                  // topRight: Radius.elliptical(60, 20),
+                  bottomLeft: Radius.elliptical(25, 50),
+                  bottomRight: Radius.elliptical(25, 50),
+                ),
                 color: Color(0xfffff9f9),
                 boxShadow: [
                   BoxShadow(
@@ -88,7 +95,7 @@ class CardDosSonhos extends StatelessWidget {
                             bottom: 8,
                           ),
                           child: SizedBox(
-                            width: 110,
+                            width: 300,
                             child: Text(
                               textAlign: TextAlign.start,
                               card.nomeSonho.toLowerCase(),
@@ -110,10 +117,11 @@ class CardDosSonhos extends StatelessWidget {
                                 builder: (context, value, child) => AlertDialog(
                                   shape: const RoundedRectangleBorder(
                                     borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(12),
-                                        bottomLeft: Radius.circular(12),
-                                        bottomRight: Radius.circular(12),
-                                        topRight: Radius.circular(0)),
+                                      topLeft: Radius.elliptical(25, 50),
+                                      // topRight: Radius.elliptical(60, 20),
+                                      bottomLeft: Radius.elliptical(25, 50),
+                                      bottomRight: Radius.elliptical(25, 50),
+                                    ),
                                   ),
                                   title: Text(
                                       "Qual o valor da parcela que deseja adicionar ao seu sonho '${card.nomeSonho}' ?"),
@@ -173,21 +181,21 @@ class CardDosSonhos extends StatelessWidget {
                                     ),
                                     Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceAround,
                                       children: [
                                         ElevatedButton(
                                             style: ElevatedButton.styleFrom(
                                               shape:
                                                   const RoundedRectangleBorder(
                                                 borderRadius: BorderRadius.only(
-                                                    topLeft:
-                                                        Radius.circular(12),
-                                                    bottomLeft:
-                                                        Radius.circular(12),
-                                                    bottomRight:
-                                                        Radius.circular(12),
-                                                    topRight:
-                                                        Radius.circular(0)),
+                                                  topLeft:
+                                                      Radius.elliptical(25, 50),
+                                                  // topRight: Radius.elliptical(60, 20),
+                                                  bottomLeft:
+                                                      Radius.elliptical(25, 50),
+                                                  bottomRight:
+                                                      Radius.elliptical(25, 50),
+                                                ),
                                               ),
                                               backgroundColor:
                                                   const Color(0xff413d3d),
@@ -199,7 +207,6 @@ class CardDosSonhos extends StatelessWidget {
                                               await Future.delayed(
                                                   const Duration(seconds: 1));
                                               value.currentValue(
-                                                value.sonhovalorAtual,
                                                 value.sonhoParcela,
                                               );
                                               _progressDialog.hide();
@@ -210,14 +217,14 @@ class CardDosSonhos extends StatelessWidget {
                                               shape:
                                                   const RoundedRectangleBorder(
                                                 borderRadius: BorderRadius.only(
-                                                    topLeft:
-                                                        Radius.circular(12),
-                                                    bottomLeft:
-                                                        Radius.circular(12),
-                                                    bottomRight:
-                                                        Radius.circular(12),
-                                                    topRight:
-                                                        Radius.circular(0)),
+                                                  topLeft:
+                                                      Radius.elliptical(25, 50),
+                                                  // topRight: Radius.elliptical(60, 20),
+                                                  bottomLeft:
+                                                      Radius.elliptical(25, 50),
+                                                  bottomRight:
+                                                      Radius.elliptical(25, 50),
+                                                ),
                                               ),
                                               backgroundColor:
                                                   const Color(0xff413d3d),
@@ -240,7 +247,7 @@ class CardDosSonhos extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
-                          width: 110,
+                          width: 300,
                           child: Padding(
                             padding: const EdgeInsets.only(
                               left: 12.0,
@@ -255,7 +262,7 @@ class CardDosSonhos extends StatelessWidget {
                           )),
                       IconButton(
                         icon: Icon(
-                          Icons.remove_circle,
+                          Icons.delete_forever,
                           color: Colors.red[300],
                         ),
                         onPressed: () {
@@ -265,10 +272,11 @@ class CardDosSonhos extends StatelessWidget {
                               builder: (context, value, child) => AlertDialog(
                                 shape: const RoundedRectangleBorder(
                                   borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(12),
-                                      bottomLeft: Radius.circular(12),
-                                      bottomRight: Radius.circular(12),
-                                      topRight: Radius.circular(0)),
+                                    topLeft: Radius.elliptical(25, 50),
+                                    // topRight: Radius.elliptical(60, 20),
+                                    bottomLeft: Radius.elliptical(25, 50),
+                                    bottomRight: Radius.elliptical(25, 50),
+                                  ),
                                 ),
                                 title: Text(
                                     "Quer realmente apagar o seu sonho '${card.nomeSonho}' ?"),
@@ -281,12 +289,14 @@ class CardDosSonhos extends StatelessWidget {
                                           style: ElevatedButton.styleFrom(
                                             shape: const RoundedRectangleBorder(
                                               borderRadius: BorderRadius.only(
-                                                  topLeft: Radius.circular(12),
-                                                  bottomLeft:
-                                                      Radius.circular(12),
-                                                  bottomRight:
-                                                      Radius.circular(12),
-                                                  topRight: Radius.circular(0)),
+                                                topLeft:
+                                                    Radius.elliptical(25, 50),
+                                                // topRight: Radius.elliptical(60, 20),
+                                                bottomLeft:
+                                                    Radius.elliptical(25, 50),
+                                                bottomRight:
+                                                    Radius.elliptical(25, 50),
+                                              ),
                                             ),
                                             backgroundColor:
                                                 const Color(0xff413d3d),
@@ -304,12 +314,14 @@ class CardDosSonhos extends StatelessWidget {
                                           style: ElevatedButton.styleFrom(
                                             shape: const RoundedRectangleBorder(
                                               borderRadius: BorderRadius.only(
-                                                  topLeft: Radius.circular(12),
-                                                  bottomLeft:
-                                                      Radius.circular(12),
-                                                  bottomRight:
-                                                      Radius.circular(12),
-                                                  topRight: Radius.circular(0)),
+                                                topLeft:
+                                                    Radius.elliptical(25, 50),
+                                                // topRight: Radius.elliptical(60, 20),
+                                                bottomLeft:
+                                                    Radius.elliptical(25, 50),
+                                                bottomRight:
+                                                    Radius.elliptical(25, 50),
+                                              ),
                                             ),
                                             backgroundColor:
                                                 const Color(0xff413d3d),
@@ -337,7 +349,7 @@ class CardDosSonhos extends StatelessWidget {
                         maximum: card.valorTotal,
                         barPointers: [
                           LinearBarPointer(
-                            value: value.sonhovalorAtual,
+                            value: value.sonhoParcela,
                             color: const Color(0xff413d3d),
                           )
                         ],

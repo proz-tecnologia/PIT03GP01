@@ -26,7 +26,9 @@ class CardListController extends ChangeNotifier {
 
   double sonhovalorAtual = 0.0;
 
-  DateTime dataSonho = DateTime.now();
+  DateTime dataRSonho = DateTime.now();
+
+  DateTime dataISonho = DateTime.now();
 
   nomeSonhoOnChanged(String value) {
     nomeSonho = value;
@@ -45,7 +47,7 @@ class CardListController extends ChangeNotifier {
   }
 
   sonhoDataOnChanged(DateTime value) {
-    dataSonho = value;
+    dataRSonho = value;
   }
 
   Future addCard(CardSonhoModel cardDescription) async {
@@ -74,19 +76,23 @@ class CardListController extends ChangeNotifier {
     return result.toString();
   }
 
-  currentValue(
-    double value1,
-    double value2,
-  ) {
-    var currentValue = value1 += value2;
+  void registerValues() {
+    Map<double, dynamic> register = {};
 
-    notifyListeners();
-    return currentValue;
+    register[0] = sonhoParcela;
   }
 
-  fullDate(date) {
-    final DateTime dateOne = DateTime.now();
-    final DateTime dateTwo = date;
+  void currentValue(double v1) {
+    for (var element in sonhoCardList) {
+      v1 = element.adicionarValor;
+      element.adicionarValor += element.valorAtual;
+    }
+    notifyListeners();
+  }
+
+  fullDate(date, date2) {
+    final DateTime dateOne = date;
+    final DateTime dateTwo = date2;
 
     final result = FlutterDateDifference();
 
@@ -105,12 +111,13 @@ class CardListController extends ChangeNotifier {
     return result.calculate(dateTwo, dateOne);
   }
 
-  String valueDivideByMonths(double value, date) {
-    final DateTime dateOne = DateTime.now();
-    final DateTime dateTwo = date;
+  String valueDivideByMonths(double value, date1, date2) {
+    final DateTime dateOne = date1;
+    final DateTime dateTwo = date2;
 
     final Duration duration = dateTwo.difference(dateOne);
-    var inDaysToMonthsResult = duration.inDays / 30.437;
+    var inDaysToMonthsResult =
+        duration.inDays / 30.45 /* * 0.032854884083862 */;
     var calculate = value / inDaysToMonthsResult;
     return calculate.obterReal(2);
   }
@@ -195,7 +202,7 @@ class CardListController extends ChangeNotifier {
             .update(model.toMap());
 
         sonhoCardList[index] = model.copyWith(model.nomeSonho, model.valorTotal,
-            model.valorAtual, model.adicionarValor, model.date);
+            model.valorAtual, model.adicionarValor, model.date, model.date2);
 
         return ApiResponse.sucess(true);
       } else {

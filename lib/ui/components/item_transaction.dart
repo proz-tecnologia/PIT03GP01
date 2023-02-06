@@ -32,18 +32,18 @@ class _ItemTransactionState extends State<ItemTransaction> {
   Color getColor() {
     switch (widget.transaction.transactionType) {
       case TransactionType.INCOME:
-        return Colors.green;
+        return const Color.fromARGB(255, 123, 255, 127);
       case TransactionType.EXPENSE:
-        return Colors.red;
+        return const Color.fromARGB(255, 241, 187, 10);
     }
   }
 
   String getValue() {
     switch (widget.transaction.transactionType) {
       case TransactionType.INCOME:
-        return '+${widget.transaction.value.formatBRL}';
+        return '+ ${widget.transaction.value.formatBRL}';
       case TransactionType.EXPENSE:
-        return "-${widget.transaction.value.formatBRL}";
+        return "- ${widget.transaction.value.formatBRL}";
     }
   }
 
@@ -52,12 +52,12 @@ class _ItemTransactionState extends State<ItemTransaction> {
       case TransactionType.INCOME:
         return const Icon(
           Icons.east,
-          color: Colors.green,
+          color: Color.fromARGB(255, 123, 255, 127),
         );
       case TransactionType.EXPENSE:
         return const Icon(
           Icons.west,
-          color: Colors.red,
+          color: Color.fromARGB(255, 241, 187, 10),
         );
     }
   }

@@ -21,15 +21,17 @@ class FormatIconText extends StatelessWidget {
         Stack(
           children: [
             Container(
-                height: 60,
+                height: 70,
                 width: 80,
                 margin: const EdgeInsets.all(4),
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      bottomLeft: Radius.circular(16),
-                      bottomRight: Radius.circular(16)),
-                  color: const Color.fromARGB(255, 31, 30, 30),
+                    topLeft: Radius.elliptical(25, 50),
+                    // topRight: Radius.elliptical(60, 20),
+                    bottomLeft: Radius.elliptical(25, 50),
+                    bottomRight: Radius.elliptical(25, 50),
+                  ),
+                  color: const Color.fromARGB(255, 51, 49, 49),
                   boxShadow: [
                     BoxShadow(
                         inset: true,
@@ -45,8 +47,8 @@ class FormatIconText extends StatelessWidget {
                 ),
                 child: Icon(
                   icon,
-                  size: 40,
-                  color: const Color.fromARGB(255, 253, 250, 250),
+                  size: 35,
+                  color: const Color.fromARGB(255, 230, 230, 233),
                 )),
           ],
         ),

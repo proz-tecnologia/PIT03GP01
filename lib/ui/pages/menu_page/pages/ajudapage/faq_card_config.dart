@@ -32,8 +32,9 @@ class FaqCardConfig extends StatelessWidget {
                     topLeft: Radius.circular(20),
                   ),
                   child: ExpansionTile(
-                      collapsedBackgroundColor: const Color(0xff201919),
-                      backgroundColor: const Color(0xff201919),
+                      collapsedBackgroundColor:
+                          const Color.fromARGB(255, 31, 30, 30),
+                      backgroundColor: const Color.fromARGB(255, 31, 30, 30),
                       collapsedIconColor: Colors.white,
                       title: Padding(
                         padding: const EdgeInsets.all(8.0),

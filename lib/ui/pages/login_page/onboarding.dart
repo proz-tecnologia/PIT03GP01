@@ -171,13 +171,13 @@ List<Onboard> demoData = [
         "No Sr Minhaeiro você encontra ferramentas que ajudam a organizar sua vida financeira, permitindo assim, dedicar-se ao seu sonho",
   ),
   Onboard(
-    image: "assets/images/together.png",
-    title: "Crie grupos com pessoas de confiança para ter uma renda extra",
+    image: "assets/images/moneysaves.jpg",
+    title: "Não perca seu sonho de vista",
     description:
-        "Na área de salário extra é possível criar grupos para juntos criarem um salário extra, saiba mais sobre no menu (preciso de ajuda) ",
+        "Quando um sonho é criado é gerado um card que ao ser pressionado mostra detalhes para a realização do seu sonho ",
   ),
   Onboard(
-    image: "assets/images/moneysaves.jpg",
+    image: "assets/images/together.png",
     title: "Observe as dicas semanais para um melhor controle ficanceiro ",
     description:
         "Na área de Dicas financeiras é possível visualizar dicas financeiras, rápidas e fáceis e a partir daí poupar onde for possível",
