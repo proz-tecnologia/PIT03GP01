@@ -145,7 +145,8 @@ class _RegisterState extends State<Register> {
                         keyboardType: TextInputType.text,
                         controller: nomeController,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
-                        validator: (value) => Mask.validations.generic(value),
+                        validator: (value) => Mask.validations.generic(value,
+                            error: "É necessário ao menos um sobrenome"),
                       );
                     }),
                   ),

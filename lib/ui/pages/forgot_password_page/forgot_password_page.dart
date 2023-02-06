@@ -35,7 +35,7 @@ class ForgotPasswordPage extends StatelessWidget {
             label: const Text("Voltar")),
       ),
       body: SafeArea(
-        child: Column(
+        child: ListView(
           children: [
             const Padding(
               padding: EdgeInsets.only(
@@ -47,44 +47,12 @@ class ForgotPasswordPage extends StatelessWidget {
                 style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 60.0),
-              child: Divider(
-                thickness: 3,
-                endIndent: 150,
-              ),
-            ),
-            const Divider(
-              thickness: 3,
-              endIndent: 20,
-              indent: 150,
-            ),
-            const Divider(
-              thickness: 3,
-              endIndent: 150,
-              indent: 20,
-            ),
-            const Divider(
-              thickness: 3,
-              endIndent: 20,
-              indent: 150,
-            ),
-            const Divider(
-              thickness: 3,
-              endIndent: 150,
-              indent: 40,
-            ),
-            const Divider(
-              thickness: 3,
-              endIndent: 60,
-              indent: 150,
-            ),
-            const Padding(
-              padding: EdgeInsets.only(bottom: 40.0),
-              child: Divider(
-                thickness: 3,
-                endIndent: 150,
-                indent: 120,
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Image.asset(
+                "assets/images/forgot.png",
+                width: 150,
+                height: 150,
               ),
             ),
             const Padding(
@@ -92,6 +60,7 @@ class ForgotPasswordPage extends StatelessWidget {
               child: Text(
                 "Insira seu email abaixo para recuperar a senha",
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
               ),
             ),
             Padding(
@@ -148,12 +117,44 @@ class ForgotPasswordPage extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Image.asset(
-                "assets/images/forgot.png",
-                width: 150,
-                height: 150,
+            const Padding(
+              padding: EdgeInsets.only(top: 60.0),
+              child: Divider(
+                thickness: 3,
+                endIndent: 150,
+              ),
+            ),
+            const Divider(
+              thickness: 3,
+              endIndent: 20,
+              indent: 150,
+            ),
+            const Divider(
+              thickness: 3,
+              endIndent: 150,
+              indent: 20,
+            ),
+            const Divider(
+              thickness: 3,
+              endIndent: 20,
+              indent: 150,
+            ),
+            const Divider(
+              thickness: 3,
+              endIndent: 150,
+              indent: 40,
+            ),
+            const Divider(
+              thickness: 3,
+              endIndent: 60,
+              indent: 150,
+            ),
+            const Padding(
+              padding: EdgeInsets.only(bottom: 40.0),
+              child: Divider(
+                thickness: 3,
+                endIndent: 150,
+                indent: 120,
               ),
             ),
           ],

@@ -107,8 +107,16 @@ class _LoginPageState extends State<LoginPageTwo> {
                               bottomLeft: Radius.circular(16),
                               bottomRight: Radius.circular(16)),
                         ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 2, color: Colors.redAccent),
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(16),
+                              bottomLeft: Radius.circular(16),
+                              bottomRight: Radius.circular(16)),
+                        ),
                         prefixIcon: Icon(Icons.email, color: Colors.black),
-                        errorBorder: UnderlineInputBorder(
+                        errorBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.redAccent),
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(16),
@@ -152,7 +160,15 @@ class _LoginPageState extends State<LoginPageTwo> {
                             Icons.lock,
                             color: Colors.black,
                           ),
-                          errorBorder: const UnderlineInputBorder(
+                          focusedErrorBorder: const OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 2, color: Colors.redAccent),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(16),
+                                bottomLeft: Radius.circular(16),
+                                bottomRight: Radius.circular(16)),
+                          ),
+                          errorBorder: const OutlineInputBorder(
                             borderSide:
                                 BorderSide(width: 2, color: Colors.redAccent),
                             borderRadius: BorderRadius.only(
