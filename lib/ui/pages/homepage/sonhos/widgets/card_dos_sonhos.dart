@@ -209,6 +209,8 @@ class CardDosSonhos extends StatelessWidget {
                                                   const Duration(seconds: 1));
                                               value.currentElement(card.uid!,
                                                   value.sonhoParcela);
+                                              _updateSonho(card.uid!, card);
+
                                               _progressDialog.hide();
                                             },
                                             child: const Text("Adicionar")),
@@ -375,9 +377,9 @@ class CardDosSonhos extends StatelessWidget {
   }
 
   // ignore: unused_element
-  _updateSonho(int index, CardSonhoModel model) async {
+  _updateSonho(String uid, CardSonhoModel model) async {
     _progressDialog.show("Adicionando parcela...");
-    final response = await _controller.cloudFirestoneUpdate(index, model);
+    final response = await _controller.cloudFirestoneUpdate(uid, model);
     _progressDialog.hide();
     if (response.isError) {
       _alertDialog.showInfo(title: "Ops!", message: response.message!);

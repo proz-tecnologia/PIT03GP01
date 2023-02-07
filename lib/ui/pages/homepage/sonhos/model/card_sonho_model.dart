@@ -40,6 +40,7 @@ class CardSonhoModel {
       'adicionar_valor': adicionarValor,
       'date_iniciar': date.millisecondsSinceEpoch,
       'date_realizar': date2.millisecondsSinceEpoch,
+      'uid': uid,
     };
   }
 
@@ -51,6 +52,7 @@ class CardSonhoModel {
       adicionarValor: map['adicionar_valor'] as double,
       date: DateTime.fromMillisecondsSinceEpoch(map['date_iniciar'] as int),
       date2: DateTime.fromMillisecondsSinceEpoch(map['date_realizar'] as int),
+      uid: map['uid'] as String,
     );
   }
 }

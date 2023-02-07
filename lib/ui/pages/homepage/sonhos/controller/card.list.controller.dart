@@ -85,6 +85,7 @@ class CardListController extends ChangeNotifier {
   currentElement(String id, double v1) {
     var element = sonhoCardList.where((element) => element.uid == id).first;
     element.valorAtual += v1;
+
     notifyListeners();
   }
 
@@ -195,7 +196,7 @@ class CardListController extends ChangeNotifier {
   }
 
   Future<ApiResponse<bool>> cloudFirestoneUpdate(
-      int index, CardSonhoModel model) async {
+      String uid, CardSonhoModel model) async {
     try {
       _isLoading = true;
       var userCredential = FirebaseAuth.instance.currentUser;
@@ -206,9 +207,12 @@ class CardListController extends ChangeNotifier {
             .collection("Dreamcard")
             .doc(model.uid)
             .update(model.toMap());
-
-        sonhoCardList[index] = model.copyWith(model.nomeSonho, model.valorTotal,
-            model.valorAtual, model.adicionarValor, model.date, model.date2);
+        var element =
+            sonhoCardList.where((element) => element.uid == uid).first;
+        element.copyWith(model.nomeSonho, model.valorTotal, model.valorAtual,
+            model.adicionarValor, model.date, model.date2);
+        /* = model.copyWith(model.nomeSonho, model.valorTotal,
+            model.valorAtual, model.adicionarValor, model.date, model.date2); */
 
         return ApiResponse.sucess(true);
       } else {
