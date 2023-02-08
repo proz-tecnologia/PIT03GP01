@@ -98,7 +98,7 @@ class _OnboardingState extends State<Onboarding> {
                                       context, HomePage.route);
                                 }),
                                 child: const Text(
-                                  "Começar",
+                                  "Início",
                                   style: TextStyle(fontSize: 16),
                                 )),
                           )

@@ -37,58 +37,56 @@ class _ButtonListState extends State<ButtonList> {
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
         height: 120,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 8, right: 8),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              InkWell(
-                onTap: () =>
-                    Navigator.pushNamed(context, EntradasTransaction.route),
-                child: SizedBox(
-                  child: FormatIconText(
-                    icon: Icons.east,
-                    text: GeneralTexts.home_page_deposito_icon,
-                  ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            InkWell(
+              onTap: () =>
+                  Navigator.pushNamed(context, EntradasTransaction.route),
+              child: SizedBox(
+                child: FormatIconText(
+                  icon: Icons.east,
+                  text: GeneralTexts.home_page_deposito_icon,
                 ),
               ),
-              InkWell(
-                onTap: () => Navigator.pushNamed(context, Sonhos.route),
-                child: SizedBox(
-                  child: FormatIconText(
-                      icon: Icons.hotel_class_rounded,
-                      text: GeneralTexts.home_page_sonhos_icon),
-                ),
+            ),
+            InkWell(
+              onTap: () => Navigator.pushNamed(context, Sonhos.route),
+              child: SizedBox(
+                child: FormatIconText(
+                    icon: Icons.hotel_class_rounded,
+                    text: GeneralTexts.home_page_sonhos_icon),
               ),
-              InkWell(
-                onTap: () {
-                  Navigator.pushNamed(
-                    context,
-                    Controle.route,
-                  );
-                  controller.gaugeLoad(
-                      sonhos: sonhos,
-                      salarioExtra: salarioExtra,
-                      rendaFixa: rendaFixa,
-                      extrato: extrato);
-                },
-                child: SizedBox(
-                  child: FormatIconText(
-                      icon: Icons.tips_and_updates_sharp,
-                      text: GeneralTexts.home_page_controle_icon),
-                ),
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  Controle.route,
+                );
+                controller.gaugeLoad(
+                    sonhos: sonhos,
+                    salarioExtra: salarioExtra,
+                    rendaFixa: rendaFixa,
+                    extrato: extrato);
+              },
+              child: SizedBox(
+                child: FormatIconText(
+                    icon: Icons.tips_and_updates_sharp,
+                    text: GeneralTexts.home_page_controle_icon),
               ),
-              InkWell(
-                onTap: () =>
-                    Navigator.pushNamed(context, SaidasTransaction.route),
-                child: SizedBox(
-                  child: FormatIconText(
-                      icon: Icons.west_rounded,
-                      text: GeneralTexts.home_page_mais),
-                ),
+            ),
+            InkWell(
+              onTap: () =>
+                  Navigator.pushNamed(context, SaidasTransaction.route),
+              child: SizedBox(
+                child: FormatIconText(
+                    icon: Icons.west_rounded,
+                    text: GeneralTexts.home_page_mais),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

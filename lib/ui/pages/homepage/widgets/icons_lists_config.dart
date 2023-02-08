@@ -16,7 +16,6 @@ class FormatIconText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Stack(
           children: [

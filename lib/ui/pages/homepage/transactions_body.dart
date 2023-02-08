@@ -70,22 +70,12 @@ class _TransactionBodyState extends State<TransactionBody> {
                           ],
                         ),
                       ),
-                      Icon(
-                        Icons.arrow_upward_sharp,
-                        color: Colors.white,
-                        size: 15,
-                      ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Divider(
                           color: const Color.fromARGB(255, 253, 250, 250),
                           thickness: 0.4,
                         ),
-                      ),
-                      Icon(
-                        Icons.arrow_downward_sharp,
-                        color: Colors.white,
-                        size: 15,
                       ),
                       Consumer<ExtratoProvider>(
                         builder: (context, extratoProvider, child) => Expanded(

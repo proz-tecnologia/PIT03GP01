@@ -1,4 +1,3 @@
-import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
@@ -21,15 +20,20 @@ class AjudaPage extends StatelessWidget {
         FirebaseAuth.instance.currentUser!.displayName!.split(" ").first;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 152, 152, 154),
+        backgroundColor: const Color.fromARGB(255, 211, 209, 209),
         floatingActionButton: SpeedDial(
+          label: const Text('Me ajude!'),
+          spacing: 16,
+          visible: true,
+          spaceBetweenChildren: 16,
           activeBackgroundColor: const Color.fromARGB(255, 31, 30, 30),
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(16),
-                bottomLeft: Radius.circular(16),
-                bottomRight: Radius.circular(16),
-                topRight: Radius.circular(0)),
+              topLeft: Radius.elliptical(25, 50),
+              // topRight: Radius.elliptical(60, 20),
+              bottomLeft: Radius.elliptical(25, 50),
+              bottomRight: Radius.elliptical(25, 50),
+            ),
           ),
           overlayColor: Colors.black,
           overlayOpacity: 0.4,
@@ -39,10 +43,11 @@ class AjudaPage extends StatelessWidget {
             SpeedDialChild(
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(16),
-                    bottomLeft: Radius.circular(16),
-                    bottomRight: Radius.circular(16),
-                    topRight: Radius.circular(0)),
+                  topLeft: Radius.elliptical(25, 50),
+                  // topRight: Radius.elliptical(60, 20),
+                  bottomLeft: Radius.elliptical(25, 50),
+                  bottomRight: Radius.elliptical(25, 50),
+                ),
               ),
               child: const Icon(Icons.message),
               label: "Fale conosco",
@@ -178,18 +183,33 @@ class AjudaPage extends StatelessWidget {
         body: CustomScrollView(
           slivers: [
             SliverAppBar(
+              centerTitle: true,
               leading: Container(),
-              floating: true,
-              title: const Center(child: Text("Precisa de ajuda?")),
-              toolbarTextStyle: const TextStyle(fontSize: 60),
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(16),
+                  bottomRight: Radius.circular(60),
+                ),
+              ),
+              title: const Text(
+                "Precisa de ajuda?",
+                style: TextStyle(fontSize: 30),
+              ),
               backgroundColor: const Color.fromARGB(255, 230, 230, 233),
               expandedHeight: 120,
-              flexibleSpace: FlexibleSpaceBar(
-                background: Container(
-                  color: const Color.fromARGB(255, 31, 30, 30),
+              flexibleSpace: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(40),
+                  bottomRight: Radius.circular(40),
                 ),
-                title: const Text(
-                  "F A Q",
+                child: FlexibleSpaceBar(
+                  background: Container(
+                    color: const Color.fromARGB(255, 62, 60, 60),
+                  ),
+                  title: const Text(
+                    "F A Q ",
+                    style: TextStyle(fontSize: 14),
+                  ),
                 ),
               ),
             ),
@@ -205,24 +225,19 @@ class AjudaPage extends StatelessWidget {
                   "Irá gerar um card dos sonhos onde você encontrará um relatório mostrando informações sobre o seu sonho ",
             ),
             const FaqCardConfig(
-              pergunta: "Como posso focar na realização do sonho?",
+              pergunta: "Como ficar mais focado para a realização do sonho?",
               resposta:
                   "Na área de dicas financeiras do sr.minhaeiro, você pode aprender muito com os especialistas sobre organização e foco para alcançar o seu objetivo ",
             ),
             const FaqCardConfig(
               pergunta: "Quantos sonhos eu posso ter no sr.minhaeiro?",
               resposta:
-                  "Aqui no sr.minhaeiro você pode sonhar o quanto quiser, tenha quantos sonhos bem entender... ",
+                  "Aqui no sr.minhaeiro você pode sonhar o quanto quiser, tenha quantos sonhos desejar... ",
             ),
             const FaqCardConfig(
               pergunta: "Como posso focar na realização do sonho?",
               resposta:
                   "Na área de dicas financeiras do sr.minhaeiro, você pode aprender muito com os especialistas sobre organização e foco para alcançar o seu objetivo ",
-            ),
-            const FaqCardConfig(
-              pergunta: "O que eu encontro quando registro um sonho?",
-              resposta:
-                  "Irá gerar um card dos sonhos onde você encontrará um relatório mostrando informações sobre o seu sonho ",
             ),
             const SliverToBoxAdapter(
               child: SizedBox(

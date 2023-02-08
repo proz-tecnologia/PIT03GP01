@@ -24,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 253, 250, 250),
+      backgroundColor: const Color.fromARGB(255, 230, 230, 233),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -55,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
               child: GroupButtonConfig(
                 changecolor: teste,
                 text: const Text(
-                  "Login",
+                  "Entrar",
                   style: TextStyle(
                       fontSize: 22,
                       color: Colors.white,
@@ -78,15 +78,8 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(
                       fontSize: 18,
                       color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                    )),
-                /*  TextSpan(
-                    text: " Cadastre-se",
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.blue,
                       fontWeight: FontWeight.bold,
-                    )) */
+                    )),
               ])),
             ),
             Spacer(),
@@ -110,28 +103,12 @@ class _LoginPageState extends State<LoginPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    constraints: BoxConstraints(maxWidth: 160, minWidth: 120),
-                    height: 1,
-                    color: Colors.black,
-                  ),
-                ),
+              children: const [
                 Text(
                   "OU",
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    constraints: BoxConstraints(maxWidth: 160, minWidth: 120),
-                    height: 1,
-                    color: Colors.black,
                   ),
                 ),
               ],

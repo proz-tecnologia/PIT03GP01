@@ -93,6 +93,8 @@ class _SonhosState extends State<Sonhos> {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
+                          height: MediaQuery.of(context).size.height * 0.12,
+                          width: MediaQuery.of(context).size.width * 0.9,
                           decoration: BoxDecoration(
                             borderRadius: const BorderRadius.only(
                               topLeft: Radius.elliptical(25, 50),
@@ -102,13 +104,15 @@ class _SonhosState extends State<Sonhos> {
                             ),
                             color: Colors.grey[800],
                           ),
-                          child: const Text(
-                            " O sr. minhaeiro entende a importância dos sonhos, e os seus, são muito importantes para nós, então, vamos torná-lo realidade?",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                              color: Colors.white,
+                          child: const Center(
+                            child: Text(
+                              " O sr. minhaeiro entende a importância dos sonhos, e os seus, são muito importantes para nós, então, vamos torná-lo realidade?",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ),

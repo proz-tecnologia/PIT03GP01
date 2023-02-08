@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPageTwo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: const Color.fromARGB(255, 230, 230, 233),
       body: SafeArea(
         child: SingleChildScrollView(
           physics: const ClampingScrollPhysics(),
@@ -215,7 +215,7 @@ class _LoginPageState extends State<LoginPageTwo> {
                     child: GroupButtonConfig(
                       changecolor: teste,
                       text: const Text(
-                        "Login",
+                        "Entrar",
                         style: TextStyle(
                             fontSize: 22,
                             color: Colors.white,

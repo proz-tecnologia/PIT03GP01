@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:mask/mask/mask.dart';
 import 'package:srminhaeiro/ui/components/alert_dialog.component.dart';
 import 'package:srminhaeiro/ui/components/progress_dialog.component.dart';
+import 'package:srminhaeiro/ui/pages/check_page/check_page.dart';
 import 'package:srminhaeiro/ui/pages/login_page/extensions/extension_string.dart';
 import 'package:srminhaeiro/ui/pages/register_page/controller_register.dart';
 //import 'package:srminhaeiro/ui/pages/register_page/model_register.dart';
@@ -38,6 +39,7 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     final bool showFab = MediaQuery.of(context).viewInsets.bottom == 0.0;
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 230, 230, 233),
       floatingActionButton: Visibility(
         visible: showFab,
         child: FloatingActionButton.extended(
@@ -53,7 +55,7 @@ class _RegisterState extends State<Register> {
             onPressed: () {
               Navigator.pop(context);
             },
-            label: const Text("Fazer login")),
+            label: const Text("Voltar")),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -417,7 +419,8 @@ class _RegisterState extends State<Register> {
                         if (_formKey.currentState!.validate()) {
                           _formKey.currentState!.save();
                           await _signUp();
-                          Navigator.pop(context);
+                          Navigator.pushReplacementNamed(
+                              context, CheckPage.route);
                         }
                       },
                     ),

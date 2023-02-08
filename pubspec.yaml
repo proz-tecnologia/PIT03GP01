@@ -59,6 +59,9 @@ dependencies:
   font_awesome_flutter: ^10.3.0
   flutter_facebook_auth: ^5.0.7
   flutter_speed_dial: ^6.2.0
+  path: ^1.8.2
+  image_picker: ^0.8.6+1
+  firebase_storage: ^11.0.10
 
   
 

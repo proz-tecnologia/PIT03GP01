@@ -5,12 +5,14 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+
 import 'package:srminhaeiro/firebase_options.dart';
 import 'package:srminhaeiro/ui/pages/check_page/check_page.dart';
 import 'package:srminhaeiro/ui/pages/login_page/login_page.dart';
 
 class SplashPage extends StatefulWidget {
   static String route = "splash";
+
   const SplashPage({super.key});
 
   @override
@@ -30,7 +32,7 @@ class _SplashPageState extends State<SplashPage> {
     await Firebase.initializeApp(
         name: "splash", options: DefaultFirebaseOptions.currentPlatform);
 
-    await Future.delayed(const Duration(seconds: 5));
+    await Future.delayed(const Duration(milliseconds: 4500));
 
     _streamSubscription =
         FirebaseAuth.instance.authStateChanges().listen((user) async {
@@ -51,11 +53,11 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: const Color.fromARGB(255, 230, 230, 233),
         body: Center(
           child: SizedBox(
             child: Image.asset(
-              "assets/images/minhaeiroo.gif",
+              "assets/images/gif.gif",
             ),
           ),
         ));

@@ -17,6 +17,7 @@ class ForgotPasswordPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool showFab = MediaQuery.of(context).viewInsets.bottom == 0.0;
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 211, 209, 209),
       floatingActionButton: Visibility(
         visible: showFab,
         child: FloatingActionButton.extended(

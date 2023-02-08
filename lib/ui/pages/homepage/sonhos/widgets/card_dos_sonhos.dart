@@ -24,6 +24,7 @@ class CardDosSonhos extends StatelessWidget {
   final _alertDialog = AlertDialogComponent();
   final CardController modelValue = CardController();
   final _progressDialog = ProgressDialogComponent();
+  final formkey = GlobalKey<FormState>();
   CardDosSonhos(
     this.card, {
     Key? key,
@@ -41,21 +42,11 @@ class CardDosSonhos extends StatelessWidget {
         ),
         child: Padding(
           padding:
-              const EdgeInsets.only(left: 8.0, right: 8, top: 32, bottom: 32),
+              const EdgeInsets.only(left: 8.0, right: 8, top: 16, bottom: 16),
           child: InkWell(
-            onTap: () => showModalBottomSheet<void>(
-              isScrollControlled: true,
-              backgroundColor: const Color(0xfffbf1f1),
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.elliptical(250, 80),
-                  //topRight: Radius.elliptical(60, 20),
-                ),
-              ),
-              context: context,
-              builder: (BuildContext context) {
-                return CardOnTap(card);
-              },
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => CardOnTap(card)),
             ),
             child: Container(
               decoration: const BoxDecoration(
@@ -95,10 +86,11 @@ class CardDosSonhos extends StatelessWidget {
                             bottom: 8,
                           ),
                           child: SizedBox(
-                            width: 300,
+                            width: MediaQuery.of(context).size.width * 0.7,
                             child: Text(
+                              overflow: TextOverflow.fade,
                               textAlign: TextAlign.start,
-                              card.nomeSonho.toLowerCase(),
+                              card.nomeSonho,
                               style: const TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.w600),
                             ),
@@ -128,56 +120,87 @@ class CardDosSonhos extends StatelessWidget {
                                   actions: [
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: TextFormField(
-                                          maxLength: 14,
-                                          inputFormatters: [
-                                            CurrencyTextInputFormatter(
-                                                decimalDigits: 2,
-                                                locale: 'pt_BR',
-                                                symbol: "")
-                                          ],
-                                          decoration: const InputDecoration(
-                                            hintText: "00,00",
-                                            helperText: "ex: R\$ 5.000,00",
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                  width: 1,
-                                                  color: Colors.black),
-                                              borderRadius: BorderRadius.only(
-                                                  topLeft: Radius.circular(12),
-                                                  bottomLeft:
-                                                      Radius.circular(12),
-                                                  bottomRight:
-                                                      Radius.circular(12)),
+                                      child: Form(
+                                        key: formkey,
+                                        child: TextFormField(
+                                            maxLength: 14,
+                                            inputFormatters: [
+                                              CurrencyTextInputFormatter(
+                                                  decimalDigits: 2,
+                                                  locale: 'pt_BR',
+                                                  symbol: "")
+                                            ],
+                                            decoration: const InputDecoration(
+                                              hintText: "00,00",
+                                              helperText: "ex: R\$ 5.000,00",
+                                              focusedBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                    width: 1,
+                                                    color: Colors.black),
+                                                borderRadius: BorderRadius.only(
+                                                    topLeft:
+                                                        Radius.circular(12),
+                                                    bottomLeft:
+                                                        Radius.circular(12),
+                                                    bottomRight:
+                                                        Radius.circular(12)),
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                    width: 1,
+                                                    color: Colors.black),
+                                                borderRadius: BorderRadius.only(
+                                                    topLeft:
+                                                        Radius.circular(12),
+                                                    bottomLeft:
+                                                        Radius.circular(12),
+                                                    bottomRight:
+                                                        Radius.circular(12)),
+                                              ),
+                                              focusedErrorBorder:
+                                                  OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                    width: 2,
+                                                    color: Colors.redAccent),
+                                                borderRadius: BorderRadius.only(
+                                                    topLeft:
+                                                        Radius.circular(16),
+                                                    bottomLeft:
+                                                        Radius.circular(16),
+                                                    bottomRight:
+                                                        Radius.circular(16)),
+                                              ),
+                                              errorBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                    width: 2,
+                                                    color: Colors.redAccent),
+                                                borderRadius: BorderRadius.only(
+                                                    topLeft:
+                                                        Radius.circular(16),
+                                                    bottomLeft:
+                                                        Radius.circular(16),
+                                                    bottomRight:
+                                                        Radius.circular(16)),
+                                              ),
+                                              prefix: Text("R\$ "),
                                             ),
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                  width: 1,
-                                                  color: Colors.black),
-                                              borderRadius: BorderRadius.only(
-                                                  topLeft: Radius.circular(12),
-                                                  bottomLeft:
-                                                      Radius.circular(12),
-                                                  bottomRight:
-                                                      Radius.circular(12)),
-                                            ),
-                                            prefix: Text("R\$ "),
-                                          ),
-                                          keyboardType: TextInputType.number,
-                                          controller: valorController,
-                                          validator: (value) =>
-                                              Mask.validations.money(value),
-                                          onChanged: (va) {
-                                            value.sonhoParcela = double.parse(va
-                                                .replaceAll(".", "")
-                                                .replaceAll(",", "."));
-                                          }
-                                          /*  modelValue.adicionarvalor =
-                                                  double.parse(va
+                                            keyboardType: TextInputType.number,
+                                            controller: valorController,
+                                            validator: (value) =>
+                                                Mask.validations.money(value),
+                                            onChanged: (va) {
+                                              value.sonhoParcela = double.parse(
+                                                  va
                                                       .replaceAll(".", "")
-                                                      .replaceAll(",", ".")
-                                                      ), */
-                                          ),
+                                                      .replaceAll(",", "."));
+                                            }
+                                            /*  modelValue.adicionarvalor =
+                                                    double.parse(va
+                                                        .replaceAll(".", "")
+                                                        .replaceAll(",", ".")
+                                                        ), */
+                                            ),
+                                      ),
                                     ),
                                     Row(
                                       mainAxisAlignment:
@@ -201,17 +224,19 @@ class CardDosSonhos extends StatelessWidget {
                                                   const Color(0xff413d3d),
                                             ),
                                             onPressed: () async {
-                                              Navigator.pop(context);
-                                              _progressDialog.show(
-                                                  "Adicionado parcela ao sonhos");
+                                              if (formkey.currentState!
+                                                  .validate()) {
+                                                Navigator.pop(context);
+                                                _progressDialog.show(
+                                                    "Adicionado parcela ao sonhos");
 
-                                              await Future.delayed(
-                                                  const Duration(seconds: 1));
-                                              value.currentElement(card.uid!,
-                                                  value.sonhoParcela);
-                                              _updateSonho(card.uid!, card);
+                                                value.currentElement(card.uid!,
+                                                    value.sonhoParcela);
+                                                await _updateSonho(
+                                                    card.uid!, card);
 
-                                              _progressDialog.hide();
+                                                _progressDialog.hide();
+                                              }
                                             },
                                             child: const Text("Adicionar")),
                                         ElevatedButton(

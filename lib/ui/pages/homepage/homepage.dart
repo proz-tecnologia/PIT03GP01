@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 253, 250, 250),
+      backgroundColor: const Color.fromARGB(255, 211, 209, 209),
       floatingActionButton: SpeedDial(
         spacing: 16,
         visible: true,

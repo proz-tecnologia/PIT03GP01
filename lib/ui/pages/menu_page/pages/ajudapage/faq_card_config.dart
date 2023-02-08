@@ -15,21 +15,24 @@ class FaqCardConfig extends StatelessWidget {
         padding: const EdgeInsets.all(12.0),
         child: ClipRRect(
           borderRadius: const BorderRadius.only(
-            bottomLeft: Radius.circular(20),
-            bottomRight: Radius.circular(20),
-            topLeft: Radius.circular(20),
+            topLeft: Radius.elliptical(25, 50),
+            // topRight: Radius.elliptical(60, 20),
+            bottomLeft: Radius.elliptical(25, 50),
+            bottomRight: Radius.elliptical(25, 50),
           ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Padding(
                 padding: const EdgeInsets.only(
                     bottom: 8, top: 8, left: 16, right: 16),
                 child: ClipRRect(
                   borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(20),
-                    bottomRight: Radius.circular(20),
-                    topLeft: Radius.circular(20),
+                    topLeft: Radius.elliptical(25, 50),
+                    // topRight: Radius.elliptical(60, 20),
+                    bottomLeft: Radius.elliptical(25, 50),
+                    bottomRight: Radius.elliptical(25, 50),
                   ),
                   child: ExpansionTile(
                       collapsedBackgroundColor:
